@@ -31,21 +31,20 @@
 Nome: <input type="text" name="nome_user" value="<?php echo "$nome"; ?>" id="nome_user" )>  <br /><br />
 Sexo: <select name="sexo_user">
   <
-  <option value="">---------</option>
   <option value="<?php echo $sexo ?>" selected><?php echo "$sexo" ?></option>
+  <option value="">---------</option>
   <option value="Masculino">Masculino</option>
   <option value="Feminino">Feminino</option>
   </select><br /> <br />
-RG: <input type="int" name="rg_user" value="<?php echo "$rua"; ?>" id="rg_user"><br /><br />
+RG: <input type="int" name="rg_user" value="<?php echo "$rg"; ?>" id="rg_user"><br /><br />
 Telefone: <input type="int" name="telefone_user" value="<?php echo "$telefone"; ?>" id="telefone_user"><br /><br />
 Login de Entrada: <input type="text" name="login_user" value="<?php echo "$login"; ?>" id="login_user"><br /><br />
-Senha: <input type="password" name="senha_user" value="<?php echo "$nome"; ?>" id="senha_user"><br /><br />
-Rua: <input type="text" name="rua_user" value="<?php echo "$nome"; ?>" id="rua_user"><br /><br />
-Numero: <input type="text" name="numero_user" value="<?php echo "$nome"; ?>" id="numero_user"><br /><br />
-Bairro: <input type="text" name="bairro_user" value="<?php echo "$nome"; ?>" id="bairro_user"><br /><br />
-Cidade: <input type="text" name="cidade_user" value="<?php echo "$nome"; ?>" id="cidade_user"><br /><br />
+Senha: <input type="password" name="senha_user" value="<?php echo "$senha"; ?>" id="senha_user"><br /><br />
+Rua: <input type="text" name="rua_user" value="<?php echo "$rua"; ?>" id="rua_user"><br /><br />
+Numero: <input type="text" name="numero_user" value="<?php echo "$numero"; ?>" id="numero_user"><br /><br />
+Bairro: <input type="text" name="bairro_user" value="<?php echo "$bairro"; ?>" id="bairro_user"><br /><br />
+Cidade: <input type="text" name="cidade_user" value="<?php echo "$cidade"; ?>" id="cidade_user"><br /><br />
 Estado: <select name="estado_user">
-	<option value="">Selecione</option>
 	<?php 
 		if($estado=="AC"){$vestado = "Acre";}
 		if($estado=="AL"){$vestado = "Alagoas";}
@@ -123,5 +122,3 @@ function Voltar()
 
 </body>
 </html>
-
-
