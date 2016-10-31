@@ -15,7 +15,7 @@
 			   $nome = $linha['nome_user'];
 			   
 			   
-			   echo "<td><strong>Nome: </strong>".@$nome."	<a href=\"Alterar\">		Alterar<a/>"."	<a href=\"Excluir\">		Excluir<a/>";
+			   echo "<td><strong>Nome: </strong>".@$nome;
 			   
 			   echo "<br /> <br /> <hr />";
 			   

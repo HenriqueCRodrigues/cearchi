@@ -13,7 +13,7 @@ Sexo: <select name="sexo_user">
   <option value="Masculino">Masculino</option>
   <option value="Feminino">Feminino</option>
   </select><br /> <br />
-Data de Nascimento: <input type="Date" name="nascimento_user" id="nascimento_user"><br /><br />
+Data de Nascimento: <input type="text" name="nascimento_user" id="nascimento_user"><br /><br />
 CPF: <input type="int" name="cpf_user" id="cpf_user"><br /><br />
 RG: <input type="int" name="rg_user" id="rg_user"><br /><br />
 Telefone: <input type="int" name="telefone_user" id="telefone_user"><br /><br />
