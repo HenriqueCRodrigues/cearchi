@@ -28,7 +28,7 @@ include "Conexao_mysql.php";
 $login = $_POST['login_user'];
 $senha = $_POST['senha_user'];
 
-$sql = mysql_query("SELECT * FROM usuario WHERE login_user='$login' AND senha_user='$senha'") or die(mysql_error());
+$sql = mysql_query("SELECT * FROM usuario WHERE login_user='$login' AND senha_user='$senha' AND status_user='A' ") or die(mysql_error());
 $consulta = mysql_fetch_array($sql);
 $row = mysql_num_rows($sql);
 
@@ -40,6 +40,7 @@ if ($row > 0)
 	$_SESSION['login_user'] = $_POST['login_user'];
 	$_SESSION['senha_user'] = $_POST['senha_user'];
 	$_SESSION['tipo_usuario'] = $consulta['tipo_usuario'];
+
 	
 	echo 'Você foi autenticado com sucesso<br>Você Será Redirecionado Para a Pagina Home de Sua Conta.';
 	echo '<script>sucesso_login()</script>';

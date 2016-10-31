@@ -12,7 +12,7 @@ Senha: <input type="password" name="senha_user" id="senha_user" ><br /><br />
 
 <input type="submit" value="Entrar" id="btnCad"><br /><br />
 <a href="cadastrar">Cadastrar no Site</a><br />
-<a href="esquecer">Esqueceu a senha ?</a>
+<!--a href="esquecer">Esqueceu a senha ?</a-->
 </form>
 
 

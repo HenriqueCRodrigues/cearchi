@@ -1,6 +1,7 @@
 <?php
 //Conexão com o banco de dados
-include "Conexao_mysql.php";
+  include "Conexao_mysql.php";
+  include "Validador_de_Login.php";
 // RECEBENDO OS DADOS PREENCHIDOS DO FORMULÁRIO !
 $data_ss = $_POST ["data_ss"];
 $hora_ss = $_POST ["hora_ss"];
