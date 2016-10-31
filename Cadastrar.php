@@ -61,7 +61,7 @@ CEP: <input type="int" name="cep_user" id="cep_user" ><br /><br />
 {
 	if(document.getElementById("contratante").checked){
 
-		document.getElementById("verifica").style.visibility = 'hidden';q
+		document.getElementById("verifica").style.visibility = 'hidden';
 
 	}
 	else if(document.getElementById("prestador_de_servico").checked)	

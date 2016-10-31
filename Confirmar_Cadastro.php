@@ -4,7 +4,7 @@
 include "Conexao_mysql.php";
 
 
-// RECEBENDO OS DADOS PREENCHIDOS DO FORMULÁRIO !
+// RECEBENDO OS DADOS PREENCHIDOS DO FORMULÁRIO !, todos derivado do "name"
 $nome_user = $_POST ["nome_user"];	//atribuição do campo "nome_user" vindo do formulário para variavel	
 $sexo_user = $_POST ["sexo_user"];	//atribuição do campo "sexo_user" vindo do formulário para variavel
 $nascimento_user = $_POST["nascimento_user"]; 
