@@ -5,7 +5,8 @@ include "Validador_de_Login.php";
 
 
 $tipo = $_SESSION['tipo_usuario'];
-$id = $_SESSION['id_user'];
+$id_Usuario = $_SESSION['id_user'];
+$id_Solicitacao_de_Servico = $_SESSION['id_ss'];
 
 
 
@@ -27,6 +28,8 @@ $id = $_SESSION['id_user'];
 
 		<a href="alterar">Alterar seus Dados</a> <br />
 		<a href="consultar">Consultar Outros Usuarios</a><br />
+		<a href="Solicitar_Servico">Solicitar Serviço</a><br />
+		<a href="Consulta_Servico">Consultar Serviço</a><br />
 		<a href="logout">Sair</a>  
 
 </body>

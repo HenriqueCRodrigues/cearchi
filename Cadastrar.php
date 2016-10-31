@@ -93,7 +93,7 @@ CEP: <input type="int" name="cep_user" id="cep_user" ><br /><br />
     </div>
 <br /><br />
 
-<input type="submit" value="Cadastrar" id="btnCad" onclick="Cadastro()">
+<input type="submit" value="Cadastrar" id="btnCad" >
 <input type="button" value="Voltar" onclick="Voltar()">
 
 <script>
