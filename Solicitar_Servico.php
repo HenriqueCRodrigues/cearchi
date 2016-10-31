@@ -1,3 +1,16 @@
+<<?php 
+    include "Conexao_mysql.php";
+    include "Validador_de_Login.php";
+
+    $tipo = $_SESSION['tipo_usuario'];
+    if($tipo == 'P'){
+        //Se o usuário for prestador ele é redirecionado para uma pagina somente com os dados deles!
+        echo '<script>alert("Prestador de Serviço, não tem essa opção disponivel\nRedirecionando para o Menu do Usuario, Após Pressionar OK.")</script>';  
+        echo "<script> location.href='home';</script>";
+    }
+
+
+ ?>
 <!DOCTYPE html>
 <html>
 <head>

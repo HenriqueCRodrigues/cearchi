@@ -33,7 +33,7 @@ if(@$_GET['go'] == 'Excluir')
 
 	$consulta = mysql_fetch_array($sql);
 	$att = mysql_query("UPDATE usuario SET status_user='D' WHERE id_user='$id'");
-	echo echo '<script>alert("Usuario Exluido com sucesso.")</script>';	
+	echo '<script>alert("Usuario Exluido com sucesso.")</script>';	
 	echo "<script> location.href='menu';</script>";
 	
 }

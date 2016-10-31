@@ -6,7 +6,6 @@ include "Validador_de_Login.php";
 
 $tipo = $_SESSION['tipo_usuario'];
 $id_Usuario = $_SESSION['id_user'];
-$id_Solicitacao_de_Servico = $_SESSION['id_ss'];
 
 
 
