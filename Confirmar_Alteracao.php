@@ -26,9 +26,10 @@ $id = $_SESSION['id_user'];
 //Gravando no banco de dados !
 
  
- 
-
 	$sql_atualizar_usuario = mysql_query("UPDATE usuario SET nome_user = '$nome_user', sexo_user = '$sexo_user', rg_user = '$rg_user', telefone_user = '$telefone_user', login_user = '$login_user', senha_user = '$senha_user', rua_user = '$rua_user', numero_user = '$numero_user', bairro_user = '$bairro_user', cidade_user = '$cidade_user', estado_user = '$estado_user', cep_user = '$cep_user' WHERE id_user = '$id' ") or die(mysql_error());
+
+	echo '<script>alert("Alterações realizada com sucesso\nVocê Será Redirecionado Para a Pagina Home de Sua Conta.")</script>';
+	echo '<script>location.href="home";</script>';
 	
 
  

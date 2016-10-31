@@ -11,7 +11,7 @@
 
 	if ($row > 0) {
 		
-		while ($linha = mysql_fetch_array($sql1)) {
+		while ($linha = mysql_fetch_array($sql)) {
 			   $nome = $linha['nome_user'];
 			   
 			   

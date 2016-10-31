@@ -2,7 +2,9 @@
 	
 	session_start();
 	session_destroy();
-	header("location: menu");
+	echo '<script>alert("Você foi desconectado\nVocê Será Redirecionado Para o Menu de Login da página")</script>';
+	echo '<script>location.href="home";</script>';
+	
 
 
 ?>
