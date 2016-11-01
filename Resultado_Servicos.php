@@ -19,9 +19,9 @@ if ($row > 0) {
         $arm = array($id => @$cont);
         
 
-        echo "<form method='post' action='Alterar_Servico.php?id_ss".$id."'><strong>Serviço: </strong>$tipp<strong> Hora:</strong>$hora<strong> Data: </strong>$data </form>";
+        echo "<form method='post' action='Alterar_Servico.php?id_ss=".$id."'><strong>Serviço: </strong>$tipp<strong> Hora:</strong>$hora<strong> Data: </strong>$data <input type='submit' value='Alterar' id='btnAlt'> </form>";
 
-
+      
        
         echo "<br /> <br /> <hr />";
 

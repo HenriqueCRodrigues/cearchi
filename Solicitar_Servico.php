@@ -1,4 +1,4 @@
-<<?php 
+<?php 
     include "Conexao_mysql.php";
     include "Validador_de_Login.php";
 

@@ -14,6 +14,16 @@ $data = $consulta['data_ss'];
 $hora = $consulta['hora_ss'];
 $idd = $consulta['id_ss'];
 
+
+
+
+echo "<form method='post' action='confirmar_alteracao_Servico.php?id_ss=".$idd."'> Data da visita: <input type='text' name='data_ss' value='$data' id='data_ss'> <br /><br /> Hora da visita: <input type='text' name='hora_ss' value='$hora' id='hora_ss' ><br /><br /> <input type='submit' name='Alterar' id='BtnAlt'> <input type='button' value='Voltar' onclick='Voltar()'> ";
+  
+
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -22,16 +32,7 @@ $idd = $consulta['id_ss'];
     <title>Cadastro de Serviço</title>
 </head>
 <body>
-<form method="post" action="confirmar_alteracao_Servico">
 
-    Data da visita: <input type="text" name="data_ss" value="<?php echo "$data"; ?>" id="data_ss" )>  <br /><br />
-    Hora da visita: <input type="text" name="hora_ss" value="<?php echo "$hora"; ?>" id="hora_ss" ><br /><br />
-    
-    <input type="text" name="id_ss" value="<?php echo "$id"; ?>" id="id_ss" >
-
-    <input type="submit" name="Alterar" id="BtnAlt">
-    <input type="button" value="Voltar" onclick="Voltar()">
-    
     <script>
         function Voltar()
         {

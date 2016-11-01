@@ -10,7 +10,7 @@ $sql_listar_usuario = mysql_query("SELECT * FROM solicitacao_de_servico ");
 
 // RECEBENDO OS DADOS PREENCHIDOS DO FORMULÁRIO !
 
-$id = $_POST['id_ss'];
+$id = $_GET['id_ss'];
 $data_ss	= $_POST ["data_ss"];	//atribuição do campo "nome" vindo do formulário para variavel
 $hora_ss	= $_POST ["hora_ss"];	//atribuição do campo "sexo" vindo do formulário para variavel
 //Gravando no banco de dados !
