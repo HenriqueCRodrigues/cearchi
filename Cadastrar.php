@@ -99,7 +99,7 @@ CEP: <input type="int" name="cep_user" id="cep_user" ><br /><br />
 <script>
 function Voltar() 
 {
-    location.href="menu";
+    location.href="index.html";
 }
 
 </script>

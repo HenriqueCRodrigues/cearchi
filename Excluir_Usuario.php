@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html>
 <head>
 	<title>Excluir Conta</title>
@@ -6,27 +6,26 @@
 <body>
 	<strong>Deseja excluir sua conta</strong>
 	<form method="post" action="?go=Excluir">
-<input type="submit" value="SIM" id="btnCad">
+<!--<input type="submit" value="SIM" id="btnCad">
 <input type="button" value="NÃO" onclick="Voltar()">
 
 <script>
 function Voltar() 
 {
-    location.href="home";
+    location.href="index.html";
 }
 
 </script></form>
 </body>
-</html>
-
-
-
+</html>-->
 
 <?php 
 include "Conexao_mysql.php";
 include "Validador_de_Login.php";
 
-if(@$_GET['go'] == 'Excluir')
+//@$_GET['go'] == 'Excluir'
+$X=$_GET["option"];
+if($X=='Excluir')
 {
 	$id = $_SESSION['id_user'];
 	$sql = mysql_query("SELECT * FROM usuario WHERE id_user = '$id'");
@@ -34,11 +33,16 @@ if(@$_GET['go'] == 'Excluir')
 	$consulta = mysql_fetch_array($sql);
 	$att = mysql_query("UPDATE usuario SET status_user='D' WHERE id_user='$id'");
 	echo '<script>alert("Usuario Exluido com sucesso.")</script>';	
-	echo "<script> location.href='menu';</script>";
+	echo "<script> location.href='account.html';</script>";
 	
+}else{
+	Voltar();
 }
 
 
-
+function Voltar() 
+{
+    header('Location: accountconfig.html');
+}
 
  ?>

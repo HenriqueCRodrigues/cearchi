@@ -28,7 +28,7 @@ if (strcmp($nome_user, '') == 0 || strcmp($sexo_user, 0) == 0 || (strcmp($nascim
 {
 	// Script de Alerta
 	echo '<script>alert("Todos os campos tem que ser preenchidos.")</script>';	
-	echo '<script>location.href="cadastrar"</script>';
+	echo '<script>location.href="account.html"</script>';
 
 }
 
@@ -42,7 +42,7 @@ else
 	values ('$nome_user', '$sexo_user', '$nascimento_user', '$cpf_user', '$rg_user', '$telefone_user', '$login_user', '$senha_user', '$emai_user', '$rua_user', '$numero_user', '$bairro_user', '$cidade_user', '$estado_user', '$cep_user', '$tipo_usuario', 'A')") or die(mysql_error());
 	// Script de Alerta
 	 echo '<script>alert("Seu cadastro foi realizado com sucesso!\nVocê será rediracionado para o Home, após pressionar OK.")</script>';
-	 echo '<script>location.href="home"</script>';
+	 echo '<script>location.href="account.html"</script>';
 	
 
  	 

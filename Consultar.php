@@ -9,8 +9,6 @@
 	}
 
 
-
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -40,7 +38,7 @@ Nome: <input type="text" name="nome_user" id="nome_user" /><br /><br />
 <script>
 function Voltar() 
 {
-    location.href="home";
+    location.href="index.php";
 }
 
 </script>

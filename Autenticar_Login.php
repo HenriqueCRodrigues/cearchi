@@ -5,12 +5,12 @@
 <script type="text/javascript">
 	function sucesso_login()
 	{
-		setTimeout("window.location='home'", 2000);
+		setTimeout("window.location='index.html'", 2000);
 	}
 
 	function fracasso_login()
 	{
-		setTimeout("window.location='menu.php'", 2000);
+		setTimeout("window.location='account.html'", 2000);
 	}
 
 </script>
