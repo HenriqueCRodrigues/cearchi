@@ -2,7 +2,6 @@
 include "Conexao_mysql.php";
 include "Validador_de_Login.php";
 
-
 $tipo = $_POST['tipo_ss'];
 $sql = mysql_query("SELECT * FROM solicitacao_de_servico WHERE tipo_ss like '%$tipo%' ORDER BY tipo_ss ");
 $row = mysql_num_rows($sql);
@@ -18,9 +17,9 @@ if ($row > 0) {
         @$cont ++;
 
         $arm = array($id => @$cont);
-        echo "<script>function ocultar(){document.getElementById('id_ss').style.visibility = 'hidden';} ocultar();</script>";
+        
 
-        echo "<form method='post' action='Alterar_Servico.php'><strong>ID: </strong>$id <strong>Serviço: </strong>$tipp<strong> Hora:</strong>$hora<strong> Data: </strong>$data<input type='submit' value='Alterar' id='btnAlt'><input type='text' name='id_ss' value='$id' style='visibility:hidden'></form>";
+        echo "<form method='post' action='Alterar_Servico.php?id_ss".$id."'><strong>Serviço: </strong>$tipp<strong> Hora:</strong>$hora<strong> Data: </strong>$data </form>";
 
 
        
