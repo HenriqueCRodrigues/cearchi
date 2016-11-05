@@ -8,13 +8,10 @@ $sql = mysql_query("SELECT * FROM usuario WHERE id_user = '$id'");
 $consulta = mysql_fetch_array($sql);
 
 $nome = $consulta['nome_user'];
-			   echo "<td><strong>Nome: </strong>".@$nome."	<a href=\"Alterar\">		Alterar<a/>"."	<a href=\"Excluir_Usuario\">		Excluir<a/>";
+			   echo "<td><strong>Nome: </strong>".$nome."	<a href=\"Alterar\">		Alterar<a/>"."	<a href=\"Excluir_Usuario\">		Excluir<a/>";
 			   echo "<br /> <br /> <hr />";
 			   
-			   @$cont ++;	
-			  
-		       echo "<strong>Total Encontrado: </strong>".@$cont;
-		       echo "<br /> <br />";
+			   
 
 ?>
 <!DOCTYPE html>

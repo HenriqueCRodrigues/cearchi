@@ -1,3 +1,9 @@
+<?php
+	include "Conexao_mysql.php";
+	include "Validador_de_Login.php";
+	$tipo_usuario = $_SESSION['tipo_usuario'];
+
+?>
 <!--
 Author: W3layouts
 Author URL: http://w3layouts.com
@@ -7,7 +13,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html>
 <head>
-<title>Cearchi | Mudança de senha</title>
+<title>Cearchi | Configuração de Conta</title>
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
@@ -28,6 +34,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- cart -->
 <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
 </head>
+
+
+
 <body>
 	<!-- header-section-starts -->
 	<div class="header">
@@ -39,7 +48,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<li><a href="index.html"><img src="images/logopeq.png"</a></li>
 				
 						<li><a href="account.html"> <img src="images/icon1.png">LOGIN</a></li>
-						<li><a href="register.html"><img src="images/pw.png">Crie uma conta</a></li>			
+						<li><a href="register"><img src="images/pw.png">Crie uma conta</a></li>			
 					</ul>
                     </div>
 				</div> </div>
@@ -68,7 +77,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<li><a href="index.html">Início</a></li>
 		    <li><a href="#">Procurar Serviços</a></li>
 		    <li><a href="#">anunciar</a></li>
-		    <li><a href="accountconfig.html">configurações da conta</a></li>
+		    <li><a href="accountconfig">configurações da conta</a></li>
             <li><a href="contact.html">CONTATO</a></li>
 	        </ul>
 	    </div>
@@ -86,49 +95,52 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                        <a href="index.html" title="Go to Home Page">Home</a>&nbsp;
                        <span>&gt;</span>
                     </li>
-					<li class="home">
-                       <a href="index.html" title="Ir para configurações de conta">Configuração de conta</a>&nbsp;
-                       <span>&gt;</span>
-                    </li>
                     <li class="women">
-                       Alterar senha de acesso
+                       Configurações de conta
                     </li>
                 </ul>
                 <ul class="previous">
-                	<li><a href="accountconfig.html">Voltar para página anterior</a></li>
+                	<li><a href="index.html">Voltar para página anterior</a></li>
                 </ul>
                 <div class="clearfix"></div>
 			   </div>
-		<h2>Alteraração de senha</h2>
-		<div class="registration-grids">
+		<h2>Configurações de conta</h2>
+		<div class="configuration-grids">
 			<div class="reg-form">
 				<div class="reg">
-					 <p>Confirme sua senha para efetuar a alteração.</p>
+					
 					 <form>
-						<ul>
-							 <li class="text-info">Senha atual: </li>
-							 <li><input type="password" value=""></li>
-						 </ul>
-					 </form>
-					 <p>Insira a nova senha nos campos abaixo</p>
-					 <form>
-						
-						 <ul>
-							 <li class="text-info">Nova senha: </li>
-							 <li><input type="password" value=""></li>
-						 </ul>
-						 <ul>
-							 <li class="text-info">Confirmar senha: </li>
-							 <li><input type="password" value=""></li>
-						 </ul>
-						 <input type="submit" value="Confirmar Alteração">
-					 </form>
+							<li><a href="changeinf.php">Alterar informações pessoais</a></li>
+							<!--<li><a href="changepass.html">Alterar senha</a></li>-->
+
+							<?php 
+
+									if (strcmp($tipo_usuario, 'C') == 0) {
+										echo '<li><a href="consultas.html">Consultar usuários</a></li>';
+									}
+
+									if (strcmp($tipo_usuario, 'P') == 0) {
+										echo '<li><a href="Resultado_Prestador">Consultar seu dados</a></li>';
+									}
+
+
+
+							?> 
+
+							<li><a href="menumensagens">Gerenciar mensagens </a></li>
+							<li><a href="contact.html">Reportar erros</a></li>
+							<li><a href="deleteaccount.html">Deletar conta</a></li>
+							<li><a href="logout">Sair da conta</a></li>  
+
+							
+
+					</form>
 				 </div>
 			</div>
 			<div class="reg-right">
-				 <h3>Alteração de senha de acesso</h3>
+				 <h3>Configuração de conta</h3>
 				 <div class="strip"></div>
-				 <p>Altere sua senha de acesso confirmando sua senha atual por motivos de segurança. Nunca divulge sua senha, ela dá a acesso á toda sua conta no Cearchi.</p>
+				 <p text-align="justify">Aqui você pode escolher entre alterar informações pessoais da conta, consultar os perfis de outros usuários, reportar algum erro presente no programa, deletar a conta e sair da mesma. </p>
 				 
 			<div class="clearfix"></div>
 		</div>
@@ -136,7 +148,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 <!-- registration-form -->
 
-		
 	<div class="cards text-up">	</div>
 		
 		<div class="footer">
@@ -151,7 +162,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<style="text-align:justify"><h4>CONTAS</h4>
 					<ul class="f_nav">
 						<li><a href="account.html">REALIZE O LOGIN </a></li>
-						<li><a href="register.html">CRIE UMA CONTA</a></li>
+						<li><a href="register.php">CRIE UMA CONTA</a></li>
 						<li><a href="consultas.html">CONSULTAR USUÁRIOS</a></li>
                         <li><a href="#">CONFIGURAÇÕES DA CONTA</a></li></style>
 						

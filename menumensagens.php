@@ -1,3 +1,8 @@
+
+<?php
+	include "Conexao_mysql.php";
+	include "Validador_de_Login.php";
+?>
 <!--
 Author: W3layouts
 Author URL: http://w3layouts.com
@@ -7,7 +12,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html>
 <head>
-<title>Cearchi | Consultar </title>
+<title>Cearchi | Menu de mensagens </title>
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
@@ -41,7 +46,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<li><a href="index.html"><img src="images/logopeq.png"</a></li>
 				
 						<li><a href="account.html"> <img src="images/icon1.png">LOGIN</a></li>
-						<li><a href="register.html"><img src="images/pw.png">Crie uma conta</a></li>			
+						<li><a href="register"><img src="images/pw.png">Crie uma conta</a></li>			
 					</ul>
                     </div>
 				</div> </div>
@@ -70,7 +75,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<li><a href="index.html">Início</a></li>
 		    <li><a href="#">Procurar Serviços</a></li>
 		    <li><a href="#">anunciar</a></li>
-		    <li><a href="accountconfig.html">configurações da conta</a></li>
+		    <li><a href="accountconfig">configurações da conta</a></li>
             <li><a href="contact.html">CONTATO</a></li>
 	        </ul>
 	    </div>
@@ -89,7 +94,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                        <span>&gt;</span>
                     </li>
                     <li class="women">
-                       Consulta de usuários
+                       Menu de mensagens
                     </li>
                 </ul>
                 <ul class="previous">
@@ -97,6 +102,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </ul>
                 <div class="clearfix"></div>
 			   </div>
+<!-- ADICIONAR DAQUI PRA BAIXO O CONTEUDO DO SITE-->
+<!-- ADICIONAR DAQUI PRA BAIXO O CONTEUDO DO SITE-->
 
 <style>
 table {
@@ -113,41 +120,75 @@ tr:nth-child(even){background-color: #FBCB98}
 </style>
 
 
-<h2>Consulta de usuários </h2>
-<p>Aqui serão adicionados alguns campos:</p></br>
+<h2>Menu de mensagens </h2>
+<p></p></br>
 
 <table>
   <tr>
-    <th>Nome</th>
-    <th>Cidade</th>
+    <th>Enviada / Recebida</th>
+    <th>Contato</th>
+    <th>Titulo</th>
 
 
   </tr>
-  <tr>
-    <td>Chinelo</td>
-    <td>Itajubá</td>
 
-  </tr>
-  <tr>
-    <td>Tibu</td>
-    <td>Delfim do mundo</td>
+<?php
 
-  </tr>
-  <tr>
-    <td>Henrique</td>
-    <td>Aparecida</td>
+				
+				
 
-  </tr>
-  <tr>
-    <td>Alisson</td>
-    <td>Rua Augusta</td>
+				$id_login = $_SESSION['id_user'];
+				$sql = mysql_query("SELECT * FROM mensagens ORDER BY titulo_mensagem ");
+				$row = mysql_num_rows($sql);
 
-  </tr>
+				if ($row > 0) {
+					while ($linha = mysql_fetch_array($sql)) {
+						$titulo = $linha['titulo_mensagem'];
+						$id_primario = $linha['fk_id_user_1'];
+						$id_secundario = $linha ['fk_id_user_2'];	
+
+								$sql2 = mysql_query("SELECT * FROM usuario WHERE id_user like '$id_secundario'");
+								$linha2 = mysql_fetch_array($sql2);
+								$nome_terceiro = $linha2['nome_user'];
+
+						if(strcmp($id_login, $id_primario) == 0)
+						{
+						echo "<tr>";
+						echo "<td>Enviada</td>";
+						echo "<td>$nome_terceiro</td>";
+						echo "<td>$titulo</td>";
+						echo "</tr>";
+						}
+						if(strcmp($id_login, $id_secundario) == 0)
+						{
+						echo "<tr>";
+						echo "<td>Recebida</td>";
+						echo "<td>$nome_terceiro</td>";
+						echo "<td>$titulo</td>";
+						echo "</tr>";
+						}
+
+						
+						
+					}	
+	}
+?>
+  
+  
 </table>
 
 </br>
 </br>
 
+
+
+
+<!-- ADICIONAR DAQUI PRA CIMA O CONTEUDO DO SITE-->     
+<!-- ADICIONAR DAQUI PRA CIMA O CONTEUDO DO SITE-->   
+
+<!-- content-section-ends-here -->
+        
+        
 	<div class="cards text-up">	</div>
 		
 		<div class="footer">
@@ -159,12 +200,13 @@ tr:nth-child(even){background-color: #FBCB98}
                     	
 				</div>
                 <div class="col-md-3 span1_of_4">
-					<style="text-align:justify"><h4>CONTAS</h4>
+					<style="text-align:justify"><h4>OPÇÕES DA CONTA</h4>
 					<ul class="f_nav">
-						<li><a href="account.html">REALIZE O LOGIN </a></li>
-						<li><a href="register.html">CRIE UMA CONTA</a></li>
+						<li><a href="account.html">REALIZAR SEU LOGIN </a></li>
+						<li><a href="register">CRIAR UMA CONTA</a></li>
 						<li><a href="consultas.html">CONSULTAR USUÁRIOS</a></li>
-                        <li><a href="#">CONFIGURAÇÕES DA CONTA</a></li></style>
+                        <li><a href="accountconfig">CONFIGURAÇÕES DA CONTA</a></li></style>
+                        
 						
 					</ul>				
 				</div>

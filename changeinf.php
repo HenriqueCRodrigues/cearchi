@@ -63,7 +63,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<li><a href="index.html"><img src="images/logopeq.png"</a></li>
 
 							<li><a href="account.html"> <img src="images/icon1.png">LOGIN</a></li>
-							<li><a href="register.html"><img src="images/pw.png">Crie uma conta</a></li>			
+							<li><a href="register"><img src="images/pw.png">Crie uma conta</a></li>			
 						</ul>
 					</div>
 				</div> </div>
@@ -92,7 +92,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<li><a href="index.html">Início</a></li>
 						<li><a href="#">Procurar Serviços</a></li>
 						<li><a href="#">anunciar</a></li>
-						<li><a href="accountconfig.html">configurações da conta</a></li>
+						<li><a href="accountconfig">configurações da conta</a></li>
 						<li><a href="contact.html">CONTATO</a></li>
 					</ul>
 				</div>
@@ -127,12 +127,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="registration-grids">
 				<div class="reg-form">
 					<div class="reg">
-						<p>Confirme sua senha para efetuar as alterações.</p>
+
 						<form method="post" action="confirmar_alteracao">
-							<ul>
-								<li class="text-info">Senha: </li>
-								<li><input type="password" name="senha_user" value="<?php echo "$senha"; ?>" id="senha_user"></li>
-							</ul>
 						
 						<p>Insira os seus dados atuais nos campos abaixo</p>
 						
@@ -155,7 +151,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 							<ul>
 								<li class="text-info">Rua:</li>
-								<li><input type="text" name="rua_user" value="<?php echo "$nome"; ?>" id="rua_user"></li>
+								<li><input type="text" name="rua_user" value="<?php echo "$rua"; ?>" id="rua_user"></li>
 							</ul>
 							<ul>
 								<li class="text-info">Numero:</li>
@@ -210,6 +206,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 									?> 
 									<option value="<?php echo "$estado"; ?>" selected><?php echo"$vestado"; ?></option>
+									<option value="">-----------------</option>
 									<option value="AC">Acre</option>
 									<option value="AL">Alagoas</option>
 									<option value="AP">Amapá</option>
@@ -240,6 +237,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								</select>	<br/></li>
 							</ul>
 							<input type="submit" value="Confirmar Alteração">
+							<input type="button" name="bntVol" value="Voltar" onclick="Voltar()">
+							<script type="text/javascript">
+								function Voltar()
+								{
+									location.href="accountconfig";
+								}
+							</script>
 						</form>
 					</div>
 				</div>
@@ -269,8 +273,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<style="text-align:justify"><h4>CONTAS</h4>
 							<ul class="f_nav">
 								<li><a href="account.html">REALIZE O LOGIN </a></li>
-								<li><a href="register.html">CRIE UMA CONTA</a></li>
-								<li><a href="consultas.html">CONSULTAR USUÁRIOS</a></li>
+								<li><a href="register">CRIE UMA CONTA</a></li>
+								<li><a href="consultas">CONSULTAR USUÁRIOS</a></li>
 								<li><a href="#">CONFIGURAÇÕES DA CONTA</a></li></style>
 
 							</ul>				

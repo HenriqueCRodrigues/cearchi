@@ -124,50 +124,29 @@
 				include "Conexao_mysql.php";
 				include "Validador_de_Login.php";
 
-				$busca = $_POST['nome_user'];
-				$tipo = $_SESSION['tipo_usuario'];
 				$id = $_SESSION['id_user'];
-				$sql = mysql_query("SELECT * FROM usuario WHERE nome_user like '%$busca%' AND status_user='A' AND tipo_usuario='C' OR tipo_usuario='P' ORDER BY nome_user ");
-				$row = mysql_num_rows($sql);
+				$sql = mysql_query("SELECT * FROM usuario WHERE id_user = '$id'");
 
+				$consulta = mysql_fetch_array($sql);
 
-				if ($row > 0) {
-					while ($linha = mysql_fetch_array($sql)) {
-						$nome = $linha['nome_user'];
-						$tipo = $linha['tipo_usuario'];
-						$id_terceiro = $linha['id_user'];
-						if (strcmp($id, $id_terceiro) != 0) 
-						{
-								if (strcmp($tipo, 'C') == 0) 
-								{
-									$tipo = "Contratante";
-								}
-								
-								if (strcmp($tipo, 'P') == 0) 
-								{
+				$nome = $consulta['nome_user'];
+				
 
-									$sql1 = mysql_query("SELECT fk_id_ts FROM servicos_fornecidos WHERE fk_id_user like '$id_terceiro'");
-									$consulta1 = mysql_fetch_array($sql1);
-									$result = $consulta1['fk_id_ts'];
-
-									$sql2 = mysql_query("SELECT servico_ts FROM tipos_de_servico WHERE id_ts like '$result'");
-									$consulta2 = mysql_fetch_array($sql2);
-									$tipo = $consulta2['servico_ts'];
-									
-								}
+			   	echo "<tr>";
+						echo "<td>".$nome; 
 						
-						
-					
-						
-							echo "<tr>";
-						echo "<td>".$nome."<form method='post' action='mensagemcadastro?id_terceiro=".$id_terceiro."'><input type='image' title='Enviar Mensagem para ".$nome."' src='images/msgicon.png'></form></td>"; 
+						$sql1 = mysql_query("SELECT fk_id_ts FROM servicos_fornecidos WHERE fk_id_user like '$id' ");
+						$consulta1 = mysql_fetch_array($sql1);
+						$result = $consulta1['fk_id_ts'];
+
+						$sql2 = mysql_query("SELECT servico_ts FROM tipos_de_servico WHERE id_ts like '$result'");
+						$consulta2 = mysql_fetch_array($sql2);
+						$tipo = $consulta2['servico_ts'];
 						echo "<td>".$tipo."</td>";
 						echo "</tr>";
-						}
-						
+
+
 				
-					}	
-				}
 				?>
 			</table>
 
