@@ -39,7 +39,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<li><a href="index.html"><img src="images/logopeq.png"</a></li>
 				
 						<li><a href="account.html"> <img src="images/icon1.png">LOGIN</a></li>
-						<li><a href="register"><img src="images/pw.png">Crie uma conta</a></li>			
+						<li><a href="register.html"><img src="images/pw.png">Crie uma conta</a></li>			
 					</ul>
                     </div>
 				</div> </div>
@@ -68,7 +68,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<li><a href="index.html">Início</a></li>
 		    <li><a href="#">Procurar Serviços</a></li>
 		    <li><a href="#">anunciar</a></li>
-		    <li><a href="accountconfig">configurações da conta</a></li>
+		    <li><a href="accountconfig.html">configurações da conta</a></li>
             <li><a href="contact.html">CONTATO</a></li>
 	        </ul>
 	    </div>
@@ -107,19 +107,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="reg-form">
 				<div class="reg">
 					 <p>Confirme sua senha para deletar sua conta.</p>
-					 <form method="post" action="Excluir_Usuario.php">
+					 <form method="get" action="Excluir_Usuario.php">
 						<ul>
 							 <li class="text-info" >Senha atual: </li>
-							 <li><input type="password" name="senha_user"></li>
+							 <li><input type="password" value=""></li>
 						 </ul>
 					
 					 <p>Tem certeza que deseja deletar sua conta? Ela não poderá ser resgatada após a exclusão.</p>
 					 
 					 <ul>
 						<li class="check-info" name="Go">
-								<input type="radio" value="nao" id="nao" name="option" checked/>
+								<input type="radio" value="None" id="nao" name="option" checked/>
 									<label for="nao" class="radio" chec>Não</label>
-								<input type="radio" value="sim" id="sim" name="option" />
+								<input type="radio" value="Excluir" id="sim" name="option" />
 									<label for="sim" class="radio">Sim</label>
 								</li>
 								</ul>

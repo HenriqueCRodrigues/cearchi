@@ -65,7 +65,7 @@
 						<li><a href="index.html">Início</a></li>
 						<li><a href="#">Procurar Serviços</a></li>
 						<li><a href="#">anunciar</a></li>
-						<li><a href="accountconfig">configurações da conta</a></li>
+						<li><a href="accountconfig.html">configurações da conta</a></li>
 						<li><a href="contact.html">CONTATO</a></li>
 					</ul>
 				</div>
@@ -114,7 +114,7 @@
 			<table>
 				<tr>
 					<th>Nome</th>
-					<th>Ocupação</th>
+					<th>Cidade</th>
 
 
 				</tr>
@@ -127,45 +127,19 @@
 				$busca = $_POST['nome_user'];
 				$tipo = $_SESSION['tipo_usuario'];
 				$id = $_SESSION['id_user'];
-				$sql = mysql_query("SELECT * FROM usuario WHERE nome_user like '%$busca%' AND status_user='A' AND tipo_usuario='C' OR tipo_usuario='P' ORDER BY nome_user ");
+				$sql = mysql_query("SELECT * FROM usuario WHERE nome_user like '%$busca%' AND status_user='A' AND tipo_usuario='C' ORDER BY nome_user ");
 				$row = mysql_num_rows($sql);
 
 
 				if ($row > 0) {
 					while ($linha = mysql_fetch_array($sql)) {
 						$nome = $linha['nome_user'];
-						$tipo = $linha['tipo_usuario'];
-						$id_terceiro = $linha['id_user'];
-						if (strcmp($id, $id_terceiro) != 0) 
-						{
-								if (strcmp($tipo, 'C') == 0) 
-								{
-									$tipo = "Contratante";
-								}
-								
-								if (strcmp($tipo, 'P') == 0) 
-								{
+						$cidade = $linha['cidade_user'];
 
-									$sql1 = mysql_query("SELECT fk_id_ts FROM servicos_fornecidos WHERE fk_id_user like '$id_terceiro'");
-									$consulta1 = mysql_fetch_array($sql1);
-									$result = $consulta1['fk_id_ts'];
-
-									$sql2 = mysql_query("SELECT servico_ts FROM tipos_de_servico WHERE id_ts like '$result'");
-									$consulta2 = mysql_fetch_array($sql2);
-									$tipo = $consulta2['servico_ts'];
-									
-								}
-						
-						
-					
-						
-							echo "<tr>";
-						echo "<td>".$nome."<form method='post' action='mensagemcadastro?id_terceiro=".$id_terceiro."'><input type='image' title='Enviar Mensagem para ".$nome."' src='images/msgicon.png'></form></td>"; 
-						echo "<td>".$tipo."</td>";
+						echo "<tr>";
+						echo "<td>".$nome."</td>";
+						echo "<td>".$cidade."</td>";
 						echo "</tr>";
-						}
-						
-				
 					}	
 				}
 				?>
