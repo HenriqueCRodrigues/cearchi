@@ -1,3 +1,18 @@
+<?php
+	include "Conexao_mysql.php";
+	include "Validador_de_Login.php";
+
+	$tipo = $_SESSION['tipo_usuario'];
+	if($tipo == 'P'){
+		//Se o usuário for prestador ele é redirecionado para uma pagina somente com os dados deles!
+		header("location: DadosPrestador.php");
+	}
+
+
+
+
+?>
+
 <!--
 Author: W3layouts
 Author URL: http://w3layouts.com
@@ -27,6 +42,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<script src="js/simpleCart.min.js"> </script>
 <!-- cart -->
 <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+
 </head>
 <body>
 	<!-- header-section-starts -->
@@ -38,7 +54,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<ul>
 					<li><a href="index.html"><img src="images/logopeq.png"</a></li>
 				
-						<li><a href="logout.php">sair</a></li>			
+						<li><a href="account.html"> <img src="images/icon1.png">LOGIN</a></li>
+						<li><a href="register.html"><img src="images/pw.png">Crie uma conta</a></li>			
 					</ul>
                     </div>
 				</div> </div>
@@ -65,8 +82,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	        <ul class="nav navbar-nav">
 			<li><a href="index.html">Início</a></li>
+		    <li><a href="#">Procurar Serviços</a></li>
+		    <li><a href="#">anunciar</a></li>
 		    <li><a href="accountconfig.html">configurações da conta</a></li>
-            <li><a href="contact.html">Gerência do sistema</a></li>
+            <li><a href="contact.html">CONTATO</a></li>
 	        </ul>
 	    </div>
 	    <!--/.navbar-collapse-->
@@ -74,21 +93,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!--/.navbar-->
 </div>
 </div>
-		<!-- registration-form -->
+
+
+
+
 <div class="registration-form">
 	<div class="container">
 	<div class="dreamcrub">
 			   	 <ul class="breadcrumbs">
                     <li class="home">
-                       <a href="index.html" title="Go to Home Page">Admin</a>&nbsp;
+                       <a href="index.html" title="Go to Home Page">Home</a>&nbsp;
                        <span>&gt;</span>
                     </li>
                     <li class="women">
-                       Gerência do sistema &nbsp;
-					   <span>&gt;</span>
-                    </li>
-					<li class="women">
-                       Consulta de tipo de serviço
+                       Consulta de solicitações
                     </li>
                 </ul>
                 <ul class="previous">
@@ -96,44 +114,49 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </ul>
                 <div class="clearfix"></div>
 			   </div>
-		<h2>Consulta de Tipo de serviço</h2>
+		<h2>Solicitações de serviço</h2>
 		<div class="registration-grids">
 			<div class="reg-form">
 				<div class="reg">
-					 <p>Insira o tipo de serviçoa consultar.</p>
-					 
-					 <form method="post" action="resultado_tipo_de_servico.php">
-						
+					 <p>A seguir estão presentes todos os resultados da pesquisa realizada:</p>
+					 <form method="post" action="#">
+						<!-- Aqui ficam os resultados da pesquisa-->
 						 <ul>
-							 <li class="text-info">Tipo de Serviço: </li>
-							 <li><input type="text" name="tipo_de_servico" id="tipo_de_servico"></li>
+						 <table>
+							
+  							<tr>
+    							<td style="width:30%"><li class="text-info">Solicitação </li></td>
+    							<td style="width:70%"><li class="text-info">Descrição</li></td>
+								
+  							</tr>
+							
+							<tr>
+								<td>Eletricista</td>
+								<td>Arruma chuveiro, troca lampada, dá a luz, coloca tomada, puxa fios e faz altos gato.</td>
+							</tr> 
+							<tr>
+								<td>Encanador</td>
+								<td>Faz altos encanamentos e coloca o canos loucos no buracos para poder passar sa águas tudo.</td>
+							</tr>
+							
+						</table>
 						 </ul>
-						 					
-						 <input type="submit" value="Consultar" id="btnCad" onclick="ConsultaTipo()"> &nbsp &nbsp &nbsp
-<input type="button" value="Voltar" onclick="Voltar()">
-<script>
-function Voltar() 
-{
-    location.href="index.html";
-}
-</script>
-						 <p class="click">Clicando no botão você consultará os serviços!</a></p> 
-					 </form>
-				 </div>
+				</div>
 			</div>
 			<div class="reg-right">
-				 <h3>Consultar tipos de serviço</h3>
+				 <h3>Resultado de busca de solicitação</h3>
 				 <div class="strip"></div>
-				 <p>Consulte tipos de serviço para gerenciar melhor os serviços disponíveis aos usuários!</p>
+				 <p text-align="justify">Exibição de todos os resultados de busca com os dados que foram inseridos para a busca de solicitação de serviço.</p>
 				 
 			<div class="clearfix"></div>
 		</div>
-	</div>
-</div>
-<!-- registration-form -->
-        
-        
-        
+		</div>	
+</div>		
+
+
+
+
+
 	<div class="cards text-up">	</div>
 		
 		<div class="footer">
@@ -147,7 +170,6 @@ function Voltar()
                 <div class="col-md-3 span1_of_4">
 					<style="text-align:justify"><h4>CONTAS</h4>
 					<ul class="f_nav">
-						<li><a href="consultar.php">CONSULTAR USUÁRIOS</a></li>
                         <li><a href="#">CONFIGURAÇÕES DA CONTA</a></li></style>
 						
 					</ul>				
@@ -176,7 +198,5 @@ function Voltar()
 		  </div>
 		</div>
 		</div>
-
-		
 </body>
 </html>

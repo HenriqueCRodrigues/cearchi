@@ -88,7 +88,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					   <span>&gt;</span>
                     </li>
 					<li class="women">
-                       Consulta de tipo de serviço
+                       Alterar solicitação de serviço
                     </li>
                 </ul>
                 <ul class="previous">
@@ -96,35 +96,40 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </ul>
                 <div class="clearfix"></div>
 			   </div>
-		<h2>Consulta de Tipo de serviço</h2>
+		<h2>Alteração de solicitação de serviço</h2>
 		<div class="registration-grids">
 			<div class="reg-form">
 				<div class="reg">
-					 <p>Insira o tipo de serviçoa consultar.</p>
+					 <p>Insira os novos dados da solicitação de serviço.</p>
 					 
-					 <form method="post" action="resultado_tipo_de_servico.php">
+					 <form method="post" action="#">
 						
 						 <ul>
 							 <li class="text-info">Tipo de Serviço: </li>
 							 <li><input type="text" name="tipo_de_servico" id="tipo_de_servico"></li>
 						 </ul>
+						 
+						 <ul>
+						 <li class="text-info">Data: </li>
+							 <li><input type="date" name="data_servico" id="data_servico"></li>
+						 </ul>
 						 					
-						 <input type="submit" value="Consultar" id="btnCad" onclick="ConsultaTipo()"> &nbsp &nbsp &nbsp
-<input type="button" value="Voltar" onclick="Voltar()">
+						 <input type="submit" value="Alterar" id="btnCad" onclick="AlterarSolicitacao()"> &nbsp &nbsp &nbsp
+<input type="submit" value="Voltar" onclick="Voltar()">
 <script>
 function Voltar() 
 {
-    location.href="index.html";
+    location.href="menu";
 }
 </script>
-						 <p class="click">Clicando no botão você consultará os serviços!</a></p> 
+						 <p class="click">Clicando no botão, você estará alterando a respectiva solicitação de serviço!</a></p> 
 					 </form>
 				 </div>
 			</div>
 			<div class="reg-right">
-				 <h3>Consultar tipos de serviço</h3>
+				 <h3>Alterar solicitação de serviço</h3>
 				 <div class="strip"></div>
-				 <p>Consulte tipos de serviço para gerenciar melhor os serviços disponíveis aos usuários!</p>
+				 <p>Faça alterações nas solicitações de serviço para ajustar informações contidas nas solicitação já feita anteriormente!</p>
 				 
 			<div class="clearfix"></div>
 		</div>
@@ -177,6 +182,12 @@ function Voltar()
 		</div>
 		</div>
 
-		
+		<script>
+function Voltar() 
+{
+    location.href="menu";
+}
+
+</script>
 </body>
 </html>
