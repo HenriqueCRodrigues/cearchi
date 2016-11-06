@@ -1,3 +1,7 @@
+<?php
+	include "Conexao_mysql.php";
+	include "Validador_de_Login.php";
+?>
 <!--
 Author: W3layouts
 Author URL: http://w3layouts.com
@@ -7,7 +11,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html>
 <head>
-<title>Cearchi | Configuração de Conta</title>
+<title>Cearchi | Menu de mensagens </title>
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
@@ -18,6 +22,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Eshop Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!--webfont-->
 <!-- for bootstrap working -->
@@ -28,8 +33,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- cart -->
 <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
 </head>
-
-
 
 <body>
 	<!-- header-section-starts -->
@@ -80,7 +83,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!--/.navbar-->
 </div>
 </div>
-		<!-- registration-form -->
+
 <div class="registration-form">
 	<div class="container">
 	<div class="dreamcrub">
@@ -90,7 +93,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                        <span>&gt;</span>
                     </li>
                     <li class="women">
-                       Configurações de conta
+                       Menu de mensagens
                     </li>
                 </ul>
                 <ul class="previous">
@@ -98,36 +101,101 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </ul>
                 <div class="clearfix"></div>
 			   </div>
-		<h2>Configurações de conta</h2>
-		<div class="configuration-grids">
-			<div class="reg-form">
-				<div class="reg">
-					
-					 <form>
-							<li><a href="changeinf.php">Alterar informações pessoais</a></li>
-							<!--<li><a href="changepass.html">Alterar senha</a></li>-->
-							<li><a href="consultas.html">Consultar usuários</a></li>
-							<li><a href="menumensagens.html">Gerenciar mensagens</a></li>
-							<li><a href="contact.html">Reportar erros</a></li>
-							<li><a href="deleteaccount.html">Deletar conta</a></li>
-							<li><a href="logout">Sair da conta</a></li>  
+<!-- ADICIONAR DAQUI PRA BAIXO O CONTEUDO DO SITE-->
+<!-- ADICIONAR DAQUI PRA BAIXO O CONTEUDO DO SITE-->
 
-							
+<style>
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
 
-					</form>
-				 </div>
-			</div>
-			<div class="reg-right">
-				 <h3>Configuração de conta</h3>
-				 <div class="strip"></div>
-				 <p text-align="justify">Aqui você pode escolher entre alterar informações pessoais da conta, consultar os perfis de outros usuários, reportar algum erro presente no programa, deletar a conta e sair da mesma. </p>
-				 
-			<div class="clearfix"></div>
-		</div>
-	</div>
-</div>
-<!-- registration-form -->
+th, td {
+    text-align: center;
+    padding: 8px;
+}
 
+tr:nth-child(even){background-color: #FBCB98}
+</style>
+
+
+<h2>Menu de mensagens </h2>
+<p></p></br>
+
+<table>
+<tr>
+						     <th>Enviada / Recebida</th>
+						     <th>Contato</th>
+						     <th>Titulo</th>
+						 
+						 
+						   </tr>
+ 
+
+<?php
+
+				
+				
+
+				$id = $_SESSION['id_user'];
+				$sql = mysql_query("SELECT * FROM mensagens WHERE fk_id_user_1 like '$id' OR fk_id_user_2 like '$id'");
+				$row = mysql_num_rows($sql);
+
+				
+				if ($row > 0) {
+					while ($linha = mysql_fetch_array($sql)) {
+						$titulo = $linha['titulo_mensagem'];
+						$id_primario = $linha['fk_id_user_1'];
+						$id_terceiro = $linha['fk_id_user_2'];
+						
+
+						
+						if (strcmp($id, $id_primario) == 0) 
+						{
+							$sql0 = mysql_query("SELECT * FROM usuario WHERE id_user = '$id_terceiro'");
+						$linha1 = mysql_fetch_array($sql0);
+						$nome = $linha1['nome_user'];
+							echo "<tr>";
+							echo "<td> Enviada</td>";
+							echo "<td>$nome</td>";
+							echo "<td>$titulo</td>";
+							echo "</tr>";
+						}
+
+						else
+						{
+							$sql0 = mysql_query("SELECT * FROM usuario WHERE id_user = '$id_primario'");
+						$linha1 = mysql_fetch_array($sql0);
+						$nome = $linha1['nome_user'];
+							{
+							echo "<tr>";
+							echo "<td> Recebida</td>";
+							echo "<td>$nome</td>";
+							echo "<td>$titulo</td>"; 
+							echo "</tr>";
+						}
+						}
+
+						
+					}	
+				}
+?>
+  
+  
+</table>
+
+</br>
+</br>
+
+
+
+
+<!-- ADICIONAR DAQUI PRA CIMA O CONTEUDO DO SITE-->     
+<!-- ADICIONAR DAQUI PRA CIMA O CONTEUDO DO SITE-->   
+
+<!-- content-section-ends-here -->
+        
+        
 	<div class="cards text-up">	</div>
 		
 		<div class="footer">
@@ -139,12 +207,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     	
 				</div>
                 <div class="col-md-3 span1_of_4">
-					<style="text-align:justify"><h4>CONTAS</h4>
+					<style="text-align:justify"><h4>OPÇÕES DA CONTA</h4>
 					<ul class="f_nav">
-						<li><a href="account.html">REALIZE O LOGIN </a></li>
-						<li><a href="register.html">CRIE UMA CONTA</a></li>
+						<li><a href="account.html">REALIZAR SEU LOGIN </a></li>
+						<li><a href="register.html">CRIAR UMA CONTA</a></li>
 						<li><a href="consultas.html">CONSULTAR USUÁRIOS</a></li>
-                        <li><a href="#">CONFIGURAÇÕES DA CONTA</a></li></style>
+                        <li><a href="accountconfig.html">CONFIGURAÇÕES DA CONTA</a></li></style>
+                        
 						
 					</ul>				
 				</div>

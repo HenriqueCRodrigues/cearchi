@@ -124,29 +124,19 @@
 				include "Conexao_mysql.php";
 				include "Validador_de_Login.php";
 
-				$busca = $_POST['nome_user'];
-				$tipo = $_SESSION['tipo_usuario'];
 				$id = $_SESSION['id_user'];
-				$sql = mysql_query("SELECT * FROM usuario WHERE nome_user like '%$busca%' AND status_user='A' ORDER BY nome_user");
-				$row = mysql_num_rows($sql);
+				$sql = mysql_query("SELECT * FROM usuario WHERE id_user like '$id' ");
 
-				if ($row > 0) 
-				{
-					while ($linha = mysql_fetch_array($sql)) {
+						$linha = mysql_fetch_array($sql);
 						$nome = $linha['nome_user'];
 						$cidade = $linha['cidade_user'];
-						$id_terceiro = $linha['id_user'];
-
-						if (strcmp($id, $id_terceiro) != 0) 
-						{
+						
 						echo "<tr>";
-						echo "<td>".$nome."<form method = 'post' action='mensagemcadastro.php?id_terceiro=".$id_terceiro."'><input type='image' src='images/msgicon.png' title='Enviar Mensagem Para ".$nome."'></form></td>";
+						echo "<td>".$nome."</td>";
 						echo "<td>".$cidade."</td>";
 						echo "</tr>";
-						}
 						
-					}	
-				}
+				
 				?>
 			</table>
 
