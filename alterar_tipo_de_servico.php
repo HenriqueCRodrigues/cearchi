@@ -1,3 +1,8 @@
+<?php
+	include "Conexao_mysql.php";
+	include "Validador_de_Login.php";
+	$id_ts = $_GET['id_ts'];
+?>
 <!--
 Author: W3layouts
 Author URL: http://w3layouts.com
@@ -88,7 +93,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					   <span>&gt;</span>
                     </li>
 					<li class="women">
-                       Consulta de tipo de serviço
+                       Alteração de tipo de serviço
                     </li>
                 </ul>
                 <ul class="previous">
@@ -96,20 +101,42 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </ul>
                 <div class="clearfix"></div>
 			   </div>
-		<h2>Consulta de Tipo de serviço</h2>
+		<h2>Alteração de tipo de serviço</h2>
 		<div class="registration-grids">
 			<div class="reg-form">
 				<div class="reg">
-					 <p>Insira o tipo de serviçoa consultar.</p>
-					 
-					 <form method="post" action="resultado_tipo_de_servico.php">
-						
+					 <p>Insira os dados que deseja alterar no tipo de serviço.</p>
+
+
+					 <?php echo "<form method='post' action='confirmar_alteracao_tipo_de_servico.php?id_ts=".$id_ts."'' >" ?>
+						<?php
+							
+							$sql = mysql_query("SELECT * FROM tipos_de_servico WHERE id_ts like '$id_ts'");
+							$linha = mysql_fetch_array($sql);
+							$servico = $linha['servico_ts'];
+							$descricao = $linha['descricao_ts'];
+
+
+						?>
+
 						 <ul>
 							 <li class="text-info">Tipo de Serviço: </li>
-							 <li><input type="text" name="tipo_de_servico" id="tipo_de_servico"></li>
+							 <li><input type="text" name="tipo_de_servico" id="tipo_de_servico" value="<?php echo "$servico";?>"></li>
+						 </ul>
+						 
+						 <ul>
+							 <li class="text-info">Descrição:</li>
+							 <li><textarea rows="5" cols="44" type="text" name="descricao_tipo_de_servico"  id="descricao_tipo_de_servico" ></textarea></li>
+				
+							<script>
+
+							    document.getElementById("descricao_tipo_de_servico").value = '<?php echo "$descricao";?>';
+
+							</script>
+
 						 </ul>
 						 					
-						 <input type="submit" value="Consultar" id="btnCad" onclick="ConsultaTipo()"> &nbsp &nbsp &nbsp
+						 <input type="submit" value="Alterar" id="btnCad"> &nbsp &nbsp &nbsp
 <input type="button" value="Voltar" onclick="Voltar()">
 <script>
 function Voltar() 
@@ -117,14 +144,14 @@ function Voltar()
     location.href="index.html";
 }
 </script>
-						 <p class="click">Clicando no botão você consultará os serviços!</a></p> 
+						 <p class="click">Clicando no botão, você estará alterando o tipo de serviço e disponibilizando-o aos usuários prestadores de serviço!</a></p> 
 					 </form>
 				 </div>
 			</div>
 			<div class="reg-right">
-				 <h3>Consultar tipos de serviço</h3>
+				 <h3>Alterar tipos de serviço</h3>
 				 <div class="strip"></div>
-				 <p>Consulte tipos de serviço para gerenciar melhor os serviços disponíveis aos usuários!</p>
+				 <p>Altere tipos de serviço para a experiência dos usuários com o site!</p>
 				 
 			<div class="clearfix"></div>
 		</div>
@@ -177,6 +204,9 @@ function Voltar()
 		</div>
 		</div>
 
-		
+		<script>
+
+
+</script>
 </body>
 </html>

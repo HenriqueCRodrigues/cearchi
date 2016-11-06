@@ -65,7 +65,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	        <ul class="nav navbar-nav">
 			<li><a href="index.html">Início</a></li>
-		    <li><a href="accountconfig.html">configurações da conta</a></li>
+		    <li><a href="accountconfig">configurações da conta</a></li>
             <li><a href="contact.html">Gerência do sistema</a></li>
 	        </ul>
 	    </div>
@@ -88,7 +88,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					   <span>&gt;</span>
                     </li>
 					<li class="women">
-                       Consulta de tipo de serviço
+                       Cadastro de tipo de serviço
                     </li>
                 </ul>
                 <ul class="previous">
@@ -96,20 +96,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </ul>
                 <div class="clearfix"></div>
 			   </div>
-		<h2>Consulta de Tipo de serviço</h2>
+		<h2>Cadastro de Tipo de serviço</h2>
 		<div class="registration-grids">
 			<div class="reg-form">
 				<div class="reg">
-					 <p>Insira o tipo de serviçoa consultar.</p>
+					 <p>Insira os dados do novo tipo de serviço.</p>
 					 
-					 <form method="post" action="resultado_tipo_de_servico.php">
+					 <form method="post" action="cadastrar_tipo_de_servico.php">
 						
 						 <ul>
 							 <li class="text-info">Tipo de Serviço: </li>
 							 <li><input type="text" name="tipo_de_servico" id="tipo_de_servico"></li>
 						 </ul>
+						 
+						 <ul>
+							 <li class="text-info">Descrição:</li>
+							 <li><textarea rows="5" cols="44" type="text" name="descricao_tipo_de_servico" id="descricao_tipo_de_servico"></textarea></li>
+				
+						 </ul>
 						 					
-						 <input type="submit" value="Consultar" id="btnCad" onclick="ConsultaTipo()"> &nbsp &nbsp &nbsp
+						 <input type="submit" value="Cadastrar" id="btnCad" "> &nbsp &nbsp &nbsp
 <input type="button" value="Voltar" onclick="Voltar()">
 <script>
 function Voltar() 
@@ -117,14 +123,14 @@ function Voltar()
     location.href="index.html";
 }
 </script>
-						 <p class="click">Clicando no botão você consultará os serviços!</a></p> 
+						 <p class="click">Clicando no botão, você estará cadastrando o novo tipo de serviço e disponibilizando-o aos usuários prestadores de serviço!</a></p> 
 					 </form>
 				 </div>
 			</div>
 			<div class="reg-right">
-				 <h3>Consultar tipos de serviço</h3>
+				 <h3>Cadastrar tipos de serviço</h3>
 				 <div class="strip"></div>
-				 <p>Consulte tipos de serviço para gerenciar melhor os serviços disponíveis aos usuários!</p>
+				 <p>Cadastre tipos de serviço para que os usuário prestadores possam ter mais opções de serviços a oferecer aos contratantes! Mais opções, mais conforto e satisfação dos clientes da Cearchi!</p>
 				 
 			<div class="clearfix"></div>
 		</div>
@@ -178,5 +184,7 @@ function Voltar()
 		</div>
 
 		
+
 </body>
+
 </html>
