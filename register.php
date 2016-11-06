@@ -1,3 +1,4 @@
+@@ -0,0 +1,347 @@
 <!--
 Author: W3layouts
 Author URL: http://w3layouts.com
@@ -38,8 +39,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<ul>
 					<li><a href="index.html"><img src="images/logopeq.png"</a></li>
 				
-						<li><a href="account.html"> <img src="images/icon1.png">LOGIN</a></li>
-						<li><a href="register.html"><img src="images/pw.png">Crie uma conta</a></li>			
+						<li><a href="account"> <img src="images/icon1.png">LOGIN</a></li>
+						<li><a href="register"><img src="images/pw.png">Crie uma conta</a></li>			
 					</ul>
                     </div>
 				</div> </div>
@@ -68,7 +69,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<li><a href="index.html">Início</a></li>
 		    <li><a href="#">Procurar Serviços</a></li>
 		    <li><a href="#">anunciar</a></li>
-		    <li><a href="accountconfig.html">configurações da conta</a></li>
+		    <li><a href="accountconfig">configurações da conta</a></li>
             <li><a href="contact.html">CONTATO</a></li>
 	        </ul>
 	    </div>
@@ -137,7 +138,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							 <li><input type="text" name="rg_user" id="rg_user"></li>
 						 </ul>
 						 <ul>
-							 <li class="text-info"> Data de Nascimento: <input type="Date" name="nascimento_user" id="nascimento_user"></li>
+							 <li class="text-info"> Data de Nascimento: <input type="text" name="nascimento_user" id="nascimento_user"></li>
 						 </ul>				 
 						<ul>
 							 <li class="text-info">Email: </li>
@@ -236,8 +237,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <ul>
    <li class="text-info"> Tipo de Serviço: <select name="tipos_de_servico_id_ts"></li>
     <option value="">Selecione</option>
-	<option value="ELETRICISTA">ELETRICISTA</option>
-	<option value="ENCANADOR">ENCANADOR</option>
+	<?php  
+			include "Conexao_mysql.php";
+			
+			$sql = mysql_query("SELECT * FROM tipos_de_servico");
+
+			$row = mysql_num_rows($sql);
+
+			if ($row > 0) 
+			{
+				while ($linha = mysql_fetch_array($sql)) 
+				{
+					$tipos_de_servico = $linha['servico_ts'];
+					echo "<option value='$tipos_de_servico'>$tipos_de_servico</option>";
+
+				}
+					
+
+			}
+
+	?>
+
 	</select> </br></br>
 
 
@@ -253,12 +273,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 						 </ul>
 						 </ul>						
-						 <input type="submit" value="Cadastrar" id="btnCad" onclick="Cadastro()"> &nbsp &nbsp &nbsp
-<input type="submit" value="Voltar" onclick="Voltar()">
+						 <input type="submit" value="Cadastrar" id="btnCad"> &nbsp &nbsp &nbsp
+						 <input type="button" value="Voltar" onclick="Volta()">
 <script>
-function Voltar() 
+function Volta() 
 {
-    location.href="index.php";
+    location.href="index.html";
 }
 </script>
 						 <p class="click">Clicando no botão, você está de acordo com os nossos <a href="#">Termos e Condições Políticas.</a></p> 
@@ -323,12 +343,6 @@ function Voltar()
 		</div>
 		</div>
 
-		<script>
-function Voltar() 
-{
-    location.href="menu";
-}
 
-</script>
 </body>
 </html>

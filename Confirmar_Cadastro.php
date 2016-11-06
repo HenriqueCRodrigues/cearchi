@@ -21,8 +21,12 @@ $cidade_user = $_POST ["cidade_user"];	//atribuição do campo "cidade_user" vin
 $estado_user = $_POST ["estado_user"];	//atribuição do campo "estado_user" vindo do formulário para variavel
 $cep_user = $_POST["cep_user"]; //atribuição do campo "cep_user" vindo do formulário para variavel
 $tipo_usuario = $_POST["opcao"]; //atribuição do campo "opcao" vindo do formulário para variavel, radio button
+$servicos = $_POST['tipos_de_servico_id_ts'];
 
 
+
+if (strcmp($tipo_usuario, 'P') == 0) 
+{
 
 if (strcmp($nome_user, '') == 0 || strcmp($sexo_user, 0) == 0 || (strcmp($nascimento_user, "01/01/0001") == 0 && (strcmp($nascimento_user, "31/10/2016") > 0))|| strcmp($cpf_user,'') == 0 || strcmp($rg_user, '') == 0 ||  strcmp($telefone_user, '') == 0 || strcmp($login_user, '') == 0 || strcmp($senha_user, '') == 0 || strcmp($emai_user, '') == 0 || strcmp($rua_user, '') == 0 || strcmp($numero_user, 0) == 0 || strcmp($bairro_user, '') == 0 ||  strcmp($cidade_user, '') == 0 || strcmp($estado_user, '') == 0 || strcmp($cep_user, '') == 0 || strcmp($tipo_usuario,'') == 0) 
 {
@@ -39,14 +43,63 @@ else
 
 	//Inserção no Banco de Dados mysql
 	$sql = mysql_query("INSERT INTO usuario (nome_user, sexo_user, nascimento_user, cpf_user, rg_user, telefone_user, login_user, senha_user, emai_user, rua_user, numero_user, bairro_user, cidade_user, estado_user, cep_user, tipo_usuario, status_user) 
-	values ('$nome_user', '$sexo_user', '$nascimento_user', '$cpf_user', '$rg_user', '$telefone_user', '$login_user', '$senha_user', '$emai_user', '$rua_user', '$numero_user', '$bairro_user', '$cidade_user', '$estado_user', '$cep_user', '$tipo_usuario', 'A')") or die(mysql_error());
-	// Script de Alerta
-	 echo '<script>alert("Seu cadastro foi realizado com sucesso!\nVocê será rediracionado para o Home, após pressionar OK.")</script>';
-	 echo '<script>location.href="account.html"</script>';
+		values ('$nome_user', '$sexo_user', '$nascimento_user', '$cpf_user', '$rg_user', '$telefone_user', '$login_user', '$senha_user', '$emai_user', '$rua_user', '$numero_user', '$bairro_user', '$cidade_user', '$estado_user', '$cep_user', '$tipo_usuario', 'A')") or die(mysql_error());
+		
+		$check_id = mysql_query("SELECT * FROM usuario") or die(mysql_error());
+		$row = mysql_num_rows($check_id);
+		$id_user = $row;
+	
+
+		$check_id_ts = mysql_query("SELECT id_ts FROM tipos_de_servico WHERE servico_ts like '$servicos' ")or die(mysql_error());
+		$linha = mysql_fetch_array($check_id_ts);
+		$id_ts = $linha['id_ts'];
+
+		echo "ts aqui' $id_ts'";
+		$sql_sf = mysql_query("INSERT INTO servicos_fornecidos (fk_id_user, fk_id_ts) values ('$id_user', '$id_ts')")or die(mysql_error());
+
+		// Script de Alerta
+		 echo '<script>alert("Seu cadastro foi realizado com sucesso!\nVocê será rediracionado para o Home, após pressionar OK.")</script>';
+		 echo '<script>location.href="accountconfig"</script>';
 	
 
  	 
+  }
 }
+
+
+
+
+elseif (strcmp($tipo_usuario, 'C') == 0)
+{
+	if (strcmp($nome_user, '') == 0 || strcmp($sexo_user, 0) == 0 || (strcmp($nascimento_user, "01/01/0001") == 0 && (strcmp($nascimento_user, "31/10/2016") > 0))|| strcmp($cpf_user,'') == 0 || strcmp($rg_user, '') == 0 ||  strcmp($telefone_user, '') == 0 || strcmp($login_user, '') == 0 || strcmp($senha_user, '') == 0 || strcmp($emai_user, '') == 0 || strcmp($rua_user, '') == 0 || strcmp($numero_user, 0) == 0 || strcmp($bairro_user, '') == 0 ||  strcmp($cidade_user, '') == 0 || strcmp($estado_user, '') == 0 || strcmp($cep_user, '') == 0 || strcmp($tipo_usuario,'') == 0) 
+	{
+	// Script de Alerta
+	echo '<script>alert("Todos os campos tem que ser preenchidos.")</script>';	
+	echo '<script>location.href="account.html"</script>';
+
+	}
+
+
+
+
+
+	else
+	{
+
+		$sql = mysql_query("INSERT INTO usuario (nome_user, sexo_user, nascimento_user, cpf_user, rg_user, telefone_user, login_user, senha_user, emai_user, rua_user, numero_user, bairro_user, cidade_user, estado_user, cep_user, tipo_usuario, status_user) 
+		values ('$nome_user', '$sexo_user', '$nascimento_user', '$cpf_user', '$rg_user', '$telefone_user', '$login_user', '$senha_user', '$emai_user', '$rua_user', '$numero_user', '$bairro_user', '$cidade_user', '$estado_user', '$cep_user', '$tipo_usuario', 'A')") or die(mysql_error());
+		// Script de Alerta
+		 echo '<script>alert("Seu cadastro foi realizado com sucesso!\nVocê será rediracionado para o Home, após pressionar OK.")</script>';
+		 echo '<script>location.href="accountconfig"</script>';
+	}
+
+
+}
+
+
+
+
+
 
 ?> 	
 
