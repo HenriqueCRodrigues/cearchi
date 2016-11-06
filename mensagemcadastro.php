@@ -1,10 +1,19 @@
 <?php
 	include "Conexao_mysql.php";
 	include "Validador_de_Login.php";
+
 	$id_terceiro = $_GET['id_terceiro'];
+	$id_secao = $_SESSION['id_user'];
+	$sql = mysql_query("SELECT * FROM usuario WHERE id_user like '$id_terceiro'");
+	$array = mysql_fetch_array($sql);
+	$nome_destinatario = $array['nome_user'];
+
+
+
+
+
 
 ?>
-
 <!--
 Author: W3layouts
 Author URL: http://w3layouts.com
@@ -77,7 +86,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<li><a href="index.html">Início</a></li>
 		    <li><a href="#">Procurar Serviços</a></li>
 		    <li><a href="#">anunciar</a></li>
-		    <li><a href="accountconfig.html">configurações da conta</a></li>
+		    <li><a href="accountconfig">configurações da conta</a></li>
             <li><a href="contact.html">CONTATO</a></li>
 	        </ul>
 	    </div>
@@ -114,21 +123,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<h2>Cadastrar nova mensagem</h2>
 				Para que a mensagem seja enviada, será necessário o preenchimento de todos os campos a seguir:
 			</div>
-			<?php echo "<form method='post' action='confirma_mensagem_cadastro.php?id_terceiro=".$id_terceiro."' >"; ?>
+			<?php echo"<form method='post' action='cadastrar_mensagens?id_terceiro=".$id_terceiro."'>"; ?>
 				<div class="contact-left">
-				<?php
-					
-					$sql = mysql_query("SELECT nome_user FROM usuario WHERE id_user like '$id_terceiro'");
-					$linha = mysql_fetch_array($sql);
-					$nome = $linha['nome_user'];
-
-				?>
-					<input type="text" placeholder="Destino" value="<?php echo "$nome";?>" readonly="readonly" required>
-					<input type="text" placeholder="Assunto da mensagem" name="titulo_mensagem" required>
+					<input type="text" placeholder="Destino" required value="<?php echo "$nome_destinatario"; ?>" readonly="readonly">
+					<input type="text" name="titulo_mensagem" id="titulo_mensagem" placeholder="Assunto da mensagem" required>
 					
 				</div>
 				<div class="contact-right">
-					<textarea placeholder="Corpo de texto" name="msg_mensagem" required></textarea>
+					<textarea name="msg_mensagem" id="msg_mensagem" placeholder="Corpo de texto" required></textarea>
 				</div>
 				<div class="clearfix"></div>
 				<input type="submit" value="ENVIAR MENSAGEM">

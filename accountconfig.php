@@ -1,6 +1,8 @@
 <?php
 	include "Conexao_mysql.php";
 	include "Validador_de_Login.php";
+	$tipo_usuario = $_SESSION['tipo_usuario'];
+
 ?>
 <!--
 Author: W3layouts
@@ -46,7 +48,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<li><a href="index.html"><img src="images/logopeq.png"</a></li>
 				
 						<li><a href="account.html"> <img src="images/icon1.png">LOGIN</a></li>
-						<li><a href="register.html"><img src="images/pw.png">Crie uma conta</a></li>			
+						<li><a href="register"><img src="images/pw.png">Crie uma conta</a></li>			
 					</ul>
                     </div>
 				</div> </div>
@@ -75,7 +77,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<li><a href="index.html">Início</a></li>
 		    <li><a href="#">Procurar Serviços</a></li>
 		    <li><a href="#">anunciar</a></li>
-		    <li><a href="accountconfig.html">configurações da conta</a></li>
+		    <li><a href="accountconfig">configurações da conta</a></li>
             <li><a href="contact.html">CONTATO</a></li>
 	        </ul>
 	    </div>
@@ -110,21 +112,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					 <form>
 							<li><a href="changeinf.php">Alterar informações pessoais</a></li>
 							<!--<li><a href="changepass.html">Alterar senha</a></li>-->
-							
-							<?php
-								$tipo = $_SESSION['tipo_usuario'];
 
-								if(strcmp($tipo,'C') == 0)
-								{
-									echo "<li><a href='consultas.html'>Consultar usuários</a></li>";
-								}
+							<?php 
 
-								else
-								{
-									echo "<li><a href='Resultado_Prestador.php'>Consultar Seus Dados</a></li>";
-								}
-							?>
-							<li><a href="menumensagens.html">Gerenciar mensagens</a></li>
+									if (strcmp($tipo_usuario, 'C') == 0) {
+										echo '<li><a href="consultas.html">Consultar usuários</a></li>';
+									}
+
+									if (strcmp($tipo_usuario, 'P') == 0) {
+										echo '<li><a href="Resultado_Prestador">Consultar seu dados</a></li>';
+									}
+
+
+
+							?> 
+
+							<li><a href="menumensagens">Gerenciar mensagens </a></li>
 							<li><a href="contact.html">Reportar erros</a></li>
 							<li><a href="deleteaccount.html">Deletar conta</a></li>
 							<li><a href="logout">Sair da conta</a></li>  
@@ -159,7 +162,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<style="text-align:justify"><h4>CONTAS</h4>
 					<ul class="f_nav">
 						<li><a href="account.html">REALIZE O LOGIN </a></li>
-						<li><a href="register.html">CRIE UMA CONTA</a></li>
+						<li><a href="register.php">CRIE UMA CONTA</a></li>
 						<li><a href="consultas.html">CONSULTAR USUÁRIOS</a></li>
                         <li><a href="#">CONFIGURAÇÕES DA CONTA</a></li></style>
 						

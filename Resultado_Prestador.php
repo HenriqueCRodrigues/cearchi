@@ -65,7 +65,7 @@
 						<li><a href="index.html">Início</a></li>
 						<li><a href="#">Procurar Serviços</a></li>
 						<li><a href="#">anunciar</a></li>
-						<li><a href="accountconfig.html">configurações da conta</a></li>
+						<li><a href="accountconfig">configurações da conta</a></li>
 						<li><a href="contact.html">CONTATO</a></li>
 					</ul>
 				</div>
@@ -114,7 +114,7 @@
 			<table>
 				<tr>
 					<th>Nome</th>
-					<th>Cidade</th>
+					<th>Ocupação</th>
 
 
 				</tr>
@@ -125,17 +125,27 @@
 				include "Validador_de_Login.php";
 
 				$id = $_SESSION['id_user'];
-				$sql = mysql_query("SELECT * FROM usuario WHERE id_user like '$id' ");
+				$sql = mysql_query("SELECT * FROM usuario WHERE id_user = '$id'");
 
-						$linha = mysql_fetch_array($sql);
-						$nome = $linha['nome_user'];
-						$cidade = $linha['cidade_user'];
+				$consulta = mysql_fetch_array($sql);
+
+				$nome = $consulta['nome_user'];
+				
+
+			   	echo "<tr>";
+						echo "<td>".$nome; 
 						
-						echo "<tr>";
-						echo "<td>".$nome."</td>";
-						echo "<td>".$cidade."</td>";
+						$sql1 = mysql_query("SELECT fk_id_ts FROM servicos_fornecidos WHERE fk_id_user like '$id' ");
+						$consulta1 = mysql_fetch_array($sql1);
+						$result = $consulta1['fk_id_ts'];
+
+						$sql2 = mysql_query("SELECT servico_ts FROM tipos_de_servico WHERE id_ts like '$result'");
+						$consulta2 = mysql_fetch_array($sql2);
+						$tipo = $consulta2['servico_ts'];
+						echo "<td>".$tipo."</td>";
 						echo "</tr>";
-						
+
+
 				
 				?>
 			</table>

@@ -3,7 +3,6 @@
 //Conexão com o banco de dados
 include "Conexao_mysql.php";
 
-
 // RECEBENDO OS DADOS PREENCHIDOS DO FORMULÁRIO !, todos derivado do "name"
 $nome_user = $_POST ["nome_user"];	//atribuição do campo "nome_user" vindo do formulário para variavel	
 $sexo_user = $_POST ["sexo_user"];	//atribuição do campo "sexo_user" vindo do formulário para variavel
@@ -27,22 +26,20 @@ $servicos = $_POST['tipos_de_servico_id_ts'];
 
 if (strcmp($tipo_usuario, 'P') == 0) 
 {
+	if (strcmp($nome_user, '') == 0 )
+	{
+		// Script de Alerta
+		echo '<script>alert("Todos os campos tem que ser preenchidos.")</script>';	
+		echo '<script>location.href="register"</script>';
 
-if (strcmp($nome_user, '') == 0 || strcmp($sexo_user, 0) == 0 || (strcmp($nascimento_user, "01/01/0001") == 0 && (strcmp($nascimento_user, "31/10/2016") > 0))|| strcmp($cpf_user,'') == 0 || strcmp($rg_user, '') == 0 ||  strcmp($telefone_user, '') == 0 || strcmp($login_user, '') == 0 || strcmp($senha_user, '') == 0 || strcmp($emai_user, '') == 0 || strcmp($rua_user, '') == 0 || strcmp($numero_user, 0) == 0 || strcmp($bairro_user, '') == 0 ||  strcmp($cidade_user, '') == 0 || strcmp($estado_user, '') == 0 || strcmp($cep_user, '') == 0 || strcmp($tipo_usuario,'') == 0) 
-{
-	// Script de Alerta
-	echo '<script>alert("Todos os campos tem que ser preenchidos.")</script>';	
-	echo '<script>location.href="account.html"</script>';
+	}
 
-}
+	else
+	{
+		//Deixando o usuario ativo, para poder desativar sem excluir
 
-
-else
-{
-	//Deixando o usuario ativo, para poder desativar sem excluir
-
-	//Inserção no Banco de Dados mysql
-	$sql = mysql_query("INSERT INTO usuario (nome_user, sexo_user, nascimento_user, cpf_user, rg_user, telefone_user, login_user, senha_user, emai_user, rua_user, numero_user, bairro_user, cidade_user, estado_user, cep_user, tipo_usuario, status_user) 
+		//Inserção no Banco de Dados mysql
+		$sql = mysql_query("INSERT INTO usuario (nome_user, sexo_user, nascimento_user, cpf_user, rg_user, telefone_user, login_user, senha_user, emai_user, rua_user, numero_user, bairro_user, cidade_user, estado_user, cep_user, tipo_usuario, status_user) 
 		values ('$nome_user', '$sexo_user', '$nascimento_user', '$cpf_user', '$rg_user', '$telefone_user', '$login_user', '$senha_user', '$emai_user', '$rua_user', '$numero_user', '$bairro_user', '$cidade_user', '$estado_user', '$cep_user', '$tipo_usuario', 'A')") or die(mysql_error());
 		
 		$check_id = mysql_query("SELECT * FROM usuario") or die(mysql_error());
@@ -60,44 +57,47 @@ else
 		// Script de Alerta
 		 echo '<script>alert("Seu cadastro foi realizado com sucesso!\nVocê será rediracionado para o Home, após pressionar OK.")</script>';
 		 echo '<script>location.href="accountconfig"</script>';
-	
+		
 
- 	 
-  }
+	 	 
+	}
+
+
+
 }
 
 
 
 
-elseif (strcmp($tipo_usuario, 'C') == 0)
+elseif (strcmp($tipo_usuario, 'C') == 0) 
 {
-	if (strcmp($nome_user, '') == 0 || strcmp($sexo_user, 0) == 0 || (strcmp($nascimento_user, "01/01/0001") == 0 && (strcmp($nascimento_user, "31/10/2016") > 0))|| strcmp($cpf_user,'') == 0 || strcmp($rg_user, '') == 0 ||  strcmp($telefone_user, '') == 0 || strcmp($login_user, '') == 0 || strcmp($senha_user, '') == 0 || strcmp($emai_user, '') == 0 || strcmp($rua_user, '') == 0 || strcmp($numero_user, 0) == 0 || strcmp($bairro_user, '') == 0 ||  strcmp($cidade_user, '') == 0 || strcmp($estado_user, '') == 0 || strcmp($cep_user, '') == 0 || strcmp($tipo_usuario,'') == 0) 
+
+	if (strcmp($nome_user, '') == 0 )
 	{
-	// Script de Alerta
-	echo '<script>alert("Todos os campos tem que ser preenchidos.")</script>';	
-	echo '<script>location.href="account.html"</script>';
+		// Script de Alerta
+		echo '<script>alert("Todos os campos tem que ser preenchidos.")</script>';	
+		echo '<script>location.href="register"</script>';
 
 	}
 
 
-
-
-
 	else
 	{
+		//Deixando o usuario ativo, para poder desativar sem excluir
 
+		//Inserção no Banco de Dados mysql
 		$sql = mysql_query("INSERT INTO usuario (nome_user, sexo_user, nascimento_user, cpf_user, rg_user, telefone_user, login_user, senha_user, emai_user, rua_user, numero_user, bairro_user, cidade_user, estado_user, cep_user, tipo_usuario, status_user) 
 		values ('$nome_user', '$sexo_user', '$nascimento_user', '$cpf_user', '$rg_user', '$telefone_user', '$login_user', '$senha_user', '$emai_user', '$rua_user', '$numero_user', '$bairro_user', '$cidade_user', '$estado_user', '$cep_user', '$tipo_usuario', 'A')") or die(mysql_error());
 		// Script de Alerta
 		 echo '<script>alert("Seu cadastro foi realizado com sucesso!\nVocê será rediracionado para o Home, após pressionar OK.")</script>';
 		 echo '<script>location.href="accountconfig"</script>';
+		
+
+	 	 
 	}
 
 
 }
-
-
-
 
 
 
