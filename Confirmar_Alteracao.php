@@ -22,9 +22,19 @@ $id = $_SESSION['id_user'];
 
 //Gravando no banco de dados !
 
- 
-	$sql_atualizar_usuario = mysql_query("UPDATE usuario SET nome_user = '$nome_user',  telefone_user = '$telefone_user', senha_user = '$senha_user', rua_user = '$rua_user', numero_user = '$numero_user', bairro_user = '$bairro_user', cidade_user = '$cidade_user', estado_user = '$estado_user', cep_user = '$cep_user' WHERE id_user = '$id' ") or die(mysql_error());
+	if (strcmp($nome_user, '') == 0 || strcmp($telefone_user, '') == 0 || strcmp($senha_user, '') == 0 || strcmp($rua_user, '') == 0 || strcmp($bairro_user, '') == 0 || strcmp($cidade_user, '') == 0 || strcmp($estado_user, '') == 0 || strcmp($cep_user, '') == 0)
 
-	echo '<script>alert("Alterações realizada com sucesso\nVocê Será Redirecionado Para a Pagina Home de Sua Conta.")</script>';
-	echo '<script>location.href="accountconfig.html";</script>';
- ?>
+
+	{
+		echo '<script>alert("Todos os campos tem que ser preenchidos.")</script>';
+		echo '<script>location.href="changeinf";</script>';
+	}
+	else
+	{
+	 	$sql_atualizar_usuario = mysql_query("UPDATE usuario SET nome_user = '$nome_user',  telefone_user = '$telefone_user', senha_user = '$senha_user', rua_user = '$rua_user', numero_user = '$numero_user', bairro_user = '$bairro_user', cidade_user = '$cidade_user', estado_user = '$estado_user', cep_user = '$cep_user' WHERE id_user = '$id' ") or die(mysql_error());
+	 
+	 	echo '<script>alert("Alterações realizada com sucesso\nVocê Será Redirecionado Para a Pagina Home de Sua Conta.")</script>';
+	 	echo '<script>location.href="accountconfig.html";</script>';
+	 } 
+
+?>

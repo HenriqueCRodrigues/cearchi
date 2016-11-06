@@ -1,3 +1,7 @@
+<?php
+	include "Conexao_mysql.php";
+	include "Validador_de_Login.php";
+?>
 <!--
 Author: W3layouts
 Author URL: http://w3layouts.com
@@ -106,7 +110,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					 <form>
 							<li><a href="changeinf.php">Alterar informações pessoais</a></li>
 							<!--<li><a href="changepass.html">Alterar senha</a></li>-->
-							<li><a href="consultas.html">Consultar usuários</a></li>
+							
+							<?php
+								$tipo = $_SESSION['tipo_usuario'];
+
+								if(strcmp($tipo,'C') == 0)
+								{
+									echo "<li><a href='consultas.html'>Consultar usuários</a></li>";
+								}
+
+								else
+								{
+									echo "<li><a href='Resultado_Prestador.php'>Consultar Seus Dados</a></li>";
+								}
+							?>
 							<li><a href="menumensagens.html">Gerenciar mensagens</a></li>
 							<li><a href="contact.html">Reportar erros</a></li>
 							<li><a href="deleteaccount.html">Deletar conta</a></li>

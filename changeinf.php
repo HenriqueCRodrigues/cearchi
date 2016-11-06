@@ -155,7 +155,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 							<ul>
 								<li class="text-info">Rua:</li>
-								<li><input type="text" name="rua_user" value="<?php echo "$nome"; ?>" id="rua_user"></li>
+								<li><input type="text" name="rua_user" value="<?php echo "$rua"; ?>" id="rua_user"></li>
 							</ul>
 							<ul>
 								<li class="text-info">Numero:</li>
@@ -240,6 +240,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								</select>	<br/></li>
 							</ul>
 							<input type="submit" value="Confirmar Alteração">
+							<input type="button" value="Voltar" onclick="Voltar()">
+							<script type="text/javascript">
+								function Voltar()
+								{
+									location.href="accountconfig";
+								}
+							</script>
 						</form>
 					</div>
 				</div>
