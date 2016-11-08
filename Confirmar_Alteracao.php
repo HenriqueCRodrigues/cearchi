@@ -35,7 +35,7 @@ $cep_user = $_POST['cep_user'];
  	 	$sql_atualizar_usuario = mysql_query("UPDATE usuario SET nome_user = '$nome_user',  telefone_user = '$telefone_user', rua_user = '$rua_user', numero_user = '$numero_user', bairro_user = '$bairro_user', cidade_user = '$cidade_user', estado_user = '$estado_user', cep_user = '$cep_user', emai_user = '$email_user' WHERE id_user = '$id' ") or die(mysql_error());
  	 
  	 	echo '<script>alert("Alterações realizada com sucesso\nVocê Será Redirecionado Para a Pagina Home de Sua Conta.")</script>';
- 	 	//echo '<script>location.href="accountconfig.html";</script>';
+ 	 	echo '<script>location.href="accountconfig";</script>';
  	} 
 
 ?>

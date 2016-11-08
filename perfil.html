@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html>
 <head>
-<title>Cearchi | Registro de Usuário</title>
+<title>Cearchi | Perfil</title>
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
@@ -38,7 +38,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<ul>
 					<li><a href="index.html"><img src="images/logopeq.png"</a></li>
 				
-						<li><a href="logout.php">sair</a></li>			
+						<li><a href="account.html"> <img src="images/icon1.png">LOGIN</a></li>
+						<li><a href="register.html"><img src="images/pw.png">Crie uma conta</a></li>			
 					</ul>
                     </div>
 				</div> </div>
@@ -65,8 +66,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	        <ul class="nav navbar-nav">
 			<li><a href="index.html">Início</a></li>
+		    <li><a href="#">Procurar Serviços</a></li>
+		    <li><a href="#">anunciar</a></li>
 		    <li><a href="accountconfig.html">configurações da conta</a></li>
-            <li><a href="contact.html">Gerência do sistema</a></li>
+            <li><a href="contact.html">CONTATO</a></li>
 	        </ul>
 	    </div>
 	    <!--/.navbar-collapse-->
@@ -74,71 +77,88 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!--/.navbar-->
 </div>
 </div>
-		<!-- registration-form -->
-<div class="registration-form">
+
+
+		<!-- content-section-starts -->
+	<div class="content">
 	<div class="container">
-	<div class="dreamcrub">
+		<div class="login-page">
+			    <div class="dreamcrub">
 			   	 <ul class="breadcrumbs">
                     <li class="home">
-                       <a href="index.html" title="Go to Home Page">Admin</a>&nbsp;
+                       <a href="index.html" title="Go to Home Page">Home</a>&nbsp;
                        <span>&gt;</span>
                     </li>
                     <li class="women">
-                       Gerência do sistema &nbsp;
-					   <span>&gt;</span>
-                    </li>
-					<li class="women">
-                       Alterar solicitação de serviço
+                       Perfil
                     </li>
                 </ul>
                 <ul class="previous">
-                	<li><a href="index.html">Voltar para página anterior</a></li>
+                	<li><a href="index.html">Back to Previous Page</a></li>
                 </ul>
                 <div class="clearfix"></div>
 			   </div>
-		<h2>Alteração de solicitação de serviço</h2>
-		<div class="registration-grids">
-			<div class="reg-form">
-				<div class="reg">
-					 <p>Insira os novos dados da solicitação de serviço.</p>
-					 
-					 <form method="post" action="#">
-						
-						 <ul>
-							 <li class="text-info">Tipo de Serviço: </li>
-							 <li><input type="text" name="tipo_de_servico" id="tipo_de_servico"></li>
-						 </ul>
-						 
-						 <ul>
-						 <li class="text-info">Data: </li>
-							 <li><input type="date" name="data_servico" id="data_servico"></li>
-						 </ul>
-						 					
-						 <input type="submit" value="Alterar" id="btnCad" onclick="Voltar()"> &nbsp &nbsp &nbsp
-<input type="button" value="Voltar" onclick="Voltar()">
-<script>
-function Voltar() 
-{
-    location.href="index.html";
-}
-</script>
-						 <p class="click">Clicando no botão, você estará alterando a respectiva solicitação de serviço!</a></p> 
-					 </form>
-				 </div>
-			</div>
-			<div class="reg-right">
-				 <h3>Alterar solicitação de serviço</h3>
-				 <div class="strip"></div>
-				 <p>Faça alterações nas solicitações de serviço para ajustar informações contidas nas solicitação já feita anteriormente!</p>
-				 
-			<div class="clearfix"></div>
-		</div>
-	</div>
+		 	   
+	     <div class="jumbotron">
+	      <div class="redondo">
+	      <img src="http://www.lorempixel.com/200/200/people" />
+	      </div>
+
+<nav class="navbar navbar-inverse">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Igor Tiburcio Rodrigues</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Perfil</a></li>
+              <li><a href="#about">+ Adicionar aos amigos</a></li>
+              <li><a href="#contact">Contratar Serviço</a></li>
+              <li><a href="#contact">Mensagens</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+
+
+	     </div>
+	     </div>
+
+    <div class="container">
+      <div class="col-sm-4">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Muito Bom *****</h3>
+            </div>
+            <div class="panel-body">
+              Faz um ótimo serviço como pintor, nunca vi minhas paredes tão paradas!
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Péssimo *</h3>
+            </div>
+            <div class="panel-body">
+              Contratei para rebocar minha parede, e não sabia nem fazer a massa!
+            </div>
+          </div>
+
+
+                </div>
+            </header>
+			   </div>	
+			   <div class="clearfix"> </div>
+			 </div>
+		   </div>
 </div>
-<!-- registration-form -->
-        
-        
-        
+	
+		
 	<div class="cards text-up">	</div>
 		
 		<div class="footer">
@@ -152,7 +172,9 @@ function Voltar()
                 <div class="col-md-3 span1_of_4">
 					<style="text-align:justify"><h4>CONTAS</h4>
 					<ul class="f_nav">
-						<li><a href="consultar.php">CONSULTAR USUÁRIOS</a></li>
+						<li><a href="account.html">REALIZE O LOGIN </a></li>
+						<li><a href="register.html">CRIE UMA CONTA</a></li>
+						<li><a href="consultas.html">CONSULTAR USUÁRIOS</a></li>
                         <li><a href="#">CONFIGURAÇÕES DA CONTA</a></li></style>
 						
 					</ul>				
@@ -181,6 +203,5 @@ function Voltar()
 		  </div>
 		</div>
 		</div>
-
 </body>
 </html>

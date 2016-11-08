@@ -239,7 +239,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<?php  
 			include "Conexao_mysql.php";
 			
-			$sql = mysql_query("SELECT * FROM tipos_de_servico");
+			$sql = mysql_query("SELECT * FROM tipos_de_servico ORDER BY servico_ts");
 
 			$row = mysql_num_rows($sql);
 

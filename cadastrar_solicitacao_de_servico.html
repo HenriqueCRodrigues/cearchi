@@ -65,7 +65,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	        <ul class="nav navbar-nav">
 			<li><a href="index.html">Início</a></li>
-		    <li><a href="accountconfig.html">configurações da conta</a></li>
+		    <li><a href="accountconfig">configurações da conta</a></li>
             <li><a href="contact.html">Gerência do sistema</a></li>
 	        </ul>
 	    </div>
@@ -111,15 +111,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						 
 						 <ul>
 						 <li class="text-info">Data: </li>
-							<li><input type="date" name="data_servico" id="data_servico"></li>
+							<li><input type="text" name="data_servico" id="data_servico"></li>
 						 </ul>
 						 					
-						 <input type="submit" value="Solicitar" id="btnCad" onclick="SolicitarServico()"> &nbsp &nbsp &nbsp
-<input type="submit" value="Voltar" onclick="Voltar()">
+						 <input type="submit" value="Solicitar" id="btnCad" > &nbsp &nbsp &nbsp
+						 <input type="button" value="Voltar" onclick="Voltar()">
 <script>
 function Voltar() 
 {
-    location.href="menu";
+    location.href="index.html";
 }
 </script>
 						 <p class="click">Clicando no botão, você estará solicitando um novo serviço ao usuário prestadore de serviço!</a></p> 
@@ -183,10 +183,7 @@ function Voltar()
 		</div>
 
 		<script>
-function Voltar() 
-{
-    location.href="menu";
-}
+
 
 </script>
 </body>

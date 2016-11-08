@@ -122,125 +122,111 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<h2>Menu de mensagens </h2>
 			<p></p></br>
 
-			<table>
-				<tr>
-					<th>De</th>
-					<th>Assunto</th>
-					<th></th>
+			<?php
 
 
-				</tr>
+			if (!isset($_GET["assunto"])) {
+				header("Location: index.html");
+			}
+
+			$assunto = $_GET["assunto"];
+
+			$sql = mysql_query("SELECT * FROM msg WHERE id_assunto = '$assunto'");
+			$row = mysql_num_rows($sql);
 
 
-				<?php
-
-				
-				
-
-				$id = $_SESSION['id_user'];
-				$sql = mysql_query("SELECT * FROM assunto WHERE id_dest = '$id' OR id_reme = '$id'");
-				$row = mysql_num_rows($sql);
-
-				
-				if ($row > 0) {
-					while ($linha = mysql_fetch_array($sql)) {
-						$titulo = $linha['assunto'];
-						$id_terceiro = $linha['id_dest'];
-						$id_assunto = $linha['id'];
+			if ($row > 0) {
+				while ($linha = mysql_fetch_array($sql)) {
+					$id = $_SESSION['id_user'];
+					$msg = $linha['mensagem'];
+					$dest = $linha['id_dest'];
+					$assunto = $linha['id_assunto'];
+					$sql2 = mysql_query("SELECT nome_user FROM usuario WHERE id_user = '$id'");
+					$nome = mysql_fetch_array($sql2);
+					echo '<center>
+					<div class="container">
+						<div class="col-sm-4">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h3 class="panel-title">'.$nome[0].' diz:</h3>
+								</div>
+								<div class="panel-body">
+									'.$msg.'
+								</div>
+							</div>
+						</center>';
 						
-
-						
-						if (strcmp($id, $id_terceiro) == 0) 
-						{
-							
-							$sql0 = mysql_query("SELECT * FROM usuario WHERE id_user = '$id'");
-							$linha1 = mysql_fetch_array($sql0);
-							$nome = $linha1['nome_user'];
-							
-								echo "<tr>";
-								echo "<td>$nome</td>";
-								echo "<td>$titulo</td>"; 
-								echo '<td><a href="mensagem?assunto='.$id_assunto.'">Visualizar Mensagens</a></td>';
-								echo "</tr>";
-						}
-
-						else
-						{
-							$sql0 = mysql_query("SELECT * FROM usuario WHERE id_user = '$id_terceiro'");
-							$linha1 = mysql_fetch_array($sql0);
-							$nome = $linha1['nome_user'];
-							echo "<tr>";
-							echo "<td>$nome</td>";
-							echo "<td>$titulo</td>";
-							echo '<td><a href="mensagem?assunto='.$id_assunto.'">Visualizar Mensagens</a></td>';
-							echo "</tr>";
-							
-						}
-
-						
-					}	
+					}
 				}
+				
+
 				?>
 
-
-			</table>
-
-		</br>
-	</br>
+				<form method="post" action="enviar_mensagem.php?id_assunto=<?php echo "$assunto";?>&id_reme=<?php echo "$id";?>&id_dest=<?php echo "$dest"; ?>">
 
 
+						Nova Mensagem:<br>
+
+						<textarea type="text" cols="60" rows="5" name="msg" id="msg"></textarea>
+						<input type="submit" value="Enviar">
+				</form>
+
+				</br>
+			</br>
 
 
-	<!-- ADICIONAR DAQUI PRA CIMA O CONTEUDO DO SITE-->     
-	<!-- ADICIONAR DAQUI PRA CIMA O CONTEUDO DO SITE-->   
-
-	<!-- content-section-ends-here -->
 
 
-	<div class="cards text-up">	</div>
+			<!-- ADICIONAR DAQUI PRA CIMA O CONTEUDO DO SITE-->     
+			<!-- ADICIONAR DAQUI PRA CIMA O CONTEUDO DO SITE-->   
 
-	<div class="footer">
-		<div class="container">
-			<div class="footer_top">
-				<div class="span_of_4">
-					<div class="col-md-3 span1_of_4">
+			<!-- content-section-ends-here -->
 
 
+			<div class="cards text-up">	</div>
+
+			<div class="footer">
+				<div class="container">
+					<div class="footer_top">
+						<div class="span_of_4">
+							<div class="col-md-3 span1_of_4">
+
+
+							</div>
+							<div class="col-md-3 span1_of_4">
+								<style="text-align:justify"><h4>OPÇÕES DA CONTA</h4>
+								<ul class="f_nav">
+									<li><a href="account.html">REALIZAR SEU LOGIN </a></li>
+									<li><a href="register.html">CRIAR UMA CONTA</a></li>
+									<li><a href="consultas.html">CONSULTAR USUÁRIOS</a></li>
+									<li><a href="accountconfig.html">CONFIGURAÇÕES DA CONTA</a></li></style>
+
+
+								</ul>				
+							</div>
+							<div class="col-md-3 span1_of_4">
+								<h4>DÚVIDAS</h4>
+								<ul class="f_nav">
+									<li><a href="#">O QUE É A CEARCHI SERVIÇOS</a></li>
+									<li><a href="#">O QUE É A BUG MONKEYS</a></li>
+									<li><a href="#">COMO FUNCIONA O SITE</a></li>
+									<li><a href="#">PARCEIROS</a></li>
+								</ul>	
+							</div>
+
+							<div class="col-md-3 span1_of_4">
+
+							</div>
+							<div class="clearfix"></div>
+						</div>
 					</div>
-					<div class="col-md-3 span1_of_4">
-						<style="text-align:justify"><h4>OPÇÕES DA CONTA</h4>
-						<ul class="f_nav">
-							<li><a href="account.html">REALIZAR SEU LOGIN </a></li>
-							<li><a href="register.html">CRIAR UMA CONTA</a></li>
-							<li><a href="consultas.html">CONSULTAR USUÁRIOS</a></li>
-							<li><a href="accountconfig.html">CONFIGURAÇÕES DA CONTA</a></li></style>
-
-
-						</ul>				
+					<div class="cards text-center">
+						<img src="images/cards.jpg" alt="" />
 					</div>
-					<div class="col-md-3 span1_of_4">
-						<h4>DÚVIDAS</h4>
-						<ul class="f_nav">
-							<li><a href="#">O QUE É A CEARCHI SERVIÇOS</a></li>
-							<li><a href="#">O QUE É A BUG MONKEYS</a></li>
-							<li><a href="#">COMO FUNCIONA O SITE</a></li>
-							<li><a href="#">PARCEIROS</a></li>
-						</ul>	
+					<div class="copyright text-center">
+						<p>© 2016 CEARCHI Serviços. All Rights Reserved | Design by BUGMONKEYS SOFTWARE</p>
 					</div>
-
-					<div class="col-md-3 span1_of_4">
-
-					</div>
-					<div class="clearfix"></div>
 				</div>
 			</div>
-			<div class="cards text-center">
-				<img src="images/cards.jpg" alt="" />
-			</div>
-			<div class="copyright text-center">
-				<p>© 2016 CEARCHI Serviços. All Rights Reserved | Design by BUGMONKEYS SOFTWARE</p>
-			</div>
-		</div>
-	</div>
-</body>
-</html>
+		</body>
+		</html>
