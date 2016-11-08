@@ -137,12 +137,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 			if ($row > 0) {
 				while ($linha = mysql_fetch_array($sql)) {
-					$id = $_SESSION['id_user'];
+					
 					$msg = $linha['mensagem'];
 					$dest = $linha['id_dest'];
+					$reme = $linha['id_reme'];
 					$assunto = $linha['id_assunto'];
-					$sql2 = mysql_query("SELECT nome_user FROM usuario WHERE id_user = '$id'");
+					$sql2 = mysql_query("SELECT nome_user FROM usuario WHERE id_user = '$reme'");
 					$nome = mysql_fetch_array($sql2);
+					
 					echo '<center>
 					<div class="container">
 						<div class="col-sm-4">
@@ -162,7 +164,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 				?>
 
-				<form method="post" action="enviar_mensagem.php?id_assunto=<?php echo "$assunto";?>&id_reme=<?php echo "$id";?>&id_dest=<?php echo "$dest"; ?>">
+				<form method="post" action="enviar_mensagem.php?id_assunto=<?php echo "$assunto";?>&id_dest=<?php echo "$dest"; ?>">
 
 
 						Nova Mensagem:<br>

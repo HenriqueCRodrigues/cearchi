@@ -145,15 +145,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				if ($row > 0) {
 					while ($linha = mysql_fetch_array($sql)) {
 						$titulo = $linha['assunto'];
+						$id_primario = $linha['id_reme']; 	
 						$id_terceiro = $linha['id_dest'];
 						$id_assunto = $linha['id'];
+						
 						
 
 						
 						if (strcmp($id, $id_terceiro) == 0) 
 						{
 							
-							$sql0 = mysql_query("SELECT * FROM usuario WHERE id_user = '$id'");
+							$sql0 = mysql_query("SELECT * FROM usuario WHERE id_user = '$id_primario'");
 							$linha1 = mysql_fetch_array($sql0);
 							$nome = $linha1['nome_user'];
 							

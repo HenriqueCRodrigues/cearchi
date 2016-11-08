@@ -20,7 +20,7 @@ else
 {
 	$sql = mysql_query("INSERT INTO msg (id_assunto, id_reme, id_dest, mensagem) values ('$assunto','$id', '$id_dest', '$msg_mensagem')" ) or die(mysql_error());
 	
-			echo "<script> alert('Mensagem enviada com sucesso!')</script>";
+			
 			echo "<script>location.href = 'mensagem?assunto=".$assunto."'</script>";
 	}
 ?>
