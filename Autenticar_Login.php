@@ -10,7 +10,7 @@
 
 	function fracasso_login()
 	{
-		setTimeout("window.location='account.html'", 2000);
+		setTimeout("window.location='account.php'", 2000);
 	}
 
 </script>

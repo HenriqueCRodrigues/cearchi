@@ -134,12 +134,12 @@ session_start();
           
                   <div>
           <span>Login</span>
-          <input type="text" name="login_user" id="login_user"> 
+          <input type="text" required="required" name="login_user" id="login_user"> 
           </div>
           
                   <div>
           <span>Senha</span>
-          <input type="password" name="senha_user" id="senha_user"> 
+          <input type="password" required="required" name="senha_user" id="senha_user"> 
           </div>
           
           <input value="Conectar" class="btn btn-primary" type="submit">&nbsp&nbsp<a class="forgot" href="#">Esqueceu sua senha?</a>
