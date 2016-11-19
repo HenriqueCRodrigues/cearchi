@@ -338,8 +338,8 @@ for ($i = 0; $i < $num; $i++) {
 				<form>
       <div>
       <label>Estado:</label>
-      <select name="estado" id="estado" onchange="buscar_cidades()">
-        <option value="">Selecione...</option>
+      <select class="form-control3" name="estado" id="estado" onchange="buscar_cidades()">
+        <option value="">&nbsp&nbspSelecione...</option>
         <?php foreach ($arrEstados as $value => $name) {
           echo "<option value='{$value}'>{$name}</option>";
         }?>
@@ -347,8 +347,8 @@ for ($i = 0; $i < $num; $i++) {
       </div>
       <div id="load_cidades">
         <label>Cidades:</label>
-        <select name="cidade" id="cidade">
-          <option value="">Selecione o estado</option>
+        <select class="form-control3" name="cidade" id="cidade">
+          <option value="">&nbsp&nbspSelecione a cidade</option>
         </select>
       </div>
     </form>

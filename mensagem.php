@@ -2,106 +2,145 @@
 include "Conexao_mysql.php";
 include "Validador_de_Login.php";
 ?>
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+
 <!DOCTYPE html>
-<html>
-<head>
-	<title>Cearchi | Menu de mensagens </title>
-	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="js/jquery.min.js"></script>
-	<!-- Custom Theme files -->
-	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-	<!-- Custom Theme files -->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="keywords" content="Eshop Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
-	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Cearchi - Index</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
+  <meta name="keywords" content="free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
+  <meta name="author" content="FreeHTML5.co" />
 
-	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-	<!--webfont-->
-	<!-- for bootstrap working -->
-	<script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
-	<!-- //for bootstrap working -->
-	<!-- cart -->
-	<script src="js/simpleCart.min.js"> </script>
-	<!-- cart -->
-	<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
-</head>
+  <!-- 
+  //////////////////////////////////////////////////////
 
-<body>
-	<!-- header-section-starts -->
-	<div class="header">
+  FREE HTML5 TEMPLATE 
+  DESIGNED & DEVELOPED by FreeHTML5.co
+    
+  Website:    http://freehtml5.co/
+  Email:      info@freehtml5.co
+  Twitter:    http://twitter.com/fh5co
+  Facebook:     https://www.facebook.com/fh5co
+
+  //////////////////////////////////////////////////////
+   -->
+
+    <!-- Facebook and Twitter integration -->
+  <meta property="og:title" content=""/>
+  <meta property="og:image" content=""/>
+  <meta property="og:url" content=""/>
+  <meta property="og:site_name" content=""/>
+  <meta property="og:description" content=""/>
+  <meta name="twitter:title" content="" />
+  <meta name="twitter:image" content="" />
+  <meta name="twitter:url" content="" />
+  <meta name="twitter:card" content="" />
+
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <link href="https://fonts.googleapis.com/css?family=Raleway:200,300,400,700" rel="stylesheet">
+  
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="css/animate.css">
+  <!-- Icomoon Icon Fonts-->
+  <link rel="stylesheet" href="css/icomoon.css">
+  <!-- Bootstrap  -->
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <!-- Flexslider  -->
+  <link rel="stylesheet" href="css/flexslider.css">
+  <!-- Owl Carousel  -->
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <!-- Theme style  -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Modernizr JS -->
+  <script src="js/modernizr-2.6.2.min.js"></script>
+  <!-- FOR IE9 below -->
+  <!--[if lt IE 9]>
+  <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  </head>
+  <body>
+ <header id="fh5co-header" role="banner">
+ <div class="header">
 		<div class="header-top-strip">
 			<div class="container">
 				<div class="header-top-left">
-					<div class="logo">
-						<ul>
-							<li><a href="index.html"><img src="images/logopeq.png"</a></li>
+                 <div class="logo">
+             
+            
+              <div class="form-group">
+              <ul>
 
-							<li><a href="account.html"> <img src="images/icon1.png">LOGIN</a></li>
-							<li><a href="register.html"><img src="images/pw.png">Crie uma conta</a></li>			
-						</ul>
-					</div>
+					 <a  href="perfil.html"><img src="images/icon2.png" height="60" width="60"></a><font color= #EBEBEB>Você está logado como </font><a href="perfil.html"><i>NOME</i></a>
+					
+ &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+                <li><i><input class="form-control2" name="nome_user" id="nome_user" placeholder="  Pesquisar..." type="text"></i></li>
+                <a href="Resultado.php"> <img src="images/lupa.png" width="40" height="40"></a>
+              
+        
+          	</ul>
+          	</div>
+        	
+                    </div>
 				</div> </div>
 			</div>
 		</div>
-	</div>
+	 </header>
+
+  <div id="fh5co-page">
+  <header id="fh5co-header" role="banner">
+    <div class="container">
+      <div class="header-inner">
+        <a href="index.html" ><img src="images/logopeq.png"></a>
+        <nav role="navigation">
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="menumensagens.html">Mensagens</a></li>
+            <li><a href="work.html">Serviços</a></li>
+            <li><a href="contact.html">Contato</a></li>
+            <li><a href="logout.php">Deslogar</a></li>
+            <li class="cta"><a href="perfil.html">Acesse seu Perfil</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <!-- COLOCAR AQUI O  CONTEUDO DE CORPO-->
 
 
-	<!-- header-section-ends -->
-	<div class="banner-top">
-		<div class="container">
-			<nav class="navbar navbar-default" role="navigation">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
 
-				</div>
-				<!--/.navbar-header-->
+<div id="fh5co-page">
+  <header id="fh5co-header" role="banner">
+  <div class="container">
+    <div class="login-page">
+          <div class="dreamcrub">
+           <ul class="breadcrumbs">
+                   <li class="home">
+                       <a href="index.html" title="Go to Home Page">Home</a>&nbsp;
+                       <span>&gt;</span>
+                    </li>
+                    <li class="women">
+                        <font color="white"> Login </font>
+                    </li>
+                </ul>
+                <ul class="previous">
+                  <li><a href="index.html">Retornar</a></li>
+                </ul>
+                <div class="clearfix"></div>
+         </div>
+         </div></div></header>
 
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav">
-						<li><a href="index.html">Início</a></li>
-						<li><a href="#">Procurar Serviços</a></li>
-						<li><a href="#">anunciar</a></li>
-						<li><a href="accountconfig.php">configurações da conta</a></li>
-						<li><a href="contact.html">CONTATO</a></li>
-					</ul>
-				</div>
-				<!--/.navbar-collapse-->
-			</nav>
-			<!--/.navbar-->
-		</div>
-	</div>
-
-	<div class="registration-form">
-		<div class="container">
-			<div class="dreamcrub">
-				<ul class="breadcrumbs">
-					<li class="home">
-						<a href="index.html" title="Go to Home Page">Home</a>&nbsp;
-						<span>&gt;</span>
-					</li>
-					<li class="women">
-						Menu de mensagens
-					</li>
-				</ul>
-				<ul class="previous">
-					<li><a href="index.html">Voltar para página anterior</a></li>
-				</ul>
-				<div class="clearfix"></div>
-			</div>
-			<!-- ADICIONAR DAQUI PRA BAIXO O CONTEUDO DO SITE-->
+<div class="container">
 			<!-- ADICIONAR DAQUI PRA BAIXO O CONTEUDO DO SITE-->
 
 			<style>
@@ -115,72 +154,43 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					padding: 8px;
 				}
 
-				tr:nth-child(even){background-color: #FBCB98}
+				tr:nth-child(even){background-color: #C2DCFF}
 			</style>
+			
 
 
-			<h2>Menu de mensagens </h2>
+			<x2>Menu de mensagens </x2>
 			<p></p></br>
 
-			<?php
-
-
-			if (!isset($_GET["assunto"])) {
-				header("Location: index.html");
-			}
-
-			$assunto = $_GET["assunto"];
-
-			$sql = mysql_query("SELECT * FROM msg WHERE id_assunto = '$assunto'");
-			$row = mysql_num_rows($sql);
-
-
-			if ($row > 0) {
-				while ($linha = mysql_fetch_array($sql)) {
-					
-					$msg = $linha['mensagem'];
-					$dest = $linha['id_dest'];
-					$reme = $linha['id_reme'];
-					$assunto = $linha['id_assunto'];
-					$sql2 = mysql_query("SELECT nome_user FROM usuario WHERE id_user = '$reme'");
-					$nome = mysql_fetch_array($sql2);
-					
-					echo '<center>
+				
+						<center>
 					<div class="container">
 						<div class="col-sm-4">
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h3 class="panel-title">'.$nome[0].' diz:</h3>
+									<h3 class="panel-title"> diz:</h3>
 								</div>
 								<div class="panel-body">
-									'.$msg.'
+									
 								</div>
 							</div>
-						</center>';
+						</center>
 						
-					}
-				}
-				
 
-				?>
-
-				<form method="post" action="enviar_mensagem.php?id_assunto=<?php echo "$assunto";?>&id_dest=<?php echo "$dest"; ?>">
+				<!--<form method="post" action="enviar_mensagem.php?id_assunto=<?php echo "$assunto";?>&id_dest=<?php echo "$dest"; ?>">-->
 
 
-						Nova Mensagem:<br>
+						<x1>Nova Mensagem:</x1><br>
 
-						<textarea type="text" cols="60" rows="5" name="msg" id="msg"></textarea>
-						<input type="submit" value="Enviar">
+						<textarea type="text" cols="60" rows="5" name="msg" id="msg"></textarea></br>
+						<input type="submit" value="Enviar" class="btn btn-primary">
 				</form>
 
 				</br>
 			</br>
 
 
-
-
-			<!-- ADICIONAR DAQUI PRA CIMA O CONTEUDO DO SITE-->     
-			
+</div>
 
 
 	<!-- COLOCAR AQUI O  CONTEUDO DE CORPO-->	

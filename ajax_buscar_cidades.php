@@ -1,5 +1,5 @@
 <?php
-include('conexao.php');
+include "Conexao_mysql.php";
 $estado = $_GET['estado'];
 $sql = "SELECT * FROM cidades WHERE estados_cod_estados = $estado ORDER BY nome";
 $res = mysql_query($sql, $conexao);
@@ -11,7 +11,7 @@ for ($i = 0; $i < $num; $i++) {
 ?>
 
 <label>Cidades:</label>
-<select name="cidade" id="cidade">
+<select class="form-control3" name="cidade" id="cidade">
   <?php foreach($arrCidades as $value => $nome){
     echo "<option value='{$value}'>{$nome}</option>";
   }
