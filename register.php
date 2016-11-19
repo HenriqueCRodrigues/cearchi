@@ -7,6 +7,10 @@ for ($i = 0; $i < $num; $i++) {
   $dados = mysql_fetch_array($res);
   $arrEstados[$dados['cod_estados']] = $dados['sigla'];
 }
+
+  	session_start();
+	if (!isset($_SESSION['login_user']) || !isset($_SESSION['senha_user']))
+	{
 ?>
 
 
@@ -87,7 +91,7 @@ for ($i = 0; $i < $num; $i++) {
             
               <div class="form-group">
               <ul>
-            <a href="account.html"> <img src="images/icon1.png" height="35" width="35"><font color= #EBEBEB size=3>Login</font></a>&nbsp; &nbsp; &nbsp; 
+            <a href="account.php"> <img src="images/icon1.png" height="35" width="35"><font color= #EBEBEB size=3>Login</font></a>&nbsp; &nbsp; &nbsp; 
             <a href="register.php"><img src="images/pw.png" height="35" width="35"><font color= #EBEBEB size=3>Crie uma conta</font></a>
 
               
@@ -105,15 +109,16 @@ for ($i = 0; $i < $num; $i++) {
   <header id="fh5co-header" role="banner">
     <div class="container">
       <div class="header-inner">
-        <a href="index.html" ><img src="images/logopeq.png"></a>
+        <a href="index.php" ><img src="images/logopeq.png"></a>
         <nav role="navigation">
           <ul>
-            <li><a href="index.html">Inicio</a></li>
+            <li><a href="index.php">Inicio</a></li>
 
             
-            <li><a href="about.html">Sobre</a></li>
-            <li><a href="contact.html">Contato</a></li>
-            <li class="cta"><a href="register.html">Crie sua conta</a></li>
+            
+            <li><a href="contact.php">Contato</a></li>
+            <li><a href="about.php">Sobre</a></li>
+            <li class="cta"><a href="register.php">Crie sua conta</a></li>
           </ul>
         </nav>
       </div>
@@ -130,7 +135,7 @@ for ($i = 0; $i < $num; $i++) {
           <div class="dreamcrub">
            <ul class="breadcrumbs">
                    <li class="home">
-                       <a href="index.html" title="Go to Home Page">Home</a>&nbsp;
+                       <a href="index.php" title="Retornar a Pagina Inicial">Home</a>&nbsp;
                        <span>&gt;</span>
                     </li>
                     <li class="women">
@@ -138,7 +143,7 @@ for ($i = 0; $i < $num; $i++) {
                     </li>
                 </ul>
                 <ul class="previous">
-                  <li><a href="index.html">Retornar</a></li>
+                  <li><a href="index.php" title="Retornar a Pagina Inicial">Retornar</a></li>
                 </ul>
                 <div class="clearfix"></div>
          </div>
@@ -154,7 +159,7 @@ for ($i = 0; $i < $num; $i++) {
 
 				</div>
 				<p>Bem vindo, por favor insira os dados solicitados para continuar</p>
-					 <p>Se você já é cadastrado no site,<a href="account.html"> <font color= "#2B5488">CLIQUE AQUI!</font></a></br></p>
+					 <p>Se você já é cadastrado no site,<a href="account.php"> <font color= "#2B5488">CLIQUE AQUI!</font></a></br></p>
 					 
 					 <form method="post" action="Confirmar_Cadastro.php">
 
@@ -221,7 +226,7 @@ for ($i = 0; $i < $num; $i++) {
 						<div class="col-md-6">
 							<li class="text-info" style="list-style-type:none">Data de nascimento </li>
 							<div class="form-group">
-								<input class="form-control3" type="Date" name="nascimento_user" id="nascimento_user">
+								<input class="form-control3" type="text" placeholder="dd/mm/aaaa" name="nascimento_user" id="nascimento_user">
 							</div>
 						</div>
 						
@@ -348,7 +353,6 @@ for ($i = 0; $i < $num; $i++) {
 						
 						<div class="col-md-6"></br>
 						<li class="text-info" style="list-style-type:none">Locais de Atuação:</li>
-				<form>
       <div>
       <label>Estado:</label>
       <select class="form-control3" name="estado" id="estado" onchange="buscar_cidades()">
@@ -456,3 +460,14 @@ for ($i = 0; $i < $num; $i++) {
 	</body>
 </html>
 
+<?php
+
+}
+
+else
+{
+	header("location: index.php");
+}
+
+
+?>

@@ -1,6 +1,7 @@
 <?php
 	include "Conexao_mysql.php";
-				include "Validador_de_Login.php";
+	include "Validador_de_Login.php";
+	$nome = $_SESSION['nome_user'];
 ?>
 
 <!DOCTYPE html>
@@ -70,7 +71,7 @@
 
   </head>
   <body>
- <header id="fh5co-header" role="banner">
+  <header id="fh5co-header" role="banner">
  <div class="header">
 		<div class="header-top-strip">
 			<div class="container">
@@ -81,11 +82,21 @@
               <div class="form-group">
               <ul>
 
-					 <a  href="perfil.html"><img src="images/icon2.png" height="60" width="60"></a><font color= #EBEBEB>Você está logado como </font><a href="#"><i>NOME</i></a>
+					 <a  href="perfil.php"><img src="images/icon2.png" height="60" width="60"></a><font color= #EBEBEB></font><a href="perfil.php"><i><?php echo "$nome"; ?></i></a>
 					
- &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
-                <li><i><input class="form-control2" name="busca" id="busca" placeholder="  Pesquisar..." type="text"></i></li>
-              
+ &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+                <li><i>
+           <form method='post' action="Resultado.php">
+           <table>
+           <tr>
+
+           <td><input class="form-control2" name="nome_user" id="nome_user" placeholder="  Pesquisar..." type="text"> </i></li></td>
+           <td><font color="white">..</font>      <input type='image' title='Buscar' src='images/lupa.png' width="40" height="40"></td>
+            </tr>
+          
+
+           </table>
+           </form>
         
           	</ul>
           	</div>
@@ -100,15 +111,16 @@
   <header id="fh5co-header" role="banner">
     <div class="container">
       <div class="header-inner">
-        <a href="index.html" ><img src="images/logopeq.png"></a>
+        <a href="index.php" ><img src="images/logopeq.png"></a>
         <nav role="navigation">
           <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="work.html">Mensagens</a></li>
-            
-            <li><a href="about.html">Sobre</a></li>
-            <li><a href="contact.html">Contato</a></li>
-            <li class="cta"><a href="register.html">Crie sua conta</a></li>
+            <li><a href="index.php">Inicio</a></li>
+            <li><a href="menumensagens.php">Mensagens</a></li>
+            <li><a href="#">Serviços</a></li>
+            <li><a href="contact.php">Contato</a></li>
+            <li><a href="about.php">Sobre</a></li>
+            <li><a href="logout.php">Deslogar</a></li>
+            <li class="cta"><a href="perfil.php">Acesse seu Perfil</a></li>
           </ul>
         </nav>
       </div>
@@ -125,15 +137,25 @@
           <div class="dreamcrub">
            <ul class="breadcrumbs">
                    <li class="home">
-                       <a href="index.html" title="Go to Home Page">Home</a>&nbsp;
+                       <a href="index.php" title="Retornar a Pagina Principal">Home</a>&nbsp;
                        <span>&gt;</span>
                     </li>
+                    <li class="home">
+                       <a href="perfil.php" title="Retornar para o Seu Perfil">Perfil</a>&nbsp;
+                       <span>&gt;</span>
+                    </li>
+                    <li class="home">
+                       <a href="consultar.php" title="Retornar para Consultar Usuarios ou Tipos de Serviço Novamente">Consultar Usuarios ou Tipos de Serviço</a>&nbsp;
+                       <span>&gt;</span>
+                    </li>
+
+                    
                     <li class="women">
-                        <font color="white"> Login </font>
+                        <font color="white">Resultado da Consulta de Usuario ou Tipos de Serviço</font>
                     </li>
                 </ul>
                 <ul class="previous">
-                  <li><a href="index.html">Retornar</a></li>
+                  <li><a href="consultar.php" title="Retornar para Consultar Usuarios ou Tipos de Serviço Novamente">Retornar</a></li>
                 </ul>
                 <div class="clearfix"></div>
          </div>
@@ -206,7 +228,7 @@
 					
 						
 							echo "<tr>";
-						echo "<td>".$nome."<form method='post' action='cadastrar_mensagens.php?id_terceiro=".$id_terceiro."'><input type='image' title='Enviar Mensagem para ".$nome."' src='images/msgicon.png'></form></td>"; 
+						echo "<td>".$nome."<form method='post' action='mensagemcadastro?id_terceiro=".$id_terceiro."'><input type='image' title='Enviar Mensagem para ".$nome."' src='images/msgicon.png'></form></td>"; 
 						echo "<td>".$tipo."</td>";
 						echo "</tr>";
 						}

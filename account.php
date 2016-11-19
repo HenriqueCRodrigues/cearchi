@@ -1,3 +1,10 @@
+<?php
+
+session_start();
+  if (!isset($_SESSION['login_user']) || !isset($_SESSION['senha_user']))
+  {
+
+?>
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -76,11 +83,9 @@
             
               <div class="form-group">
               <ul>
+            <a href="account.php"> <img src="images/icon1.png" height="35" width="35"><font color= #EBEBEB size=3>Login</font></a>&nbsp; &nbsp; &nbsp; 
+            <a href="register.php"><img src="images/pw.png" height="35" width="35"><font color= #EBEBEB size=3>Crie uma conta</font></a>
 
-           <a  href="perfil.html"><img src="images/icon2.png" height="60" width="60"></a><font color= #EBEBEB>Você está logado como </font><a href="#"><i>NOME</i></a>
-          
- &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
-                <li><i><input class="form-control2" name="busca" id="busca" placeholder="  Pesquisar..." type="text"></i></li>
               
         
             </ul>
@@ -96,112 +101,54 @@
   <header id="fh5co-header" role="banner">
     <div class="container">
       <div class="header-inner">
-        <a href="index.html" ><img src="images/logopeq.png"></a>
+        <a href="index.php" ><img src="images/logopeq.png"></a>
         <nav role="navigation">
           <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="work.html">Mensagens</a></li>
+            <li><a href="index.php">Inicio</a></li>
+
             
-            <li><a href="about.html">Sobre</a></li>
-            <li><a href="contact.html">Contato</a></li>
-            <li class="cta"><a href="register.html">Crie sua conta</a></li>
+           
+            <li><a href="contact.php">Contato</a></li>
+            <li><a href="about.php">Sobre</a></li>
+            <li class="cta"><a href="register.php">Crie sua conta</a></li>
           </ul>
         </nav>
       </div>
-    </div>
-  </header>
-  <!-- COLOCAR AQUI O  CONTEUDO DE CORPO-->
+    </div></header>
 
-    </div>
 
-<div id="fh5co-page">
-  <header id="fh5co-header" role="banner">
+  <div class="content">
   <div class="container">
     <div class="login-page">
-          <div class="dreamcrub">
-           <ul class="breadcrumbs">
-                   <li class="home">
-                       <a href="index.html" title="Go to Home Page">Home</a>&nbsp;
-                       <span>&gt;</span>
-                        <li class="home">
-                       <a href="perfil.html" title="Go to Home Page"> &nbspPerfil</a>&nbsp;
-                       <span>&gt;</span>
-                    </li>
-                    </li>
-                    <li class="women">
-                        <font color="white"> Menu de mensagens </font>
-                    </li>
-
-
-                </ul>
-                <ul class="previous">
-                  <li><a href="index.html">Retornar</a></li>
-                </ul>
-                <div class="clearfix"></div>
+  
+               <div class="account_grid">
+         <div class="col-md-6 login-left wow fadeInLeft" data-wow-delay="0.4s">
+           <x2>Ainda não sou cadastrado.</x2>
+         <p>Criando uma conta no Cearchi, caso seja um contratante, você poderá encontrar vários tipos de serviços sendo prestados perto de você e caso seja um prestador de serviço, você poderá oferecer seus serviços para pessoas de sua região. É tudo grátis.</p>
+         <a class="btn btn-primary" href="register.php">Criar uma conta</a>
          </div>
-         </div></div></header>
-
-
-
-  <div class="container">
-
-<style>
-table {
-    border-collapse: collapse;
-    width: 100%;
-}
-
-th, td {
-    text-align: center;
-    padding: 8px;
-}
-
-tr:nth-child(even){background-color: #C2DCFF}
-</style>
-
-
-<x2>Menu de mensagens </x2>
-<p></p></br>
-
-<table>
-  <tr>
-    <th><x1>Enviada / Recebida</x1></th>
-    <th><x1>Contato</x1></th>
-    <th><x1>Mensagem</x1></th>
-
-
-  </tr>
-  <tr>
-    <td>Recebida</td>
-    <td>Chinelo</td>
-    <td>Corpo de texto 1</td>
-
-
-  </tr>
-  <tr>
-    <td>Enviada</td>
-    <td>Chinelo</td>
-    <td>Corpo de texto 2</td>
-
-  </tr>
-  <tr>
-    <td>Recebida</td>
-    <td>Henrique</td>
-    <td>Corpo de texto 3</td>
-
-  </tr>
-  <tr>
-    <td>Enviada</td>
-    <td>Igor</td>
-    <td>Corpo de texto 4</td>
-
-  </tr>
-</table>
-
-</br>
-</br>
-</div>
-
+         <div class="col-md-6 login-right wow fadeInRight" data-wow-delay="0.4s">
+          <x2>Já sou cadastrado</x2>
+        <p>Se você já possui uma conta, é só acessá-la aqui.</p>
+        <form action="Autenticar_Login.php" method="post">
+          
+                  <div>
+          <span>Login</span>
+          <input type="text" name="login_user" id="login_user"> 
+          </div>
+          
+                  <div>
+          <span>Senha</span>
+          <input type="password" name="senha_user" id="senha_user"> 
+          </div>
+          
+          <input value="Conectar" class="btn btn-primary" type="submit">&nbsp&nbsp<a class="forgot" href="#">Esqueceu sua senha?</a>
+          </form>
+         </div> 
+         <div class="clearfix"> </div>
+       </div>
+       </div>
+</div></div>
 
 
 
@@ -270,3 +217,14 @@ tr:nth-child(even){background-color: #C2DCFF}
   </body>
 </html>
 
+<?php
+
+}
+
+else
+{
+  header("location: index.php");
+}
+
+
+?>

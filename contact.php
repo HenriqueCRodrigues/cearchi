@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -7,7 +6,7 @@
   <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Cearchi - Index</title>
+  <title>Cearchi - Contato</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
   <meta name="keywords" content="free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
@@ -66,31 +65,35 @@
 
   </head>
   <body>
+ <?php 
+    session_start();
+  if (!isset($_SESSION['login_user']) || !isset($_SESSION['senha_user']))
+  {
+  
+  ?>
  <header id="fh5co-header" role="banner">
  <div class="header">
-		<div class="header-top-strip">
-			<div class="container">
-				<div class="header-top-left">
+    <div class="header-top-strip">
+      <div class="container">
+        <div class="header-top-left">
                  <div class="logo">
              
             
               <div class="form-group">
               <ul>
+            <a href="account.php"> <img src="images/icon1.png" height="35" width="35"><font color= #EBEBEB size=3>Login</font></a>&nbsp; &nbsp; &nbsp; 
+            <a href="register.php"><img src="images/pw.png" height="35" width="35"><font color= #EBEBEB size=3>Crie uma conta</font></a>
 
-					 <a  href="perfil.html"><img src="images/icon2.png" height="60" width="60"></a><font color= #EBEBEB>Você está logado como </font><a href="#"><i>NOME</i></a>
-					
- &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
-                <li><i><input class="form-control2" name="busca" id="busca" placeholder="  Pesquisar..." type="text"></i></li>
               
         
-          	</ul>
-          	</div>
-        	
+            </ul>
+            </div>
+          
                     </div>
-				</div> </div>
-			</div>
-		</div>
-	 </header>
+        </div> </div>
+      </div>
+    </div>
+   </header>
 
   <div id="fh5co-page">
   <header id="fh5co-header" role="banner">
@@ -99,16 +102,77 @@
         <a href="index.html" ><img src="images/logopeq.png"></a>
         <nav role="navigation">
           <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="work.html">Mensagens</a></li>
-            
-            <li><a href="about.html">Sobre</a></li>
-            <li><a href="contact.html">Contato</a></li>
-            <li class="cta"><a href="register.html">Crie sua conta</a></li>
+            <li><a href="index.php">Inicio</a></li>
+            <li><a href="contact.php">Contato</a></li>
+            <li><a href="about.php">Sobre</a></li>
+            <li class="cta"><a href="register.php">Crie sua conta</a></li>
           </ul>
         </nav>
       </div>
     </div>
+    <?php }
+
+    else
+    {
+      $nome = $_SESSION['nome_user'];
+    ?>
+
+    <header id="fh5co-header" role="banner">
+ <div class="header">
+    <div class="header-top-strip">
+      <div class="container">
+        <div class="header-top-left">
+                 <div class="logo">
+             
+            
+              <div class="form-group">
+              <ul>
+
+           <a  href="perfil.php"><img src="images/icon2.png" height="60" width="60"></a><font color= #EBEBEB></font><a href="perfil.php"><i><?php echo "$nome"; ?></i></a>
+          
+ &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+               <li><i>
+           <form method='post' action="Resultado.php">
+           <table width="300" align="center">
+           <tr>
+
+           <td><input class="form-control2" name="nome_user" id="nome_user" placeholder="  Pesquisar..." type="text"> </i></li></td>
+           <td><input type='image' title='Buscar' src='images/lupa.png' width="40" height="40"></td>
+            </tr>
+          
+
+           </table>
+           </form>
+        
+            </ul>
+            </div>
+          
+                    </div>
+        </div> </div>
+      </div>
+    </div>
+   </header>
+
+  <div id="fh5co-page">
+  <header id="fh5co-header" role="banner">
+    <div class="container">
+      <div class="header-inner">
+        <a href="index.php" ><img src="images/logopeq.png"></a>
+        <nav role="navigation">
+          <ul>
+            <li><a href="index.php">Inicio</a></li>
+            <li><a href="menumensagens.php">Mensagens</a></li>
+            <li><a href="#">Serviços</a></li>
+            <li><a href="contact.php">Contato</a></li>
+            <li><a href="about.php">Sobre</a></li>
+            <li><a href="logout.php">Deslogar</a></li>
+            <li class="cta"><a href="perfil.php">Acesse Seu Perfil</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+ <?php }
+ ?>
   </header>
   <!-- COLOCAR AQUI O  CONTEUDO DE CORPO-->
 
@@ -121,57 +185,75 @@
           <div class="dreamcrub">
            <ul class="breadcrumbs">
                    <li class="home">
-                       <a href="index.html" title="Go to Home Page">Home</a>&nbsp;
+                       <a href="index.php" title="Retornar a Pagina Home">Home</a>&nbsp;
                        <span>&gt;</span>
                     </li>
                     <li class="women">
-                        <font color="white"> Consultas </font>
+                        <font color="white"> Contato </font>
                     </li>
                 </ul>
                 <ul class="previous">
-                  <li><a href="index.html">Retornar</a></li>
+                  <li><a href="index.php" title="Retornar a Pagina Home">Retornar</a></li>
                 </ul>
                 <div class="clearfix"></div>
          </div>
          </div></div></header>
 
 
-<div class="container">
-      <div class="row">
-        <div class="Register-form">
-<div class="registration-form">
-          <form method="post" action="Resultado.php">
-          <div class="row">
-            
-            <div class="col-md-6">
-            <li class="text-info" style="list-style-type:none">Nome a ser consultado </li>
-
-                <input class="form-control" placeholder="Consulta" type="text" name="nome_user" id="nome_user">
-              </div>
-            </div>
-            </div></div>
-            
-
-              <div class="col-md-12">
-              <div class="form-group">
-                <input type="submit" value="Consultar" class="btn btn-primary" action="Resultado.php">
-                <input type="button" name="btnVol" class="btn btn-primary" value="Voltar" onclick="Voltar()">
-                <script type="text/javascript">
-    function Voltar()
-  {
-    location.href="index.html";
-  }
-</script></form>
-              </div>
-            </div>
-            </div>
-            </div></div>
 
 
 
 
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 col-md-push-2 animate-box">
+					<x2>Detalhes de contato</x2>
+					<p>Falando algumas coisas sobre nós.</p><br><br>
 
+				</div>
+				<div class="col-md-3">
+					<h3>Contact Info.</h3>
+					<ul class="contact-info">
+						<li><i class="icon-map"></i>Av. B P S, 1303 - Pinheirinho, Itajubá - MG, 37500-903</li>
+						<li><i class="icon-phone"></i>+ 1235 2355 98</li>
+						<li><i class="icon-envelope"></i><a href="#">BugMonkeys@gmail.com.br</a></li>
+						<li><i class="icon-globe"></i><a href="#">www.BugMonkeys.com.br</a></li>
+					</ul>
+				</div>
+				<div class="col-md-8 col-md-push-1 col-sm-12 col-sm-push-0 col-xs-12 col-xs-push-0">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<input class="form-control" placeholder="Nome" type="text">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<input class="form-control" placeholder="Email" type="text">
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<textarea name="" class="form-control" id="" cols="30" rows="7" placeholder="Mensagem"></textarea>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<input value="Send Message" class="btn btn-primary" type="submit">
+							</div>
 
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+	 <div class="clearfix"></div>
+
+               
+             
+
+	
 	<!-- COLOCAR AQUI O  CONTEUDO DE CORPO-->	
 	<footer id="fh5co-footer" role="contentinfo">
 	

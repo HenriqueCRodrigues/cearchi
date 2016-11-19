@@ -1,3 +1,9 @@
+<?php
+  include "Conexao_mysql.php";
+  include "Validador_de_Login.php";
+  $nome = $_SESSION['nome_user'];
+
+?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -65,45 +71,58 @@
 
   </head>
   <body>
- <header id="fh5co-header" role="banner">
+<header id="fh5co-header" role="banner">
  <div class="header">
-		<div class="header-top-strip">
-			<div class="container">
-				<div class="header-top-left">
+    <div class="header-top-strip">
+      <div class="container">
+        <div class="header-top-left">
                  <div class="logo">
              
             
               <div class="form-group">
               <ul>
 
-					 <a  href="perfil.html"><img src="images/icon2.png" height="60" width="60"></a><font color= #EBEBEB>Você está logado como </font><a href="#"><i>NOME</i></a>
-					
+          <a  href="perfil.php"><img src="images/icon2.png" height="60" width="60"></a><font color= #EBEBEB></font><a href="perfil.php"><i><?php echo "$nome"; ?></i></a>
+          
  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
-                <li><i><input class="form-control2" name="busca" id="busca" placeholder="  Pesquisar..." type="text"></i></li>
+               <li><i>
+           <form method='post' action="Resultado.php">
+           <table width="300" align="center">
+           <tr>
+
+           <td><input class="form-control2" name="nome_user" id="nome_user" placeholder="  Pesquisar..." type="text"> </i></li></td>
+           <td><input type='image' title='Buscar' src='images/lupa.png' width="40" height="40"></td>
+            </tr>
+          
+
+           </table>
+           </form>
               
         
-          	</ul>
-          	</div>
-        	
+            </ul>
+            </div>
+          
                     </div>
-				</div> </div>
-			</div>
-		</div>
-	 </header>
+        </div> </div>
+      </div>
+    </div>
+   </header>
 
   <div id="fh5co-page">
   <header id="fh5co-header" role="banner">
     <div class="container">
       <div class="header-inner">
-        <a href="index.html" ><img src="images/logopeq.png"></a>
+        <a href="index.php" ><img src="images/logopeq.png"></a>
         <nav role="navigation">
           <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="work.html">Mensagens</a></li>
+            <li><a href="index.php">Inicio</a></li>
+            <li><a href="menumensagens.php">Mensagens</a></li>
             
-            <li><a href="about.html">Sobre</a></li>
-            <li><a href="contact.html">Contato</a></li>
-            <li class="cta"><a href="register.html">Crie sua conta</a></li>
+            <li><a href="about.php">Sobre</a></li>
+            <li><a href="contact.php">Contato</a></li>
+            <li><a href="about.php">Sobre</a></li>
+            <li><a href="logout.php">Deslogar</a></li>
+            <li class="cta"><a href="perfil.php">Retorne ao Seu Perfil</a></li>
           </ul>
         </nav>
       </div>
@@ -120,163 +139,61 @@
           <div class="dreamcrub">
            <ul class="breadcrumbs">
                    <li class="home">
-                       <a href="index.html" title="Go to Home Page">Home</a>&nbsp;
+                       <a href="index.php" title="Retornar a Pagina Inicial">Home</a>&nbsp;
+                       <span>&gt;</span>
+                    </li>
+                    <li class="home">
+                       <a href="perfil.php" title="Retornar para o Seu Perfil">Perfil</a>&nbsp;
                        <span>&gt;</span>
                     </li>
                     <li class="women">
-                        <font color="white"> Login </font>
+                        <font color="white"> Consultar Usuarios ou Tipos de Serviço </font>
                     </li>
                 </ul>
                 <ul class="previous">
-                  <li><a href="index.html">Retornar</a></li>
+                  <li><a href="perfil.php" title="Retornar para o Seu Perfil">Retornar</a></li>
                 </ul>
                 <div class="clearfix"></div>
          </div>
          </div></div></header>
-<!--CORPO DE TEXTO ABAIXO-->
+
+
+<div class="container">
+      <div class="row">
+        <div class="Register-form">
+<div class="registration-form">
+          <form method="post" action="Resultado.php">
+          <div class="row">
+            
+            <div class="col-md-6">
+            <li class="text-info" style="list-style-type:none">Nome ou Tipo de Serviço a ser consultado </li>
+
+                <input class="form-control" placeholder="Ex:. João ou Pedreiro" type="text" name="nome_user" id="nome_user">
+              </div>
+            </div>
+            </div></div>
+            
+
+              <div class="col-md-12">
+              <div class="form-group">
+                <input type="submit" value="Consultar" class="btn btn-primary" action="Resultado.php">
+                <input type="button" name="btnVol" class="btn btn-primary" value="Voltar" onclick="Voltar()">
+                <script type="text/javascript">
+    function Voltar()
+  {
+    location.href="index.html";
+  }
+</script></form>
+              </div>
+            </div>
+            </div>
+            </div></div>
 
 
 
 
 
 
-	
-	<aside id="fh5co-hero" class="js-fullheight">
-		<div class="flexslider js-fullheight">
-			<ul class="slides">
-		   	<li style="background-image: url(images/slide_3.jpg);">
-		   		<div class="overlay-gradient"></div>
-		   		<div class="container">
-		   			<div class="col-md-10 col-md-offset-1 text-center js-fullheight slider-text">
-		   				<div class="slider-text-inner">
-		   					<h2>Our Awesome Projects</h2>
-		   					<p class="fh5co-lead">Designed with <i class="icon-heart"></i> by the fine folks at <a href="http://freehtml5.co" target="_blank">FreeHTML5.co</a></p>
-		   				</div>
-		   			</div>
-		   		</div>
-		   	</li>
-		  	</ul>
-	  	</div>
-	</aside>
-
-	<div id="fh5co-work-section" class="fh5co-light-grey-section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-4 animate-box">
-					<a href="#" class="item-grid text-center">
-						<div class="image" style="background-image: url(images/image_1.jpg)"></div>
-						<div class="v-align">
-							<div class="v-align-middle">
-								<h3 class="title">Geographical App</h3>
-								<h5 class="category">Web Application</h5>
-							</div>
-						</div>
-					</a>
-				</div>
-				<div class="col-md-4 animate-box">
-					<a href="#" class="item-grid text-center">
-						<div class="image" style="background-image: url(images/image_2.jpg)"></div>
-						<div class="v-align">
-							<div class="v-align-middle">
-								<h3 class="title">Geographical App</h3>
-								<h5 class="category">User Interface</h5>
-							</div>
-						</div>
-					</a>
-				</div>
-				<div class="col-md-4 animate-box">
-					<a href="#" class="item-grid text-center">
-						<div class="image" style="background-image: url(images/image_3.jpg)"></div>
-						<div class="v-align">
-							<div class="v-align-middle">
-								<h3 class="title">Geographical App</h3>
-								<h5 class="category">Branded</h5>
-							</div>
-						</div>
-					</a>
-				</div>
-				<div class="col-md-4 animate-box">
-					<a href="#" class="item-grid text-center">
-						<div class="image" style="background-image: url(images/image_4.jpg)"></div>
-						<div class="v-align">
-							<div class="v-align-middle">
-								<h3 class="title">Geographical App</h3>
-								<h5 class="category">Web</h5>
-							</div>
-						</div>
-					</a>
-				</div>
-				<div class="col-md-4 animate-box">
-					<a href="#" class="item-grid text-center">
-						<div class="image" style="background-image: url(images/image_5.jpg)"></div>
-						<div class="v-align">
-							<div class="v-align-middle">
-								<h3 class="title">Geographical App</h3>
-								<h5 class="category">Illustration</h5>
-							</div>
-						</div>
-					</a>
-				</div>
-				<div class="col-md-4 animate-box">
-					<a href="#" class="item-grid text-center">
-						<div class="image" style="background-image: url(images/image_6.jpg)"></div>
-						<div class="v-align">
-							<div class="v-align-middle">
-								<h3 class="title">Geographical App</h3>
-								<h5 class="category">Web Application</h5>
-							</div>
-						</div>
-					</a>
-				</div>
-				<div class="col-md-4 animate-box">
-					<a href="#" class="item-grid text-center">
-						<div class="image" style="background-image: url(images/image_7.jpg)"></div>
-						<div class="v-align">
-							<div class="v-align-middle">
-								<h3 class="title">Geographical App</h3>
-								<h5 class="category">Web Application</h5>
-							</div>
-						</div>
-					</a>
-				</div>
-				<div class="col-md-4 animate-box">
-					<a href="#" class="item-grid text-center">
-						<div class="image" style="background-image: url(images/image_8.jpg)"></div>
-						<div class="v-align">
-							<div class="v-align-middle">
-								<h3 class="title">Geographical App</h3>
-								<h5 class="category">Web Application</h5>
-							</div>
-						</div>
-					</a>
-				</div>
-				<div class="col-md-4 animate-box">
-					<a href="#" class="item-grid text-center">
-						<div class="image" style="background-image: url(images/image_9.jpg)"></div>
-						<div class="v-align">
-							<div class="v-align-middle">
-								<h3 class="title">Geographical App</h3>
-								<h5 class="category">Web Application</h5>
-							</div>
-						</div>
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="fh5co-cta" style="background-image: url(images/slide_1.jpg);">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="col-md-12 text-center animate-box">
-				<h3>We Try To Update The Site Everyday</h3>
-				<p><a href="#" class="btn btn-primary btn-outline with-arrow">Get started now! <i class="icon-arrow-right"></i></a></p>
-			</div>
-		</div>
-	</div>
-
-	
-	
 	<!-- COLOCAR AQUI O  CONTEUDO DE CORPO-->	
 	<footer id="fh5co-footer" role="contentinfo">
 	

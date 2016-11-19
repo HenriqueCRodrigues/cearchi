@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -66,7 +65,62 @@
 
   </head>
   <body>
+  <?php 
+    session_start();
+  if (!isset($_SESSION['login_user']) || !isset($_SESSION['senha_user']))
+  {
+  
+  ?>
  <header id="fh5co-header" role="banner">
+ <div class="header">
+    <div class="header-top-strip">
+      <div class="container">
+        <div class="header-top-left">
+                 <div class="logo">
+             
+            
+              <div class="form-group">
+              <ul>
+            <a href="account.php"> <img src="images/icon1.png" height="35" width="35"><font color= #EBEBEB size=3>Login</font></a>&nbsp; &nbsp; &nbsp; 
+            <a href="register.php"><img src="images/pw.png" height="35" width="35"><font color= #EBEBEB size=3>Crie uma conta</font></a>
+
+              
+        
+            </ul>
+            </div>
+          
+                    </div>
+        </div> </div>
+      </div>
+    </div>
+   </header>
+
+  <div id="fh5co-page">
+  <header id="fh5co-header" role="banner">
+    <div class="container">
+      <div class="header-inner">
+        <a href="index.php" ><img src="images/logopeq.png"></a>
+        <nav role="navigation">
+          <ul>
+            <li><a href="index.php">Inicio</a></li>
+
+            
+            
+            <li><a href="contact.php">Contato</a></li>
+            <li><a href="about.php">Sobre</a></li>
+            <li class="cta"><a href="register.php">Crie sua conta</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <?php }
+
+    else
+    {
+    	$nome = $_SESSION['nome_user'];
+    ?>
+
+    <header id="fh5co-header" role="banner">
  <div class="header">
 		<div class="header-top-strip">
 			<div class="container">
@@ -77,12 +131,21 @@
               <div class="form-group">
               <ul>
 
-					 <a  href="perfil.html"><img src="images/icon2.png" height="60" width="60"></a><font color= #EBEBEB>Você está logado como </font><a href="perfil.html"><i>NOME</i></a>
+					 <a  href="perfil.php"><img src="images/icon2.png" height="60" width="60"></a><font color= #EBEBEB></font><a href="perfil.php"><i><?php echo "$nome"; ?></i></a>
 					
  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-                <li><i><input class="form-control2" name="nome_user" id="nome_user" placeholder="  Pesquisar..." type="text"></i></li>
-                <a href="Resultado.php"> <img src="images/lupa.png" width="40" height="40"></a>
-              
+                <li><i>
+           <form method='post' action="Resultado.php">
+           <table>
+           <tr>
+
+           <td><input class="form-control2" name="nome_user" id="nome_user" placeholder="  Pesquisar..." type="text"> </i></li></td>
+           <td><font color="white">......</font>      <input type='image' title='Buscar' src='images/lupa.png' width="40" height="40"></td>
+            </tr>
+          
+
+           </table>
+           </form>
         
           	</ul>
           	</div>
@@ -97,61 +160,81 @@
   <header id="fh5co-header" role="banner">
     <div class="container">
       <div class="header-inner">
-        <a href="index.html" ><img src="images/logopeq.png"></a>
+        <a href="index.php" ><img src="images/logopeq.png"></a>
         <nav role="navigation">
           <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="menumensagens.html">Mensagens</a></li>
-            <li><a href="work.html">Serviços</a></li>
-            <li><a href="contact.html">Contato</a></li>
+            <li><a href="index.php">Inicio</a></li>
+            <li><a href="menumensagens.php">Mensagens</a></li>
+            <li><a href="#">Serviços</a></li>
+            <li><a href="contact.php">Contato</a></li>
+            <li><a href="about.php">Sobre</a></li>
             <li><a href="logout.php">Deslogar</a></li>
-            <li class="cta"><a href="perfil.html">Acesse seu Perfil</a></li>
+            <li class="cta"><a href="perfil.php">Acesse seu Perfil</a></li>
           </ul>
         </nav>
       </div>
     </div>
+ <?php }
+ ?>
   </header>
   <!-- COLOCAR AQUI O  CONTEUDO DE CORPO-->
 
-    </div>
 
-<div id="fh5co-page">
-  <header id="fh5co-header" role="banner">
-  <div class="container">
-    <div class="login-page">
-          <div class="dreamcrub">
-           <ul class="breadcrumbs">
-                   <li class="home">
-                       <a href="index.html" title="Go to Home Page">Home</a>&nbsp;
-                       <span>&gt;</span>
-                    </li>
-                    <li class="women">
-                        <font color="white"> Login </font>
-                    </li>
-                </ul>
-                <ul class="previous">
-                  <li><a href="index.html">Retornar</a></li>
-                </ul>
-                <div class="clearfix"></div>
-         </div>
-         </div></div></header>
+  <!-- COLOCAR AQUI O  CONTEUDO DE CORPO-->
 
+	
+	<div class="container">
+		
+	</div>
+	<aside id="fh5co-hero" class="js-fullheight">
+		<div class="flexslider js-fullheight">
+			<ul class="slides">
+		   	<li style="background-image: url(images/slide_1.jpg);">
+		   		<div class="overlay-gradient"></div>
+		   		<div class="container">
+		   			<div class="col-md-10 col-md-offset-1 text-center js-fullheight slider-text">
+		   				<div class="slider-text-inner">
+		   					<h2>Teste</h2>
+		   					<p><a href="#" class="btn btn-primary btn-lg">Crie sua conta!</a></p>
+		   				</div>
+		   			</div>
+		   		</div>
+		   	</li>
+		   	<li style="background-image: url(images/slide_2.jpg);">
+		   		<div class="container">
+		   			<div class="col-md-10 col-md-offset-1 text-center js-fullheight slider-text">
+		   				<div class="slider-text-inner">
+		   					<h2>Teste 1 !</h2>
+		   					<p><a href="#" class="btn btn-primary btn-lg">Crie sua conta!</a></p>
+		   				</div>
+		   			</div>
+		   		</div>
+		   	</li>
+		   	<li style="background-image: url(images/slide_3.jpg);">
+		   		<div class="container">
+		   			<div class="col-md-10 col-md-offset-1 text-center js-fullheight slider-text">
+		   				<div class="slider-text-inner">
+		   					<h2>Teste 2 !</h2>
+		   					<p><a href="#" class="btn btn-primary btn-lg">Crie sua conta!</a></p>
+		   				</div>
+		   			</div>
+		   		</div>
+		   	</li>
+		  	</ul>
+	  	</div>
+	</aside>
+	
 
-
-
-
-
-
-
-
+	
+	
 	<!-- COLOCAR AQUI O  CONTEUDO DE CORPO-->	
 	<footer id="fh5co-footer" role="contentinfo">
 	
 		<div class="container">
 			<div class="col-md-3 col-sm-12 col-sm-push-0 col-xs-12 col-xs-push-0">
 				<h3>Sobre nós</h3>
-				<p>Já nos conhece? Deseja fazer parte da nossa equipe? Estamos te esperando! </p></br>
-				<p><a href="about.html" class="btn btn-primary btn-outline with-arrow btn-sm"> Clique aqui! <i class="icon-arrow-right"></i></a></p>
+				<p>Já nos conhece? Deseja fazer parte da nossa equipe? Estamos te esperando! </p>
+				<p><a href="#" class="btn btn-primary btn-outline with-arrow btn-sm"> Entre em contato! <i class="icon-arrow-right"></i></a></p>
 			</div>
 			<div class="col-md-6 col-md-push-1 col-sm-12 col-sm-push-0 col-xs-12 col-xs-push-0">
 				<h3>Nossos serviços</h3>

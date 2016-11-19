@@ -1,6 +1,7 @@
 <?php
 include "Conexao_mysql.php";
 include "Validador_de_Login.php";
+$nome = $_SESSION['nome_user'];
 ?>
 
 <!DOCTYPE html>
@@ -81,11 +82,21 @@ include "Validador_de_Login.php";
               <div class="form-group">
               <ul>
 
-					 <a  href="perfil.html"><img src="images/icon2.png" height="60" width="60"></a><font color= #EBEBEB>Você está logado como </font><a href="perfil.html"><i>NOME</i></a>
+					 <a  href="perfil.php"><img src="images/icon2.png" height="60" width="60"></a><font color= #EBEBEB></font><a href="perfil.php"><i><?php echo "$nome"; ?></i></a>
 					
  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-                <li><i><input class="form-control2" name="nome_user" id="nome_user" placeholder="  Pesquisar..." type="text"></i></li>
-                <a href="Resultado.php"> <img src="images/lupa.png" width="40" height="40"></a>
+                 <li><i>
+           
+           <table>
+           <form method='post' action="Resultado.php">
+           <tr>
+
+           <td><input class="form-control2" name="nome_user" id="nome_user" placeholder="  Pesquisar..." type="text"> </i></li></td>
+           <td><font color="white">..</font>      <input type='image' title='Buscar' src='images/lupa.png' width="40" height="40"></td>
+            </tr>
+          
+            </form>
+           </table>
               
         
           	</ul>
@@ -101,15 +112,16 @@ include "Validador_de_Login.php";
   <header id="fh5co-header" role="banner">
     <div class="container">
       <div class="header-inner">
-        <a href="index.html" ><img src="images/logopeq.png"></a>
+        <a href="index.php" ><img src="images/logopeq.png"></a>
         <nav role="navigation">
           <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="menumensagens.html">Mensagens</a></li>
-            <li><a href="work.html">Serviços</a></li>
-            <li><a href="contact.html">Contato</a></li>
+            <li><a href="index.php">Inicio</a></li>
+            <li><a href="menumensagens.php">Mensagens</a></li>
+            <li><a href="#">Serviços</a></li>
+            <li><a href="contact.php">Contato</a></li>
+            <li><a href="about.php">Sobre</a></li>
             <li><a href="logout.php">Deslogar</a></li>
-            <li class="cta"><a href="perfil.html">Acesse seu Perfil</a></li>
+            <li class="cta"><a href="perfil.php">Retorne ao Seu Perfil</a></li>
           </ul>
         </nav>
       </div>
@@ -126,15 +138,23 @@ include "Validador_de_Login.php";
           <div class="dreamcrub">
            <ul class="breadcrumbs">
                    <li class="home">
-                       <a href="index.html" title="Go to Home Page">Home</a>&nbsp;
+                       <a href="index.php" title="Retornar a Pagina Principal">Home</a>&nbsp;
+                       <span>&gt;</span>
+                    </li>
+                    <li class="home">
+                       <a href="perfil.php" title="Retornar para o Seu Perfil">Perfil</a>&nbsp;
+                       <span>&gt;</span>
+                    </li>
+                    <li class="home">
+                       <a href="menumensagens.php" title="Retornar para suas Mensagens">Mensagens</a>&nbsp;
                        <span>&gt;</span>
                     </li>
                     <li class="women">
-                        <font color="white"> Login </font>
+                        <font color="white"> Detalhe da Mensagem </font>
                     </li>
                 </ul>
                 <ul class="previous">
-                  <li><a href="index.html">Retornar</a></li>
+                  <li><a href="perfil.php" title="Retornar para o Seu Perfil">Retornar</a></li>
                 </ul>
                 <div class="clearfix"></div>
          </div>
@@ -162,22 +182,50 @@ include "Validador_de_Login.php";
 			<x2>Menu de mensagens </x2>
 			<p></p></br>
 
-				
-						<center>
+				<?php
+
+
+			if (!isset($_GET["assunto"])) {
+				header("Location: index.html");
+			}
+
+			$assunto = $_GET["assunto"];
+
+			$sql = mysql_query("SELECT * FROM msg WHERE id_assunto = '$assunto'");
+			$row = mysql_num_rows($sql);
+
+
+			if ($row > 0) {
+				while ($linha = mysql_fetch_array($sql)) {
+					
+					$msg = $linha['mensagem'];
+					$dest = $linha['id_dest'];
+					$reme = $linha['id_reme'];
+					$assunto = $linha['id_assunto'];
+					$sql2 = mysql_query("SELECT nome_user FROM usuario WHERE id_user = '$reme'");
+					$nome = mysql_fetch_array($sql2);
+					
+					echo '<center>
 					<div class="container">
 						<div class="col-sm-4">
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h3 class="panel-title"> diz:</h3>
+									<h3 class="panel-title">'.$nome[0].' diz:</h3>
 								</div>
 								<div class="panel-body">
-									
+									'.$msg.'
 								</div>
 							</div>
-						</center>
+						</center>';
+						
+					}
+				}
+				
+
+				?>
 						
 
-				<!--<form method="post" action="enviar_mensagem.php?id_assunto=<?php echo "$assunto";?>&id_dest=<?php echo "$dest"; ?>">-->
+				<form method="post" action="enviar_mensagem.php?id_assunto=<?php echo "$assunto";?>&id_dest=<?php echo "$dest"; ?>">
 
 
 						<x1>Nova Mensagem:</x1><br>

@@ -5,7 +5,7 @@
 <script type="text/javascript">
 	function sucesso_login()
 	{
-		setTimeout("window.location='index.html'", 2000);
+		setTimeout("window.location='index.php'", 2000);
 	}
 
 	function fracasso_login()
@@ -37,6 +37,7 @@ if ($row > 0)
 {
 	session_start();
 	$_SESSION['id_user'] = $consulta['id_user'];
+	$_SESSION['nome_user'] = $consulta['nome_user'];
 	$_SESSION['login_user'] = $_POST['login_user'];
 	$_SESSION['senha_user'] = $_POST['senha_user'];
 	$_SESSION['tipo_usuario'] = $consulta['tipo_usuario'];

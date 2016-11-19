@@ -65,7 +65,59 @@
 
   </head>
   <body>
+ <?php 
+    session_start();
+  if (!isset($_SESSION['login_user']) || !isset($_SESSION['senha_user']))
+  {
+  
+  ?>
  <header id="fh5co-header" role="banner">
+ <div class="header">
+    <div class="header-top-strip">
+      <div class="container">
+        <div class="header-top-left">
+                 <div class="logo">
+             
+            
+              <div class="form-group">
+              <ul>
+            <a href="account.php"> <img src="images/icon1.png" height="35" width="35"><font color= #EBEBEB size=3>Login</font></a>&nbsp; &nbsp; &nbsp; 
+            <a href="register.php"><img src="images/pw.png" height="35" width="35"><font color= #EBEBEB size=3>Crie uma conta</font></a>
+
+              
+        
+            </ul>
+            </div>
+          
+                    </div>
+        </div> </div>
+      </div>
+    </div>
+   </header>
+
+  <div id="fh5co-page">
+  <header id="fh5co-header" role="banner">
+    <div class="container">
+      <div class="header-inner">
+        <a href="index.php" ><img src="images/logopeq.png"></a>
+        <nav role="navigation">
+          <ul>
+            <li><a href="index.php">Inicio</a></li>
+            <li><a href="contact.php">Contato</a></li>
+            <li><a href="about.php">Sobre</a></li>
+            <li class="cta"><a href="register.php">Crie sua conta</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <?php }
+
+    else
+    {
+    	$nome = $_SESSION['nome_user'];
+    ?>
+
+    <header id="fh5co-header" role="banner">
  <div class="header">
 		<div class="header-top-strip">
 			<div class="container">
@@ -76,10 +128,21 @@
               <div class="form-group">
               <ul>
 
-					 <a  href="perfil.html"><img src="images/icon2.png" height="60" width="60"></a><font color= #EBEBEB>Você está logado como </font><a href="#"><i>NOME</i></a>
+					 <a  href="perfil.php"><img src="images/icon2.png" height="60" width="60"></a><font color= #EBEBEB></font><a href="perfil.php"><i><?php echo "$nome"; ?></i></a>
 					
- &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
-                <li><i><input class="form-control2" name="busca" id="busca" placeholder="  Pesquisar..." type="text"></i></li>
+ &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+                <li><i>
+           <form method='post' action="Resultado.php">
+           <table width="300" align="center">
+           <tr>
+
+           <td><input class="form-control2" name="nome_user" id="nome_user" placeholder="  Pesquisar..." type="text"> </i></li></td>
+           <td><input type='image' title='Buscar' src='images/lupa.png' width="40" height="40"></td>
+            </tr>
+          
+
+           </table>
+           </form>
               
         
           	</ul>
@@ -95,44 +158,23 @@
   <header id="fh5co-header" role="banner">
     <div class="container">
       <div class="header-inner">
-        <a href="index.html" ><img src="images/logopeq.png"></a>
+        <a href="index.php" ><img src="images/logopeq.png"></a>
         <nav role="navigation">
           <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="work.html">Mensagens</a></li>
-            
-            <li><a href="about.html">Sobre</a></li>
-            <li><a href="contact.html">Contato</a></li>
-            <li class="cta"><a href="register.html">Crie sua conta</a></li>
+            <li><a href="index.php">Inicio</a></li>
+            <li><a href="menumensagens.php">Mensagens</a></li>
+            <li><a href="#">Serviços</a></li>
+            <li><a href="contact.php">Contato</a></li>
+            <li><a href="about.php">Sobre</a></li>
+            <li><a href="logout.php">Deslogar</a></li>
+            <li class="cta"><a href="perfil.php">Acesse Seu Perfil</a></li>
           </ul>
         </nav>
       </div>
     </div>
-  </header>
-  <!-- COLOCAR AQUI O  CONTEUDO DE CORPO-->
-
-    </div>
-
-<div id="fh5co-page">
-  <header id="fh5co-header" role="banner">
-  <div class="container">
-    <div class="login-page">
-          <div class="dreamcrub">
-           <ul class="breadcrumbs">
-                   <li class="home">
-                       <a href="index.html" title="Go to Home Page">Home</a>&nbsp;
-                       <span>&gt;</span>
-                    </li>
-                    <li class="women">
-                        <font color="white"> Login </font>
-                    </li>
-                </ul>
-                <ul class="previous">
-                  <li><a href="index.html">Retornar</a></li>
-                </ul>
-                <div class="clearfix"></div>
-         </div>
-         </div></div></header>
+ <?php }
+ ?>
+ </header>
 <!--CORPO DE TEXTO ABAIXO-->
 
 
