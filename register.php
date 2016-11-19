@@ -327,8 +327,23 @@ for ($i = 0; $i < $num; $i++) {
 						<div class="form-group">
    <select class="form-control3" name="tipos_de_servico_id_ts">
     <option value="">&nbsp&nbspSelecione</option>
-	<option value="ELETRICISTA">ELETRICISTA</option>
-	<option value="ENCANADOR">ENCANADOR</option>
+    <?php
+    	$sql = mysql_query("SELECT * FROM tipos_de_servico ORDER BY servico_ts");
+
+			$row = mysql_num_rows($sql);
+
+			if ($row > 0) 
+			{
+				while ($linha = mysql_fetch_array($sql)) 
+				{
+					$tipos_de_servico = $linha['servico_ts'];
+					echo "<option value='$tipos_de_servico'>$tipos_de_servico</option>";
+
+				}
+					
+
+			}
+    ?>
 	</select>
 						</div>
 						</div>
