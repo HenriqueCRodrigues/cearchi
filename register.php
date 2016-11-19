@@ -79,29 +79,27 @@ for ($i = 0; $i < $num; $i++) {
   <body>
  <header id="fh5co-header" role="banner">
  <div class="header">
-		<div class="header-top-strip">
-			<div class="container">
-				<div class="header-top-left">
+    <div class="header-top-strip">
+      <div class="container">
+        <div class="header-top-left">
                  <div class="logo">
              
             
               <div class="form-group">
               <ul>
+            <a href="account.html"> <img src="images/icon1.png" height="35" width="35"><font color= #EBEBEB size=3>Login</font></a>&nbsp; &nbsp; &nbsp; 
+            <a href="register.php"><img src="images/pw.png" height="35" width="35"><font color= #EBEBEB size=3>Crie uma conta</font></a>
 
-					 <a  href="perfil.html"><img src="images/icon2.png" height="60" width="60"></a><font color= #EBEBEB>Você está logado como </font><a href="#"><i>NOME</i></a>
-					
- &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
-                <li><i><input class="form-control2" name="busca" id="busca" placeholder="  Pesquisar..." type="text"></i></li>
               
         
-          	</ul>
-          	</div>
-        	
+            </ul>
+            </div>
+          
                     </div>
-				</div> </div>
-			</div>
-		</div>
-	 </header>
+        </div> </div>
+      </div>
+    </div>
+   </header>
 
   <div id="fh5co-page">
   <header id="fh5co-header" role="banner">
@@ -111,7 +109,7 @@ for ($i = 0; $i < $num; $i++) {
         <nav role="navigation">
           <ul>
             <li><a href="index.html">Inicio</a></li>
-            <li><a href="work.html">Mensagens</a></li>
+
             
             <li><a href="about.html">Sobre</a></li>
             <li><a href="contact.html">Contato</a></li>
