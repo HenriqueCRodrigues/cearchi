@@ -127,8 +127,34 @@
 				$busca = $_POST['nome_user'];
 				$tipo = $_SESSION['tipo_usuario'];
 				$id = $_SESSION['id_user'];
-				$sql = mysql_query("SELECT * FROM usuario WHERE nome_user like '%$busca%' AND status_user='A' AND tipo_usuario='C' OR tipo_usuario='P' ORDER BY nome_user ");
+				$sql = mysql_query("SELECT * FROM usuario WHERE nome_user like '%$busca%' AND status_user='A' ORDER BY nome_user ");
 				$row = mysql_num_rows($sql);
+
+
+
+
+				//Teste de implementação de pesquisa;
+				$sql2 = mysql_query("SELECT * FROM tipos_de_servico WHERE servico_ts like '%$busca%'");
+				while($consulta2 = mysql_fetch_array($sql2))
+				{
+					$tipo = $consulta2['servico_ts'];
+					$id_serv = $consulta2['id_ts'];
+				
+				$sql1 = mysql_query("SELECT * FROM servicos_fornecidos WHERE fk_id_ts like '$id_serv'");
+				while ($consulta1 = mysql_fetch_array($sql1)) 
+				{
+					$result = $consulta1['fk_id_user'];	
+				
+				
+
+				$sql3 = mysql_query("SELECT * FROM usuario WHERE id_user like '$result' AND status_user='A' ORDER BY nome_user ");
+				while($consulta3 = mysql_fetch_array($sql3))
+				{
+				$nomi = $consulta3['nome_user'];
+				echo "$nomi";
+				}
+				}
+				}
 
 
 				if ($row > 0) {
@@ -168,6 +194,18 @@
 				
 					}	
 				}
+
+
+
+
+
+
+
+
+
+
+
+
 				?>
 			</table>
 
@@ -219,5 +257,4 @@
 		</div>
 	</div>
 </body>
-</html>
 </html>
