@@ -2,6 +2,7 @@
 	include "Conexao_mysql.php";
 	include "Validador_de_Login.php";
 
+	$nome = $_SESSION['nome_user'];
 	$id_terceiro = $_GET['id_terceiro'];
 	$id_secao = $_SESSION['id_user'];
 	$sql = mysql_query("SELECT * FROM usuario WHERE id_user like '$id_terceiro'");
@@ -14,183 +15,282 @@
 
 
 ?>
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE html>
-<html>
-<head>
-<title>Cearchi | Cadastrando mensagem </title>
-<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="js/jquery.min.js"></script>
-<!-- Custom Theme files -->
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-<!-- Custom Theme files -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Eshop Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Cearchi - Enviar mensagem</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
+  <meta name="keywords" content="free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
+  <meta name="author" content="FreeHTML5.co" />
 
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!--webfont-->
-<!-- for bootstrap working -->
-	<script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
-<!-- //for bootstrap working -->
-<!-- cart -->
-	<script src="js/simpleCart.min.js"> </script>
-<!-- cart -->
-<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
-</head>
+  <!-- 
+  //////////////////////////////////////////////////////
 
-<body>
-	<!-- header-section-starts -->
-	<div class="header">
+  FREE HTML5 TEMPLATE 
+  DESIGNED & DEVELOPED by FreeHTML5.co
+    
+  Website:    http://freehtml5.co/
+  Email:      info@freehtml5.co
+  Twitter:    http://twitter.com/fh5co
+  Facebook:     https://www.facebook.com/fh5co
+
+  //////////////////////////////////////////////////////
+   -->
+
+    <!-- Facebook and Twitter integration -->
+  <meta property="og:title" content=""/>
+  <meta property="og:image" content=""/>
+  <meta property="og:url" content=""/>
+  <meta property="og:site_name" content=""/>
+  <meta property="og:description" content=""/>
+  <meta name="twitter:title" content="" />
+  <meta name="twitter:image" content="" />
+  <meta name="twitter:url" content="" />
+  <meta name="twitter:card" content="" />
+
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <link href="https://fonts.googleapis.com/css?family=Raleway:200,300,400,700" rel="stylesheet">
+  
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="css/animate.css">
+  <!-- Icomoon Icon Fonts-->
+  <link rel="stylesheet" href="css/icomoon.css">
+  <!-- Bootstrap  -->
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <!-- Flexslider  -->
+  <link rel="stylesheet" href="css/flexslider.css">
+  <!-- Owl Carousel  -->
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <!-- Theme style  -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Modernizr JS -->
+  <script src="js/modernizr-2.6.2.min.js"></script>
+  <!-- FOR IE9 below -->
+  <!--[if lt IE 9]>
+  <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  </head>
+  <body>
+ <header id="fh5co-header" role="banner">
+ <div class="header">
 		<div class="header-top-strip">
 			<div class="container">
 				<div class="header-top-left">
                  <div class="logo">
-					<ul>
-					<li><a href="index.html"><img src="images/logopeq.png"</a></li>
-				
-						<li><a href="account.html"> <img src="images/icon1.png">LOGIN</a></li>
-						<li><a href="register.html"><img src="images/pw.png">Crie uma conta</a></li>			
-					</ul>
+             
+            
+              <div class="form-group">
+              <ul>
+
+					 <a  href="perfil.php"><img src="images/icon2.png" height="60" width="60"></a><font color= #EBEBEB></font><a href="perfil.php"><i><?php echo "$nome"; ?></i></a>
+					
+ &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+                  <li><i>
+           <form method='post' action="Resultado.php">
+           <table>
+           <tr>
+
+           <td><input class="form-control2" name="nome_user" id="nome_user" placeholder="  Pesquisar..." type="text"> </i></li></td>
+           <td><font color="white">..  ...</font>      <input type='image' title='Buscar' src='images/lupa.png' width="40" height="40"></td>
+            </tr>
+          
+
+           </table>
+           </form>
+          	</ul>
+          	</div>
+        	
                     </div>
 				</div> </div>
 			</div>
 		</div>
-	</div>
-    
-    
-	<!-- header-section-ends -->
-		<div class="banner-top">
-		<div class="container">
-				<nav class="navbar navbar-default" role="navigation">
-	    <div class="navbar-header">
-	        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-		        <span class="sr-only">Toggle navigation</span>
-		        <span class="icon-bar"></span>
-		        <span class="icon-bar"></span>
-		        <span class="icon-bar"></span>
-	        </button>
-				
-	    </div>
-	    <!--/.navbar-header-->
-	
-	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-	        <ul class="nav navbar-nav">
-			<li><a href="index.html">Início</a></li>
-		    <li><a href="#">Procurar Serviços</a></li>
-		    <li><a href="#">anunciar</a></li>
-		    <li><a href="accountconfig">configurações da conta</a></li>
-            <li><a href="contact.html">CONTATO</a></li>
-	        </ul>
-	    </div>
-	    <!--/.navbar-collapse-->
-	</nav>
-	<!--/.navbar-->
-</div>
-</div>
+	 </header>
 
-<div class="registration-form">
-	<div class="container">
-	<div class="dreamcrub">
-			   	 <ul class="breadcrumbs">
+  <div id="fh5co-page">
+  <header id="fh5co-header" role="banner">
+    <div class="container">
+      <div class="header-inner">
+        <a href="index.php" ><img src="images/logopeq.png"></a>
+        <nav role="navigation">
+          <ul>
+            <li><a href="index.php">Inicio</a></li>
+            <li><a href="menumensagens.php">Mensagens</a></li>
+            <li><a href="#">Serviços</a></li>
+            <li><a href="contact.php">Contato</a></li>
+            <li><a href="about.php">Sobre</a></li>
+            <li><a href="logout.php">Deslogar</a></li>
+            <li class="cta"><a href="perfil.php">Retorne ao Seu Perfil</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <!-- COLOCAR AQUI O  CONTEUDO DE CORPO-->
+
+    </div>
+
+<div id="fh5co-page">
+  <header id="fh5co-header" role="banner">
+  <div class="container">
+    <div class="login-page">
+          <div class="dreamcrub">
+           <ul class="breadcrumbs">
+                   <li class="home">
+
+                       <a href="index.php" title="Retornar a Pagina Principal">Home</a>&nbsp;
+                       <span>&gt;</span>
+                    </li>
                     <li class="home">
-                       <a href="index.html" title="Go to Home Page">Home</a>&nbsp;
+                       <a href="perfil.php" title="Retornar para o Seu Perfil">Perfil</a>&nbsp;
+                       <span>&gt;</span>
+                    </li>
+                    <li class="home">
+                       <a href="consultar.php" title="Retornar para Consultar Usuarios ou Tipos de Serviço Novamente">Consultar Usuarios ou Tipos de Serviço</a>&nbsp;
+                       <span>&gt;</span>
+                    </li>
+
+                    <li class="home">
+                       <a href="consultar.php" title="Retornar para Resultado da Consulta de Usuario ou Tipos de Serviço">Resultado da Consulta de Usuario ou Tipos de Serviço</a>&nbsp;
                        <span>&gt;</span>
                     </li>
                     <li class="women">
-                       Enviando mensagem
+                        <font color="white">Enviar Mensagem para <?php echo "$nome_destinatario"; ?></font>
                     </li>
                 </ul>
                 <ul class="previous">
-                	<li><a href="index.html">Voltar para página anterior</a></li>
+                  <li><a href="consultar.php" title="Retornar para Consultar Usuarios ou Tipos de Serviço Novamente">Retornar</a></li>
                 </ul>
                 <div class="clearfix"></div>
-			   </div>
-<!-- ADICIONAR DAQUI PRA BAIXO O CONTEUDO DO SITE-->
-<!-- ADICIONAR DAQUI PRA BAIXO O CONTEUDO DO SITE-->
-
-
-
-<div class="contact-form">
-			<div class="contact-info">
-				<h2>Cadastrar nova mensagem</h2>
-				Para que a mensagem seja enviada, será necessário o preenchimento de todos os campos a seguir:
-			</div>
-			<?php echo"<form method='post' action='cadastrar_mensagens?id_terceiro=".$id_terceiro."'>"; ?>
-				<div class="contact-left">
-					<input type="text" placeholder="Destino" required value="<?php echo "$nome_destinatario"; ?>" readonly="readonly">
-					<input type="text" name="titulo_mensagem" id="titulo_mensagem" placeholder="Assunto da mensagem" required>
-					
-				</div>
-				<div class="contact-right">
-					<textarea name="msg_mensagem" id="msg_mensagem" placeholder="Corpo de texto" required></textarea>
-				</div>
-				<div class="clearfix"></div>
-				<input type="submit" value="ENVIAR MENSAGEM">
-			</form>
-		</div>
-	</div>
+         </div>
+         </div></div></header>
 
 
 
 
-<!-- ADICIONAR DAQUI PRA CIMA O CONTEUDO DO SITE-->     
-<!-- ADICIONAR DAQUI PRA CIMA O CONTEUDO DO SITE-->   
 
-<!-- content-section-ends-here -->
-        
-        
-	<div class="cards text-up">	</div>
-		
-		<div class="footer">
+
 		<div class="container">
-		 <div class="footer_top">
-			<div class="span_of_4">
-				<div class="col-md-3 span1_of_4">
-					
-                    	
+			<div class="row">
+				<div class="register-form">
+					<x2>Enviar mensagem</x2>
+					<p>Preenchendo o campo e confirmando você estará enviando uma mensagem ao destinatário escolhido, confirme o destinatário em "Informações do destinatário" ao lado dos campos.</p><br><br>
+
 				</div>
-                <div class="col-md-3 span1_of_4">
-					<style="text-align:justify"><h4>OPÇÕES DA CONTA</h4>
-					<ul class="f_nav">
-						<li><a href="account.html">REALIZAR SEU LOGIN </a></li>
-						<li><a href="register.html">CRIAR UMA CONTA</a></li>
-						<li><a href="consultas.html">CONSULTAR USUÁRIOS</a></li>
-                        <li><a href="accountconfig.html">CONFIGURAÇÕES DA CONTA</a></li></style>
-                        
-						
-					</ul>				
-				</div>
-				<div class="col-md-3 span1_of_4">
-					<h4>DÚVIDAS</h4>
-					<ul class="f_nav">
-						<li><a href="#">O QUE É A CEARCHI SERVIÇOS</a></li>
-						<li><a href="#">O QUE É A BUG MONKEYS</a></li>
-						<li><a href="#">COMO FUNCIONA O SITE</a></li>
-						<li><a href="#">PARCEIROS</a></li>
-					</ul>	
-				</div>
+				<?php echo"<form method='post' action='cadastrar_mensagens?id_terceiro=".$id_terceiro."'>"; ?>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<input class="form-control" type="text" placeholder="Destino" required value="<?php echo "$nome_destinatario"; ?>" readonly="readonly">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<input class="form-control" type="text" name="titulo_mensagem" id="titulo_mensagem" placeholder="Assunto da mensagem" required>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<textarea class="form-control" cols="30" rows="7" placeholder="Mensagem" name="msg_mensagem" id="msg_mensagem" required></textarea>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<input value="Enviar" class="btn btn-primary" type="submit">
+                <input value="Voltar" class="btn btn-primary" type="button" onclick="Voltar()">
+                </form>
+							</div>
+              <script type="text/javascript">
+                function Voltar()
+                {
+                  location.href="perfil.php";
+                }
+              </script>
+
+						</div>
+					</div>
 				
-				<div class="col-md-3 span1_of_4">
-					
-				</div>
-				<div class="clearfix"></div>
-				</div>
-		  </div>
-		  <div class="cards text-center">
-				<img src="images/cards.jpg" alt="" />
-		  </div>
-		  <div class="copyright text-center">
-				<p>© 2016 CEARCHI Serviços. All Rights Reserved | Design by BUGMONKEYS SOFTWARE</p>
-		  </div>
+			</div>
+		</div>	
+	</div>
+	 <div class="clearfix"></div>
+
+               
+             
+
+	
+	<!-- COLOCAR AQUI O  CONTEUDO DE CORPO-->	
+	<footer id="fh5co-footer" role="contentinfo">
+	
+		<div class="container">
+			<div class="col-md-3 col-sm-12 col-sm-push-0 col-xs-12 col-xs-push-0">
+				<h3>Sobre nós</h3>
+				<p>Já nos conhece? Deseja fazer parte da nossa equipe? Estamos te esperando! </p>
+				<p><a href="#" class="btn btn-primary btn-outline with-arrow btn-sm"> Entre em contato! <i class="icon-arrow-right"></i></a></p>
+			</div>
+			<div class="col-md-6 col-md-push-1 col-sm-12 col-sm-push-0 col-xs-12 col-xs-push-0">
+				<h3>Nossos serviços</h3>
+				<ul class="float">
+					<li><a href="#">Web Design</a></li>
+					<li><a href="#">Branding &amp; Identity</a></li>
+					<li><a href="#">Free HTML5</a></li>
+					<li><a href="#">HandCrafted Templates</a></li>
+				</ul>
+				<ul class="float">
+					<li><a href="#">Free Bootstrap Template</a></li>
+					<li><a href="#">Free HTML5 Template</a></li>
+					<li><a href="#">Free HTML5 &amp; CSS3 Template</a></li>
+					<li><a href="#">HandCrafted Templates</a></li>
+				</ul>
+
+			</div>
+
+			<div class="col-md-2 col-md-push-1 col-sm-12 col-sm-push-0 col-xs-12 col-xs-push-0">
+				<h3>Siga-nos</h3>
+				<ul class="fh5co-social">
+					<li><a href="#"><i class="icon-twitter"></i></a></li>
+					<li><a href="#"><i class="icon-facebook"></i></a></li>
+					<li><a href="#"><i class="icon-google-plus"></i></a></li>
+					<li><a href="#"><i class="icon-instagram"></i></a></li>
+				</ul>
+			</div>
+			
+			
+			<div class="col-md-12 fh5co-copyright text-center">
+				<p>&copy; 2016 Cearchi Serviços. All Rights Reserved. <span>Developed by BUG MONKEYS SOFTWARES</a></span></p>	
+			</div>
+			
 		</div>
-		</div>
-</body>
+	</footer>
+	</div>
+	
+	
+	<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<!-- Owl Carousel -->
+	<script src="js/owl.carousel.min.js"></script>
+	<!-- Flexslider -->
+	<script src="js/jquery.flexslider-min.js"></script>
+
+	<!-- MAIN JS -->
+	<script src="js/main.js"></script>
+
+	</body>
 </html>
+
