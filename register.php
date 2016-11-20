@@ -205,7 +205,11 @@ for ($i = 0; $i < $num; $i++) {
 						<div class="col-md-6">
 							<li class="text-info" style="list-style-type:none">CPF </li>
 							<div class="form-group">
-								<input class="form-control" placeholder="CPF" type="text" name="cpf_user" id="cpf_user">
+
+
+								<input class="form-control" placeholder="CPF" type="text" name="cpf_user" id="cpf_user" maxlength="14" onkeypress="this.value = FormataCpf(event)" onpaste="return false;"/>
+
+
 							</div>
 						</div>
 						<div class="col-md-6">
@@ -456,8 +460,35 @@ for ($i = 0; $i < $num; $i++) {
 
 	<!-- MAIN JS -->
 	<script src="js/main.js"></script>
+	<script type="text/javascript">
+	function verificaNumero(e)
+	{
+		if(e.which != 8 && e.which != 0  && (e.which < 48 || e.which > 57))
+		{
+			return false;
+		}
+	}
+		
+		$(document).ready(function()
+		{
+			$("#cpf_user").keypress(verificaNumero);
 
+		});
+
+
+			function FormataCpf(evt)
+			{
+
+			vr = (navigator.appName == 'NetScape') ?evt.target.value : evt.srcElement.value;
+
+			if(vr.length == 3) vr = vr+".";
+			if(vr.length == 7) vr = vr+".";
+			if(vr.length == 11) vr = vr+".";
+			return vr;
+			}
+</script>
 	</body>
+	
 </html>
 
 <?php
