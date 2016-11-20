@@ -44,6 +44,7 @@ if (strcmp($tipo_usuario, 'P') == 0)
 		$check_id = mysql_query("SELECT * FROM usuario") or die(mysql_error());
 		$row = mysql_num_rows($check_id);
 		$id_user = $row;
+		$sql1 = mysql_query("INSERT INTO locais_atuacao (id_cidade, id_user) values ('$cidade', '$id_user')") or die(mysql_error());
 	
 
 		$check_id_ts = mysql_query("SELECT id_ts FROM tipos_de_servico WHERE servico_ts like '$servicos' ")or die(mysql_error());
@@ -112,4 +113,3 @@ elseif (strcmp($tipo_usuario, 'C') == 0)
 
 
 ?> 	
-
