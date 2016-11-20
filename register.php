@@ -181,13 +181,13 @@ for ($i = 0; $i < $num; $i++) {
 						<div class="col-md-6">
 							<li class="text-info" style="list-style-type:none">Senha </li>
 							<div class="form-group">
-								<input class="form-control" placeholder="Senha" type="text" name="senha_user" id="senha_user">
+								<input class="form-control" placeholder="Senha" type="password" name="senha_user" id="senha_user">
 							</div>
 						</div>
 						<div class="col-md-6">
 							<li class="text-info" style="list-style-type:none">Confirma senha </li>
 							<div class="form-group">
-								<input class="form-control" placeholder="Senha" type="text" name="senha_user" id="senha_user">
+								<input class="form-control" placeholder="Senha" type="password" name="senha_user" id="senha_user">
 							</div>
 						</div>
 						<div class="col-md-6">

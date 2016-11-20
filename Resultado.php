@@ -197,25 +197,24 @@
 				$tipo = $_SESSION['tipo_usuario'];
 				$id = $_SESSION['id_user'];
 				$sql = mysql_query("SELECT * FROM usuario INNER JOIN servicos_fornecidos ON usuario.id_user=servicos_fornecidos.fk_id_user  INNER JOIN tipos_de_servico ON servicos_fornecidos.fk_id_ts=tipos_de_servico.id_ts WHERE nome_user like '%$busca%' OR servico_ts like '%$busca%' AND status_user='A' ORDER BY nome_user ");
-				$row = mysql_num_rows($sql);
 
-				if ($row > 0) {
+				$row = mysql_num_rows($sql);
+				
+				if ($row > 0) 
+				{
 					while ($linha = mysql_fetch_array($sql)) {
 						$nome = $linha['nome_user'];
-						$verifica = $linha['tipo_usuario'];
 						$tipo = $linha['servico_ts'];
-						if (strcmp($verifica, 'C') == 0)
+						$id_terceiro = $linha['id_user'];	
+
+						if (strcmp($id, $id_terceiro) != 0) 			
 						{
-							$tipo = 'Contratante';
-						}
-						
-						$id_terceiro = $linha['id_user'];				
-						
 							echo "<tr>";
+						
 						echo "<td>".$nome."<form method='post' action='mensagemcadastro?id_terceiro=".$id_terceiro."'><input type='image' title='Enviar Mensagem para ".$nome."' src='images/msgicon.png'></form></td>"; 
 						echo "<td>".$tipo."</td>";
 						echo "</tr>";
-						//}
+						}
 
 					}	
 				}

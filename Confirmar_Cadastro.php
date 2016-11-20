@@ -41,7 +41,6 @@ if (strcmp($tipo_usuario, 'P') == 0)
 		//Inserção no Banco de Dados mysql
 		$sql = mysql_query("INSERT INTO usuario (nome_user, sexo_user, nascimento_user, cpf_user, rg_user, telefone_user, login_user, senha_user, emai_user, rua_user, numero_user, bairro_user, cidade_user, estado_user, cep_user, tipo_usuario, status_user) 
 		values ('$nome_user', '$sexo_user', '$nascimento_user', '$cpf_user', '$rg_user', '$telefone_user', '$login_user', '$senha_user', '$emai_user', '$rua_user', '$numero_user', '$bairro_user', '$cidade_user', '$estado_user', '$cep_user', '$tipo_usuario', 'A')") or die(mysql_error());
-		
 		$check_id = mysql_query("SELECT * FROM usuario") or die(mysql_error());
 		$row = mysql_num_rows($check_id);
 		$id_user = $row;
@@ -56,7 +55,8 @@ if (strcmp($tipo_usuario, 'P') == 0)
 
 		// Script de Alerta
 		 echo '<script>alert("Seu cadastro foi realizado com sucesso!\nVocê será rediracionado para o Home, após pressionar OK.")</script>';
-		 echo '<script>location.href="accountconfig"</script>';
+		 echo '<script>location.href="index.php"</script>';	
+		
 		
 
 	 	 
@@ -88,9 +88,19 @@ elseif (strcmp($tipo_usuario, 'C') == 0)
 		//Inserção no Banco de Dados mysql
 		$sql = mysql_query("INSERT INTO usuario (nome_user, sexo_user, nascimento_user, cpf_user, rg_user, telefone_user, login_user, senha_user, emai_user, rua_user, numero_user, bairro_user, cidade_user, estado_user, cep_user, tipo_usuario, status_user) 
 		values ('$nome_user', '$sexo_user', '$nascimento_user', '$cpf_user', '$rg_user', '$telefone_user', '$login_user', '$senha_user', '$emai_user', '$rua_user', '$numero_user', '$bairro_user', '$cidade_user', '$estado_user', '$cep_user', '$tipo_usuario', 'A')") or die(mysql_error());
+		
+		 $check_id = mysql_query("SELECT * FROM usuario") or die(mysql_error());
+		$row = mysql_num_rows($check_id);
+		$id_user = $row;
+		$id_ts = 1;
+
+		$sql_sf = mysql_query("INSERT INTO servicos_fornecidos (fk_id_user, fk_id_ts) values ('$id_user', '$id_ts')")or die(mysql_error());
+
 		// Script de Alerta
 		 echo '<script>alert("Seu cadastro foi realizado com sucesso!\nVocê será rediracionado para o Home, após pressionar OK.")</script>';
-		 echo '<script>location.href="accountconfig"</script>';
+		 echo '<script>location.href="index.php"</script>';
+		
+		
 		
 
 	 	 
