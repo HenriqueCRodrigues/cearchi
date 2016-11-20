@@ -1,3 +1,9 @@
+<?php
+	include "Conexao_mysql.php";
+	include "Validador_de_Login.php";
+	$nome = $_SESSION['nome_user'];
+?>
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -6,7 +12,7 @@
   <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Cearchi - Solicitar serviços</title>
+  <title>Cearchi - Menu Solicitação de Serviços</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
   <meta name="keywords" content="free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
@@ -65,19 +71,19 @@
 
   </head>
   <body>
-   <header id="fh5co-header" role="banner">
+  <header id="fh5co-header" role="banner">
  <div class="header">
-    <div class="header-top-strip">
-      <div class="container">
-        <div class="header-top-left">
+		<div class="header-top-strip">
+			<div class="container">
+				<div class="header-top-left">
                  <div class="logo">
              
             
               <div class="form-group">
               <ul>
 
-           <a  href="perfil.php"><img src="images/icon2.png" height="60" width="60"></a><font color= #EBEBEB>Você está conectado como:</font><a href="perfil.php"><i> <?php echo "$nome"; ?></i></a>
-          
+					 <a  href="perfil.php"><img src="images/icon2.png" height="60" width="60"></a><font color= #EBEBEB>Você está conectado como:</font><a href="perfil.php"><i> <?php echo "$nome"; ?></i></a>
+					
  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
              <li>   
            <form method='post' action="Resultado.php">
@@ -95,14 +101,14 @@
           
 
         
-            </ul>
-            </div>
-          
+          	</ul>
+          	</div>
+        	
                     </div>
-        </div> </div>
-      </div>
-    </div>
-   </header>
+				</div> </div>
+			</div>
+		</div>
+	 </header>
 
   <div id="fh5co-page">
   <header id="fh5co-header" role="banner">
@@ -121,9 +127,8 @@
           </ul>
         </nav>
       </div>
-    </div>
-    </header>
-
+</div>
+  </header>
   <!-- COLOCAR AQUI O  CONTEUDO DE CORPO-->
 
     </div>
@@ -135,85 +140,67 @@
           <div class="dreamcrub">
            <ul class="breadcrumbs">
                    <li class="home">
-                       <a href="index.html" title="Go to Home Page">Home</a>&nbsp;
+                       <a href="index.php" title="Retornar a Pagina Principal">Home</a>&nbsp;
                        <span>&gt;</span>
                     </li>
-                    <li class="home">
-                       <a href="menusolicitação.html" title="Go to Home Page">Menu de solicitação de serviços</a>&nbsp;
-                       <span>&gt;</span>
-                    </li>
+                    
+                    
                     <li class="women">
-                        <font color="white"> Solicitação de serviço </font>
+                        <font color="white">Menu solicitação de serviços</font>
                     </li>
                 </ul>
                 <ul class="previous">
-                  <li><a href="index.html">Retornar</a></li>
+                  <li><a href="consultar.php" title="Retornar para Consultar Usuarios ou Tipos de Serviço Novamente">Retornar</a></li>
                 </ul>
                 <div class="clearfix"></div>
          </div>
          </div></div></header>
 
-	<!-- COLOCAR AQUI O  CONTEUDO DE CORPO-->
+  <div class="container">
+			<style>
+				table {
+					border-collapse: collapse;
+					width: 100%;
+				}
 
-		<div class="container">
-			<div class="row">
-				<div class="Register-form">
-					<x3>Solicitação de serviço</x3>
-					<p>Você poderá solicitar um serviço que esteja procurando preenchendo os campos e procurando um prestador de serviço que satisfaça sua vontade!</p><br><br>
+				th, td {
+					text-align: center;
+					padding: 0px;
+				}
 
-				</div>
+				tr:nth-child(even){background-color: #C2DCFF}
+			</style>
+
+
+			<x2>Solicitação de serviços </x2>
+			<p>Aqui estão presentes todos os serviços solicitados:</p></br>
+
+			<table>
+				<tr>
+					<th><x1>Prestador</x1></th>
+					<th><x1>Situação</x1></th>
+					<th><x1>Tipo de serviço</x1></th>
+
+				</tr>
+				<tr>
+					<th>nome 1</th>
+					<th>01&nbsp;&nbsp;<a href="#"><img src="images/delete.png" width="15" height="15"></a></th>
+					<th>1</th>
+				</tr>
 				
-					 <form method="post" action="Confirmar_Cadastro.php">
-
-					
-					<div class="row">
-						
-						<div class="col-md-6">
-						<li class="text-info" style="list-style-type:none">Contratante: </li>
-							<div class="form-group">
-								<input class="form-control" placeholder="Nome do Contratante" type="text" name="nome_user" id="nome_user">
-							</div>
-						</div>
-						<div class="col-md-6">
-							<li class="text-info" style="list-style-type:none">Prestador de Serviço: </li>
-							<div class="form-group">
-								<input class="form-control" placeholder="Nome do prestador" type="text" name="login_user" id="login_user">
-							</div>
-						</div>
-						<div class="col-md-6">
-							<li class="text-info" style="list-style-type:none">Data e hora do serviço </li>
-							<div class="form-group">
-								<input class="form-control3" type="text"  name="data_servico" id="data_servico" maxlength="10" onkeypress="this.value = FormataData(event)" onpaste="return false;"/>
-								<input class="form-control3" type="text"  name="hora_servico" id="hora_servico" maxlength="5" onkeypress="this.value = FormataHora(event)" onpaste="return false;"/>
-							</div>
-						</div>
-
-						<div class="col-md-6">
-							<li class="text-info" style="list-style-type:none"> Tipo de Serviço: </li>
-								<div class="form-group"> <select class="form-control3" name="" id="">
-  <option value="">&nbsp;&nbspSelecione</option>
-  <option value="">1</option>
- 
-  </select>
-						</div>
-						</div>
 
 
+				
+			</table>
+</br>
 
-						
-						
-						<div class="col-md-12">
-							<div class="form-group">
-								<input value="Solicitar Serviço" class="btn btn-primary" type="submit">
-								<a href="menusolicitacao.html"><input value="Voltar para o menu" class="btn btn-primary" height="30"></a>
-								<p class="click">Clicando no botão, você estará confirmando a solicitação  de serviço.</a></p> 
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	
+
+		</br>
+	</br>
+
+</div>
+
+
 	<!-- COLOCAR AQUI O  CONTEUDO DE CORPO-->	
 	<footer id="fh5co-footer" role="contentinfo">
 	
@@ -275,46 +262,6 @@
 
 	<!-- MAIN JS -->
 	<script src="js/main.js"></script>
-
-  <script type="text/javascript">
-  function verificaNumero(e)
-  {
-    if(e.which != 8 && e.which != 0  && (e.which < 48 || e.which > 57))
-    {
-      return false;
-    }
-  }
-    
-    $(document).ready(function()
-    {
-      $("#data_servico").keypress(verificaNumero);
-      $("#hora_servico").keypress(verificaNumero);
-
-    });
-
-      function FormataHora(evt)
-      {
-
-      vr = (navigator.appName == 'NetScape') ?evt.target.value : evt.srcElement.value;
-
-      if(vr.length == 2) vr = vr+":";
-      if(vr.length == 3) vr = vr
-      return vr;
-      }
-
-      function FormataData(evt)
-      {
-
-      vr = (navigator.appName == 'NetScape') ?evt.target.value : evt.srcElement.value;
-
-      if(vr.length == 2) vr = vr+"/";
-      if(vr.length == 5) vr = vr+"/";
-      if(vr.length == 9) vr = vr;
-      return vr;
-      }
-
-
-</script>
 
 	</body>
 </html>

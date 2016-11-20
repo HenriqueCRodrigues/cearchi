@@ -6,7 +6,7 @@
   <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Cearchi - Solicitar serviços</title>
+  <title>Cearchi - Visualizar solicitação de serviços</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
   <meta name="keywords" content="free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
@@ -143,7 +143,7 @@
                        <span>&gt;</span>
                     </li>
                     <li class="women">
-                        <font color="white"> Solicitação de serviço </font>
+                        <font color="white"> Visualizar solicitação de serviços </font>
                     </li>
                 </ul>
                 <ul class="previous">
@@ -158,8 +158,8 @@
 		<div class="container">
 			<div class="row">
 				<div class="Register-form">
-					<x3>Solicitação de serviço</x3>
-					<p>Você poderá solicitar um serviço que esteja procurando preenchendo os campos e procurando um prestador de serviço que satisfaça sua vontade!</p><br><br>
+					<x3>Visualizar serviços</x3>
+					</br></br>
 
 				</div>
 				
@@ -169,34 +169,39 @@
 					<div class="row">
 						
 						<div class="col-md-6">
-						<li class="text-info" style="list-style-type:none">Contratante: </li>
+						<li class="text-info" style="list-style-type:none">Prestador do Serviço: </li>
 							<div class="form-group">
-								<input class="form-control" placeholder="Nome do Contratante" type="text" name="nome_user" id="nome_user">
+								<input class="form-control" placeholder="Nome do Prestador" type="text" name="nome_user" id="nome_user">
 							</div>
 						</div>
-						<div class="col-md-6">
-							<li class="text-info" style="list-style-type:none">Prestador de Serviço: </li>
-							<div class="form-group">
-								<input class="form-control" placeholder="Nome do prestador" type="text" name="login_user" id="login_user">
-							</div>
-						</div>
+						
 						<div class="col-md-6">
 							<li class="text-info" style="list-style-type:none">Data e hora do serviço </li>
 							<div class="form-group">
 								<input class="form-control3" type="text"  name="data_servico" id="data_servico" maxlength="10" onkeypress="this.value = FormataData(event)" onpaste="return false;"/>
-								<input class="form-control3" type="text"  name="hora_servico" id="hora_servico" maxlength="5" onkeypress="this.value = FormataHora(event)" onpaste="return false;"/>
+                <input class="form-control3" type="text"  name="hora_servico" id="hora_servico" maxlength="5" onkeypress="this.value = FormataHora(event)" onpaste="return false;"/>
 							</div>
 						</div>
+            
+            <div class="col-md-12">
+            <li class="text-info" style="list-style-type:none">Descrição do Serviço: </li>
+              <div class="form-group">
+                <textarea name="" class="form-control" id="" cols="30" rows="5" placeholder="Descrição"></textarea>
+              </div>
+            </div>
 
-						<div class="col-md-6">
-							<li class="text-info" style="list-style-type:none"> Tipo de Serviço: </li>
-								<div class="form-group"> <select class="form-control3" name="" id="">
-  <option value="">&nbsp;&nbspSelecione</option>
-  <option value="">1</option>
- 
-  </select>
-						</div>
-						</div>
+            <div class="col-md-6">
+              <li class="text-info" style="list-style-type:none"> Situação do Serviço: </li>
+                <div class="form-group"> 
+                  <select class="form-control3" name="status_servico" id="status_servico">
+                  <option value="">&nbsp;&nbspSelecione</option>
+                  <option value="">Em Andamento</option>
+                  <option value="">Cancelado</option>
+                  <option value="">Finalizado</option>
+                  </select>
+                </div>
+            </div>
+
 
 
 
@@ -204,9 +209,9 @@
 						
 						<div class="col-md-12">
 							<div class="form-group">
-								<input value="Solicitar Serviço" class="btn btn-primary" type="submit">
+
 								<a href="menusolicitacao.html"><input value="Voltar para o menu" class="btn btn-primary" height="30"></a>
-								<p class="click">Clicando no botão, você estará confirmando a solicitação  de serviço.</a></p> 
+								
 							</div>
 						</div>
 					</div>
