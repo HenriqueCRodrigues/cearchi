@@ -199,7 +199,7 @@ for ($i = 0; $i < $num; $i++) {
 						<div class="col-md-6">
 							<li class="text-info" style="list-style-type:none">Telefone </li>
 							<div class="form-group">
-								<input class="form-control" placeholder="Telefone" type="text" name="telefone_user" id="telefone_user">
+								<input class="form-control" placeholder="Telefone" type="text" name="telefone_user" id="telefone_user" maxlength="14" onkeypress="this.value = FormataTel(event)" onpaste="return false;"/>
 							</div>
 						</div>
 						<div class="col-md-6">
@@ -215,7 +215,7 @@ for ($i = 0; $i < $num; $i++) {
 						<div class="col-md-6">
 							<li class="text-info" style="list-style-type:none">RG </li>
 							<div class="form-group">
-								<input class="form-control" placeholder="RG" type="text" name="rg_user" id="rg_user">
+								<input class="form-control" placeholder="RG" type="text" name="rg_user" id="rg_user" maxlength="12" onkeypress="this.value = FormataRG(event)" onpaste="return false;"/>
 							</div>
 						</div>
 						<div class="col-md-6">
@@ -230,7 +230,7 @@ for ($i = 0; $i < $num; $i++) {
 						<div class="col-md-6">
 							<li class="text-info" style="list-style-type:none">Data de nascimento </li>
 							<div class="form-group">
-								<input class="form-control3" type="text" placeholder="dd/mm/aaaa" name="nascimento_user" id="nascimento_user">
+								<input class="form-control3" type="text" placeholder="dd/mm/aaaa" name="nascimento_user" id="nascimento_user" maxlength="10" onkeypress="this.value = FormataNascimento(event)" onpaste="return false;"/>
 							</div>
 						</div>
 						
@@ -296,7 +296,7 @@ for ($i = 0; $i < $num; $i++) {
 						<div class="col-md-6">
 							<li class="text-info" style="list-style-type:none">CEP: </li>
 							<div class="form-group">
-								<input class="form-control" placeholder="CEP" type="text" name="cep_user" id="cep_user">
+								<input class="form-control" placeholder="CEP" type="text" name="cep_user" id="cep_user" maxlength="10" onkeypress="this.value = FormataCEP(event)" onpaste="return false;"/>
 								</br>
 							</div>
 						</div>
@@ -472,6 +472,10 @@ for ($i = 0; $i < $num; $i++) {
 		$(document).ready(function()
 		{
 			$("#cpf_user").keypress(verificaNumero);
+			$("#telefone_user").keypress(verificaNumero);
+			$("#cep_user").keypress(verificaNumero);
+			$("#rg_user").keypress(verificaNumero);
+			$("#nascimento_user").keypress(verificaNumero);
 
 		});
 
@@ -486,6 +490,54 @@ for ($i = 0; $i < $num; $i++) {
 			if(vr.length == 11) vr = vr+".";
 			return vr;
 			}
+
+			function FormataTel(evt)
+			{
+
+			vr = (navigator.appName == 'NetScape') ?evt.target.value : evt.srcElement.value;
+
+			if(vr.length == 0) vr = vr+"(";
+			if(vr.length == 3) vr = vr+")";
+			if(vr.length == 9) vr = vr+"-";
+			if(vr.length == 14) vr = vr;
+			return vr;
+			}
+
+			function FormataRG(evt)
+			{
+
+			vr = (navigator.appName == 'NetScape') ?evt.target.value : evt.srcElement.value;
+
+			if(vr.length == 2) vr = vr+".";
+			if(vr.length == 6) vr = vr+".";
+			if(vr.length == 10) vr = vr+"-";
+			if(vr.length == 11) vr = vr;
+			return vr;
+			}
+
+			function FormataNascimento(evt)
+			{
+
+			vr = (navigator.appName == 'NetScape') ?evt.target.value : evt.srcElement.value;
+
+			if(vr.length == 2) vr = vr+"/";
+			if(vr.length == 5) vr = vr+"/";
+			if(vr.length == 9) vr = vr;
+			return vr;
+			}
+
+			function FormataCEP(evt)
+			{
+
+			vr = (navigator.appName == 'NetScape') ?evt.target.value : evt.srcElement.value;
+
+			if(vr.length == 2) vr = vr+".";
+			if(vr.length == 6) vr = vr+"-";
+			if(vr.length == 10) vr = vr;
+			return vr;
+			}
+
+
 </script>
 	</body>
 	

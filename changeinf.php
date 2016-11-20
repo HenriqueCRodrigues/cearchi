@@ -217,7 +217,7 @@ $cep = $consulta['cep_user'];
             <div class="col-md-6">
               <li class="text-info" style="list-style-type:none">Telefone </li>
               <div class="form-group">
-                <input class="form-control" placeholder="Telefone" type="text" name="telefone_user" id="telefone_user" value="<?php echo "$telefone"; ?>">
+                <input class="form-control" placeholder="Telefone" type="text" name="telefone_user" id="telefone_user"  maxlength="14" onkeypress="this.value = FormataTel(event)" onpaste="return false;" value="<?php echo "$telefone"; ?>" />
               </div>
             </div> 
 
@@ -225,7 +225,7 @@ $cep = $consulta['cep_user'];
             <div class="col-md-6">
               <li class="text-info" style="list-style-type:none">RG </li>
               <div class="form-group">
-                <input class="form-control" placeholder="RG" type="text" name="rg_user" id="rg_user" value="<?php echo "$rg"; ?>">
+                <input class="form-control" placeholder="RG" type="text" name="rg_user" id="rg_user" maxlength="12" onkeypress="this.value = FormataRG(event)" onpaste="return false;" value="<?php echo "$rg"; ?>"/>
               </div>
             </div>     
 
@@ -263,7 +263,7 @@ $cep = $consulta['cep_user'];
             <div class="col-md-6">
               <li class="text-info" style="list-style-type:none">CEP: </li>
               <div class="form-group">
-                <input class="form-control" placeholder="CEP" type="text" name="cep_user" id="cep_user" value="<?php echo "$cep"; ?>">
+                <input class="form-control" placeholder="CEP" type="text" name="cep_user" id="cep_user" maxlength="10" onkeypress="this.value = FormataCEP(event)" onpaste="return false;" value="<?php echo "$cep"; ?>"/>
               </div>
             </div>
 
@@ -426,6 +426,85 @@ $cep = $consulta['cep_user'];
 
   <!-- MAIN JS -->
   <script src="js/main.js"></script>
+  <script type="text/javascript">
+  function verificaNumero(e)
+  {
+    if(e.which != 8 && e.which != 0  && (e.which < 48 || e.which > 57))
+    {
+      return false;
+    }
+  }
+    
+    $(document).ready(function()
+    {
+      $("#cpf_user").keypress(verificaNumero);
+      $("#telefone_user").keypress(verificaNumero);
+      $("#cep_user").keypress(verificaNumero);
+      $("#rg_user").keypress(verificaNumero);
+      $("#nascimento_user").keypress(verificaNumero);
+
+    });
+
+
+      function FormataCpf(evt)
+      {
+
+      vr = (navigator.appName == 'NetScape') ?evt.target.value : evt.srcElement.value;
+
+      if(vr.length == 3) vr = vr+".";
+      if(vr.length == 7) vr = vr+".";
+      if(vr.length == 11) vr = vr+".";
+      return vr;
+      }
+
+      function FormataTel(evt)
+      {
+
+      vr = (navigator.appName == 'NetScape') ?evt.target.value : evt.srcElement.value;
+
+      if(vr.length == 0) vr = vr+"(";
+      if(vr.length == 3) vr = vr+")";
+      if(vr.length == 9) vr = vr+"-";
+      if(vr.length == 14) vr = vr;
+      return vr;
+      }
+
+      function FormataRG(evt)
+      {
+
+      vr = (navigator.appName == 'NetScape') ?evt.target.value : evt.srcElement.value;
+
+      if(vr.length == 2) vr = vr+".";
+      if(vr.length == 6) vr = vr+".";
+      if(vr.length == 10) vr = vr+"-";
+      if(vr.length == 11) vr = vr;
+      return vr;
+      }
+
+      function FormataNascimento(evt)
+      {
+
+      vr = (navigator.appName == 'NetScape') ?evt.target.value : evt.srcElement.value;
+
+      if(vr.length == 2) vr = vr+"/";
+      if(vr.length == 5) vr = vr+"/";
+      if(vr.length == 9) vr = vr;
+      return vr;
+      }
+
+      function FormataCEP(evt)
+      {
+
+      vr = (navigator.appName == 'NetScape') ?evt.target.value : evt.srcElement.value;
+
+      if(vr.length == 2) vr = vr+".";
+      if(vr.length == 6) vr = vr+"-";
+      if(vr.length == 10) vr = vr;
+      return vr;
+      }
+
+
+</script>
 
 </body>
 </html>
