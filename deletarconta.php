@@ -1,4 +1,8 @@
-
+﻿<?php 
+  include "Conexao_mysql.php";
+  include "Validador_de_Login.php";
+  $nome = $_SESSION['nome_user'];
+?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -76,14 +80,22 @@
             
               <div class="form-group">
               <ul>
-
-					 <a  href="perfil.html"><img src="images/icon2.png" height="60" width="60"></a><font color= #EBEBEB>Você está logado como </font><a href="#"><i>NOME</i></a>
+<a  href="perfil.php"><img src="images/icon2.png" height="60" width="60"></a><font color= #EBEBEB></font><a href="perfil.php"><i><?php echo "$nome"; ?></i></a>
 					
  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
-                <li><i><input class="form-control2" name="busca" id="busca" placeholder="  Pesquisar..." type="text"></i></li>
-              
-        
-          	</ul>
+                <li><i>
+           <form method='post' action="Resultado.php">
+           <table width="300" align="center">
+           <tr>
+
+           <td><input class="form-control2" name="nome_user" id="nome_user" placeholder="  Pesquisar..." type="text"> </i></li></td>
+           <td><input type='image' title='Buscar' src='images/lupa.png' width="40" height="40"></td>
+            </tr>
+          
+
+           </table>
+           </form>
+           </ul>
           	</div>
         	
                     </div>
@@ -96,15 +108,17 @@
   <header id="fh5co-header" role="banner">
     <div class="container">
       <div class="header-inner">
-        <a href="index.html" ><img src="images/logopeq.png"></a>
+        <a href="index.php" ><img src="images/logopeq.png"></a>
         <nav role="navigation">
           <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="work.html">Mensagens</a></li>
+           <li><a href="index.php">Inicio</a></li>
+            <li><a href="menumensagens.php">Mensagens</a></li>
             
-            <li><a href="about.html">Sobre</a></li>
-            <li><a href="contact.html">Contato</a></li>
-            <li class="cta"><a href="register.html">Crie sua conta</a></li>
+            <li><a href="about.php">Sobre</a></li>
+            <li><a href="contact.php">Contato</a></li>
+            <li><a href="about.php">Sobre</a></li>
+            <li><a href="logout.php">Deslogar</a></li>
+            <li class="cta"><a href="index.php">Retorne a Pagina Inicial</a></li>
           </ul>
         </nav>
       </div>
@@ -121,15 +135,19 @@
           <div class="dreamcrub">
            <ul class="breadcrumbs">
                    <li class="home">
-                       <a href="index.html" title="Go to Home Page">Home</a>&nbsp;
+                       <a href="index.php" title="Retornar para Pagina Home">Home</a>&nbsp;
+                       <span>&gt;</span>
+                    </li>
+                     <li class="home">
+                       <a href="perfil.php" title="Retornar para o Seu Perfil">Perfil</a>&nbsp;
                        <span>&gt;</span>
                     </li>
                     <li class="women">
-                        <font color="white"> Login </font>
+                        <font color="white"> Deletar Conta </font>
                     </li>
                 </ul>
                 <ul class="previous">
-                  <li><a href="index.html">Retornar</a></li>
+                  <li><a href="perfil.php" title="Retornar para o Seu Perfil">Retornar</a></li>
                 </ul>
                 <div class="clearfix"></div>
          </div>
@@ -146,23 +164,23 @@
 
 Você pode excluir sua conta permanentemente, mas tenha certeza do que está fazendo, todos os seus dados e relações serão perdidos sem possibilidades de recuperação.
            Confirme sua senha para deletar sua conta.
-           <form method="get" action="Excluir_Usuario.php">
+           <form method="post" action="Excluir_Usuario.php">
             <ul>
                <li class="text-info" style="list-style-type:none" >Senha atual: </li>
-               <li> <input class="form-control" placeholder="Senha" type="text" name="senha_user" id="senha_user"></li>
+               <input type="password" name="senha_user" class="form-control" placeholder="Senha"></li>
              </ul>
           
-           Tem certeza que deseja deletar sua conta? Ela não poderá ser resgatada após a exclusão.
+           <p>Tem certeza que deseja deletar sua conta? Ela não poderá ser resgatada após a exclusão.</p>
            
            <ul>
             <li class="check-info" name="Go" style="list-style-type:none">
-                <input type="radio" value="None" id="nao" name="option" checked/>
-                  <label for="nao" class="radio" chec> Não</label>
-                <input type="radio" value="Excluir" id="sim" name="option" />
+                <input type="radio" value="nao" id="nao" name="option" checked/>
+                  <label for="nao" class="radio" chec>Não</label>
+                <input type="radio" value="sim" id="sim" name="option" />
                   <label for="sim" class="radio">Sim</label>
                 </li>
                 </ul></br></br></br>
-             <input type="submit" class="btn btn-primary" value="Deletar conta">
+             <input type="submit" class="btn btn-primary" value="Deletar conta definitivamente.">
            </form>
          </div>
       </div></div></div></div></div></body>

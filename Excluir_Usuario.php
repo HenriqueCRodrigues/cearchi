@@ -14,15 +14,15 @@ if(strcmp($option, 'sim') == 0 && strcmp($senha_user, $senha_login) == 0)
 	$consulta = mysql_fetch_array($sql);
 	$att = mysql_query("UPDATE usuario SET status_user='D' WHERE id_user='$id'");
 	echo '<script>alert("Usuario Exluido com sucesso.")</script>';	
-	echo "<script> location.href='account.html';</script>";
+	echo "<script> location.href='index.php'</script>";
 	session_destroy();
 	
 }
 
 else
 {
-	echo '<script>alert("Não há dados suficiente para excluir a conta,\nVocê sera movido para a configuração de sua conta.")</script>';
-    echo "<script>location.href='account.html'</script>";
+	echo '<script>alert("Não há dados suficiente para excluir a conta ou a senha esta incorreta,\nVocê sera movido para a configuração de sua conta.")</script>';
+    echo "<script>location.href='perfil.php'</script>";
 }
 
 

@@ -21,7 +21,7 @@ $estado_user = $_POST ["estado_user"];	//atribuição do campo "estado_user" vin
 $cep_user = $_POST["cep_user"]; //atribuição do campo "cep_user" vindo do formulário para variavel
 $tipo_usuario = $_POST["opcao"]; //atribuição do campo "opcao" vindo do formulário para variavel, radio button
 $servicos = $_POST['tipos_de_servico_id_ts'];
-
+$cidade = $_POST['cidade'];
 
 
 if (strcmp($tipo_usuario, 'P') == 0) 
@@ -51,7 +51,7 @@ if (strcmp($tipo_usuario, 'P') == 0)
 		$id_ts = $linha['id_ts'];
 
 		echo "ts aqui' $id_ts'";
-		$sql_sf = mysql_query("INSERT INTO servicos_fornecidos (fk_id_user, fk_id_ts) values ('$id_user', '$id_ts')")or die(mysql_error());
+		$sql_sf = mysql_query("INSERT INTO servicos_fornecidos (fk_id_user, fk_id_ts, fk_cidade_at) values ('$id_user', '$id_ts','$cidade')")or die(mysql_error());
 
 		// Script de Alerta
 		 echo '<script>alert("Seu cadastro foi realizado com sucesso!\nVocê será rediracionado para o Home, após pressionar OK.")</script>';
@@ -89,7 +89,7 @@ elseif (strcmp($tipo_usuario, 'C') == 0)
 		$sql = mysql_query("INSERT INTO usuario (nome_user, sexo_user, nascimento_user, cpf_user, rg_user, telefone_user, login_user, senha_user, emai_user, rua_user, numero_user, bairro_user, cidade_user, estado_user, cep_user, tipo_usuario, status_user) 
 		values ('$nome_user', '$sexo_user', '$nascimento_user', '$cpf_user', '$rg_user', '$telefone_user', '$login_user', '$senha_user', '$emai_user', '$rua_user', '$numero_user', '$bairro_user', '$cidade_user', '$estado_user', '$cep_user', '$tipo_usuario', 'A')") or die(mysql_error());
 		
-		 $check_id = mysql_query("SELECT * FROM usuario") or die(mysql_error());
+		$check_id = mysql_query("SELECT * FROM usuario") or die(mysql_error());
 		$row = mysql_num_rows($check_id);
 		$id_user = $row;
 		$id_ts = 1;

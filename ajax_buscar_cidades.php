@@ -13,7 +13,7 @@ for ($i = 0; $i < $num; $i++) {
 <label>Cidades:</label>
 <select class="form-control3" name="cidade" id="cidade">
   <?php foreach($arrCidades as $value => $nome){
-    echo "<option value='{$value}'>{$nome}</option>";
+    echo "<option name='cidade_at' value='$value'>$nome</option>";
   }
 ?>
 </select>

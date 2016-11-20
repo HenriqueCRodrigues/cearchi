@@ -181,7 +181,7 @@
                         <li><a href="consultar.php"> Realizar Consulta</a></li>
                         <li><a href="changeinf.php">Alterar Informações Pessoais</a></li>
                         <li><a href="contact.html"> Reportar Erros</a></li>
-                        <li><a href="deletarconta.html">Deletar Conta</a></li>
+                        <li><a href="deletarconta.php">Deletar Conta</a></li>
                         
                       </ul>
                     </div>
