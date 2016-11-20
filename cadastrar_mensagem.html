@@ -6,7 +6,7 @@
   <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Cearchi - Contato</title>
+  <title>Cearchi - Enviar mensagem</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
   <meta name="keywords" content="free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
@@ -141,34 +141,26 @@
 
 		<div class="container">
 			<div class="row">
-				<div class="col-md-8 col-md-offset-2 col-md-push-2 animate-box">
+				<div class="register-form">
 					<x2>Enviar mensagem</x2>
 					<p>Preenchendo o campo e confirmando você estará enviando uma mensagem ao destinatário escolhido, confirme o destinatário em "Informações do destinatário" ao lado dos campos.</p><br><br>
 
 				</div>
-				<div class="col-md-3">
-					<h3>Informações do destinatário.</h3>
-					<ul class="contact-info">
-						<li></i>nome</li>
-						<li></i>serviços</li>
-						<li><a href="#">email@email.com</a></li>
-					</ul>
-				</div>
-				<div class="col-md-8 col-md-push-1 col-sm-12 col-sm-push-0 col-xs-12 col-xs-push-0">
+				
 					<div class="row">
-						<!--<div class="col-md-6">
+						<div class="col-md-6">
 							<div class="form-group">
-								<input class="form-control" placeholder="Nome" type="text">
+								<input class="form-control" type="text" placeholder="Destino" required value="<?php echo "$nome_destinatario"; ?>" readonly="readonly">
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<input class="form-control" placeholder="Email" type="text">
+								<input class="form-control" type="text" name="titulo_mensagem" id="titulo_mensagem" placeholder="Assunto da mensagem" required>
 							</div>
-						</div>-->
+						</div>
 						<div class="col-md-12">
 							<div class="form-group">
-								<textarea name="" class="form-control" id="" cols="30" rows="7" placeholder="Mensagem"></textarea>
+								<textarea name="" class="form-control" id="" cols="30" rows="7" placeholder="Mensagem" name="msg_mensagem" id="msg_mensagem" required></textarea>
 							</div>
 						</div>
 						<div class="col-md-12">
@@ -178,7 +170,7 @@
 
 						</div>
 					</div>
-				</div>
+				
 			</div>
 		</div>	
 	</div>
