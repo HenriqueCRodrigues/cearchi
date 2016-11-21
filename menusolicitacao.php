@@ -203,14 +203,28 @@
             if (strcmp($id, $id_primario) == 0) 
             {
               
-              $sql0 = mysql_query("SELECT * FROM usuario INNER JOIN servicos_fornecidos ON usuario.id_user=servicos_fornecidos.fk_id_user  INNER JOIN tipos_de_servico ON servicos_fornecidos.fk_id_ts=tipos_de_servico.id_ts WHERE id_user = '$id_terceiro'");
+              $sql0 = mysql_query("SELECT * FROM usuario INNER JOIN servicos_fornecidos ON usuario.id_user=servicos_fornecidos.fk_id_user  INNER JOIN tipos_de_servico ON servicos_fornecidos.fk_id_ts=tipos_de_servico.id_ts INNER JOIN solicitacao_de_servico ON usuario.id_user=solicitacao_de_servico.fk_id_user_prestador WHERE id_user = '$id_terceiro'");
               $linha1 = mysql_fetch_array($sql0);
               $nome = $linha1['nome_user'];
               $servico = $linha1['servico_ts'];
+              $status = $linha1['status_ss'];
+              if (strcmp($status, 'A')==0) 
+              {
+                $status = 'Em Andamento';
+              }
+              elseif (strcmp($status, 'C')==0) 
+              {
+                $status = 'Cancelado';
+              }
+              else
+              {
+                $status = 'Finalizado';
+              }
+
 
               echo "<tr>";
               echo '<th><font color="black" >'.$nome.'</font></th>';
-              echo '<th><font color="black" > teste </font></th>';
+              echo '<th><font color="black" > '.$status.'</font></th>';
               echo '<th><font color="black" >'.$servico.'</font></a></th>';
               echo '<th><a href="Visualizar_solicitacao.php?id_terceiro='.$id_terceiro.'&servico_ts='.$servico.'"><font color="black" >Visualizar Solicitação</font></a></th>';
               echo "</tr>";
