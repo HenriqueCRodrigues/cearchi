@@ -210,8 +210,7 @@
 						if (strcmp($id, $id_terceiro) != 0) 			
 						{
 							echo "<tr>";
-						
-						echo "<td>".$nome."<form method='post' action='mensagemcadastro?id_terceiro=".$id_terceiro."'><input type='image' title='Enviar Mensagem para ".$nome."' src='images/msgicon.png'></form></td>"; 
+						echo "<td>".$nome."<form method='post' action='mensagemcadastro?id_terceiro=".$id_terceiro."'><input type='image' title='Enviar Mensagem para ".$nome."' src='images/msgicon.png'></form><form method='post' action='perfil.php?id_terceiro=".$id_terceiro."'><input type='image' title='Ir para o perfil de ".$nome."' src='images/pw.png'></form></td>"; 
 						echo "<td>".$tipo."</td>";
 						echo "</tr>";
 						}

@@ -197,7 +197,7 @@ $cep = $consulta['cep_user'];
               <li class="text-info" style="list-style-type:none"> Sexo </li>
               <div class="form-group"> 
                 <select class="form-control3" name="sexo_user" id="sexo_user">
-                  <option value="Feminino" <?php if (strcmp($sexo, 'Masculino') == 0) {echo "selected"; }?>>Feminino</option>
+                  <option value="Feminino" <?php if (strcmp($sexo, 'Feminino') == 0) {echo "selected"; }?>>Feminino</option>
                   <option value="Masculino" <?php if (strcmp($sexo, 'Masculino') == 0) {echo "selected"; }?> >Masculino</option>
                 </select>
               </div>

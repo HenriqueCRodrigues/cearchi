@@ -2,6 +2,14 @@
   include "Conexao_mysql.php";
   include "Validador_de_Login.php";
   $nome = $_SESSION['nome_user'];
+
+
+  @$id_terceiro = $_GET['id_terceiro'];
+  $id_secao = $_SESSION['id_user'];
+  $sql = mysql_query("SELECT * FROM usuario WHERE id_user like '$id_terceiro'");
+  $array = mysql_fetch_array($sql);
+  $nome_destinatario = $array['nome_user'];
+  $tipo_user = $array['tipo_usuario'];
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -121,7 +129,17 @@
             <li><a href="contact.php">Contato</a></li>
             <li><a href="about.php">Sobre</a></li>
             <li><a href="logout.php">Deslogar</a></li>
-            <li class="cta"><a href="index.php">Retorne a Pagina Inicial</a></li>
+            <?php
+            if (isset($id_terceiro)) 
+            {
+              echo "<li class='cta'><a href='perfil.php'>Retorne ao Seu Perfil</a></li>"; 
+            }
+            else
+            {    
+              echo "<li class='cta'><a href='index.php'>Retorne a Pagina Inicial</a></li>";
+            }
+            ?>
+            
           </ul>
         </nav>
       </div>
@@ -157,8 +175,22 @@
 <div class="jumbotron">
         <div class="redondo">
         <img src="images/icon2.png" height="100" width="100" />
-        <x4 text-align="right"><?php echo "$nome"; ?></x4>&nbsp; 
-        <a href="#"><img src="images/addicon.png" height="25" width="25" /></a>
+        <x4 text-align="right">
+        <?php
+
+        if (isset($id_terceiro)) 
+        {
+          echo "$nome_destinatario";
+          echo "</x4>&nbsp;";
+          echo "<a href=''><img src='images/addicon.png' height='25' width='25' /></a>";
+        
+        }
+        else
+        {
+          echo "$nome";
+        }
+
+         ?>
         </div>
 
 
@@ -168,9 +200,39 @@
           <ul class="nav navbar-nav">
             <li class="dropdown">
             <li class="active"><a href="#">Perfil</a></li>
-            <li><a href="menumensagens.php">Mensagens</a></li>
-            <li><a href="#contact">Serviços contratados</a></li>
+            <?php 
+            if (isset($id_terceiro)) 
+            {
+              echo "<li><a href='mensagemcadastro?id_terceiro=".$id_terceiro."'>Mensagens</a></li>";
+            }
+            else
+            {
+              echo "<li><a href='menumensagens.php'>Mensagens</a></li>";
+            }
+            
+            if (isset($id_terceiro)) 
+            {
+                if(strcmp($tipo_user, 'P') == 0)
+                {
+                  echo "<li><a href='cadastrar_solicitacao.php?id_terceiro=".@$id_terceiro."'>Solicitar Serviço</a></li>";
+                  echo "<li><a href='menusolicitacao.php'>Serviços contratados</a></li>";
+                }
+                              
+            }
+            else
+            {
+                echo "<li><a href='menusolicitacao.php'>Serviços contratados</a></li>";
+            }
+            
 
+            if (isset($id_terceiro)) 
+            {
+              
+            }
+            else
+            {    
+
+            ?>
             <li class="dropdown">
 
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Configurações <b class="caret"></b></a>
@@ -197,9 +259,12 @@
                   </div>
                 </ul>
             </li>
+
             
                     
                     <li><a href="Logout.php">Deslogar</a></li>
+
+                    <?php } ?>
                      </li></ul></div></div>
           </div><!--/.nav-collapse -->
 </div>

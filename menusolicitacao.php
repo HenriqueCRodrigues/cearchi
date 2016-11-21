@@ -2,6 +2,7 @@
 	include "Conexao_mysql.php";
 	include "Validador_de_Login.php";
 	$nome = $_SESSION['nome_user'];
+  $id = $_SESSION['id_user'];
 ?>
 
 <!DOCTYPE html>
@@ -73,42 +74,40 @@
   <body>
   <header id="fh5co-header" role="banner">
  <div class="header">
-		<div class="header-top-strip">
-			<div class="container">
-				<div class="header-top-left">
+    <div class="header-top-strip">
+      <div class="container">
+        <div class="header-top-left">
                  <div class="logo">
              
             
               <div class="form-group">
               <ul>
 
-					 <a  href="perfil.php"><img src="images/icon2.png" height="60" width="60"></a><font color= #EBEBEB>Você está conectado como:</font><a href="perfil.php"><i> <?php echo "$nome"; ?></i></a>
-					
- &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-             <li>   
+          <a  href="perfil.php"><img src="images/icon2.png" height="60" width="60"></a><font color= #EBEBEB></font><a href="perfil.php"><i><?php echo "$nome"; ?></i></a>
+          
+ &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+               <li><i>
            <form method='post' action="Resultado.php">
-           <table>
-
+           <table width="300" align="center">
            <tr>
 
-           <td><input class="form-control2" name="nome_user" id="nome_user" placeholder="  Pesquisar..." type="text"></td>
-           <td><font color="white">       </font>      <input type='image' title='Buscar' src='images/lupa.png' width="40" height="40"></td>
+           <td><input class="form-control2" name="nome_user" id="nome_user" placeholder="  Pesquisar..." type="text"> </i></li></td>
+           <td><font color="white">.....</font>      <input type='image' title='Buscar' src='images/lupa.png' width="40" height="40"></td>
             </tr>
+          
 
            </table>
            </form>
-          </li>
-          
-
+              
         
-          	</ul>
-          	</div>
-        	
+            </ul>
+            </div>
+          
                     </div>
-				</div> </div>
-			</div>
-		</div>
-	 </header>
+        </div> </div>
+      </div>
+    </div>
+   </header>
 
   <div id="fh5co-page">
   <header id="fh5co-header" role="banner">
@@ -119,15 +118,17 @@
           <ul>
             <li><a href="index.php">Inicio</a></li>
             <li><a href="menumensagens.php">Mensagens</a></li>
-            <li><a href="#">Serviços</a></li>
+            
+            <li><a href="about.php">Sobre</a></li>
             <li><a href="contact.php">Contato</a></li>
             <li><a href="about.php">Sobre</a></li>
             <li><a href="logout.php">Deslogar</a></li>
-            <li class="cta"><a href="perfil.php">Acesse seu Perfil</a></li>
+            <li class='cta'><a href='index.php'>Retorne a Pagina Inicial</a></li>
+            
           </ul>
         </nav>
       </div>
-</div>
+    </div>
   </header>
   <!-- COLOCAR AQUI O  CONTEUDO DE CORPO-->
 
@@ -182,15 +183,45 @@
 					<th><x1>Tipo de serviço</x1></th>
 
 				</tr>
-				<tr>
-					<th>nome 1</th>
-					<th>01&nbsp;&nbsp;<a href="#"><img src="images/delete.png" width="15" height="15"></a></th>
-					<th>1</th>
-				</tr>
+	
+        <?php
+
+        $sql = mysql_query("SELECT * FROM solicitacao_de_servico WHERE fk_id_user_contratante = '$id' OR fk_id_user_prestador = '$id'");
+        $row = mysql_num_rows($sql);
+
+        
+        if ($row > 0) 
+        {
+
+          while ($linha = mysql_fetch_array($sql)) 
+          {
+
+            $id_primario = $linha['fk_id_user_contratante'];   
+            $id_terceiro = $linha['fk_id_user_prestador'];
+            
+
+            if (strcmp($id, $id_primario) == 0) 
+            {
+              
+              $sql0 = mysql_query("SELECT * FROM usuario INNER JOIN servicos_fornecidos ON usuario.id_user=servicos_fornecidos.fk_id_user  INNER JOIN tipos_de_servico ON servicos_fornecidos.fk_id_ts=tipos_de_servico.id_ts WHERE id_user = '$id_terceiro'");
+              $linha1 = mysql_fetch_array($sql0);
+              $nome = $linha1['nome_user'];
+              $servico = $linha1['servico_ts'];
+
+              echo "<tr>";
+              echo '<th><font color="black" >'.$nome.'</font></th>';
+              echo '<th><font color="black" > teste </font></th>';
+              echo '<th><font color="black" >'.$servico.'</font></a></th>';
+              echo '<th><a href="Visualizar_solicitacao.php?id_terceiro='.$id_terceiro.'&servico_ts='.$servico.'"><font color="black" >Visualizar Solicitação</font></a></th>';
+              echo "</tr>";
+            }
+
+            
+          } 
+        }
+        ?>
 				
 
-
-				
 			</table>
 </br>
 

@@ -372,7 +372,7 @@ for ($i = 0; $i < $num; $i++) {
           <option value="">&nbsp&nbspSelecione a cidade</option>
         </select>
       </div>
-    </form>
+    
 						</div>
     </div>
 	</div>
@@ -391,6 +391,7 @@ for ($i = 0; $i < $num; $i++) {
 						<div class="col-md-12">
 							<div class="form-group">
 								<input value="Confirmar Cadastro" class="btn btn-primary" type="submit">
+								</form>
 								<p class="click">Clicando no botão, você está de acordo com os nossos <a href="#">Termos e Condições Políticas.</a></p> 
 							</div>
 						</div>

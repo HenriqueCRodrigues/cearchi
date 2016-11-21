@@ -1,3 +1,11 @@
+<?php
+  include "Conexao_mysql.php";
+  include "Validador_de_Login.php";
+
+  $nome = $_SESSION['nome_user'];
+  $id_terceiro = $_GET['id_terceiro'];
+  $servico = $_GET['servico_ts'];
+?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -6,7 +14,7 @@
   <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Cearchi - Solicitar serviços</title>
+  <title>Cearchi - Visualizar solicitação de serviços</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
   <meta name="keywords" content="free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
@@ -65,7 +73,7 @@
 
   </head>
   <body>
-   <header id="fh5co-header" role="banner">
+  <header id="fh5co-header" role="banner">
  <div class="header">
     <div class="header-top-strip">
       <div class="container">
@@ -76,24 +84,22 @@
               <div class="form-group">
               <ul>
 
-           <a  href="perfil.php"><img src="images/icon2.png" height="60" width="60"></a><font color= #EBEBEB>Você está conectado como:</font><a href="perfil.php"><i> <?php echo "$nome"; ?></i></a>
+          <a  href="perfil.php"><img src="images/icon2.png" height="60" width="60"></a><font color= #EBEBEB></font><a href="perfil.php"><i><?php echo "$nome"; ?></i></a>
           
- &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-             <li>   
+ &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+               <li><i>
            <form method='post' action="Resultado.php">
-           <table>
-
+           <table width="300" align="center">
            <tr>
 
-           <td><input class="form-control2" name="nome_user" id="nome_user" placeholder="  Pesquisar..." type="text"></td>
-           <td><font color="white">       </font>      <input type='image' title='Buscar' src='images/lupa.png' width="40" height="40"></td>
+           <td><input class="form-control2" name="nome_user" id="nome_user" placeholder="  Pesquisar..." type="text"> </i></li></td>
+           <td><font color="white">.....</font>      <input type='image' title='Buscar' src='images/lupa.png' width="40" height="40"></td>
             </tr>
+          
 
            </table>
            </form>
-          </li>
-          
-
+              
         
             </ul>
             </div>
@@ -113,11 +119,13 @@
           <ul>
             <li><a href="index.php">Inicio</a></li>
             <li><a href="menumensagens.php">Mensagens</a></li>
-            <li><a href="#">Serviços</a></li>
+            
+            <li><a href="about.php">Sobre</a></li>
             <li><a href="contact.php">Contato</a></li>
             <li><a href="about.php">Sobre</a></li>
             <li><a href="logout.php">Deslogar</a></li>
-            <li class="cta"><a href="perfil.php">Acesse seu Perfil</a></li>
+            <li class='cta'><a href='index.php'>Retorne a Pagina Inicial</a></li>
+            
           </ul>
         </nav>
       </div>
@@ -143,7 +151,7 @@
                        <span>&gt;</span>
                     </li>
                     <li class="women">
-                        <font color="white"> Solicitação de serviço </font>
+                        <font color="white"> Visualizar solicitação de serviços </font>
                     </li>
                 </ul>
                 <ul class="previous">
@@ -158,45 +166,87 @@
 		<div class="container">
 			<div class="row">
 				<div class="Register-form">
-					<x3>Solicitação de serviço</x3>
-					<p>Você poderá solicitar um serviço que esteja procurando preenchendo os campos e procurando um prestador de serviço que satisfaça sua vontade!</p><br><br>
+					<x3>Visualizar serviços</x3>
+					</br></br>
 
 				</div>
-				
-					 <form method="post" action="Confirmar_Cadastro.php">
+				  <?php
+					 echo "<form method='post' action='alterar_solicitacao.php?id_terceiro=".$id_terceiro."&servico_ts=".$servico."'>";
+					 echo "<div class='row'>";
+          
+            $sql = mysql_query("SELECT * FROM usuario INNER JOIN servicos_fornecidos ON usuario.id_user=servicos_fornecidos.fk_id_user  INNER JOIN tipos_de_servico ON servicos_fornecidos.fk_id_ts=tipos_de_servico.id_ts INNER JOIN solicitacao_de_servico ON usuario.id_user=solicitacao_de_servico.fk_id_user_prestador WHERE id_user = '$id_terceiro'");
 
-					
-					<div class="row">
+            $array = mysql_fetch_array($sql);
+            $nome_terceiro = $array['nome_user'];
+            $hora = $array['hora_ss'];
+            $data = $array['data_ss'];
+            $status = $array['status_ss'];
+
+
+          ?>
 						
 						<div class="col-md-6">
-						<li class="text-info" style="list-style-type:none">Contratante: </li>
+						<li class="text-info" style="list-style-type:none">Prestador do Serviço: </li>
 							<div class="form-group">
-								<input class="form-control" placeholder="Nome do Contratante" type="text" name="nome_user" id="nome_user">
+								<input class="form-control" value="<?php echo "$nome_terceiro"; ?>" placeholder="Nome do Prestador" type="text" name="nome_user" id="nome_user" readonly="readonly">
 							</div>
 						</div>
+						
 						<div class="col-md-6">
-							<li class="text-info" style="list-style-type:none">Prestador de Serviço: </li>
+							<li class="text-info" style="list-style-type:none">Data<font color="white">.....................................</font>Hora do serviço </li>
 							<div class="form-group">
-								<input class="form-control" placeholder="Nome do prestador" type="text" name="login_user" id="login_user">
-							</div>
-						</div>
-						<div class="col-md-6">
-							<li class="text-info" style="list-style-type:none">Data e hora do serviço </li>
-							<div class="form-group">
-								<input class="form-control3" type="text"  name="data_servico" id="data_servico" maxlength="10" onkeypress="this.value = FormataData(event)" onpaste="return false;"/>
-								<input class="form-control3" type="text"  name="hora_servico" id="hora_servico" maxlength="5" onkeypress="this.value = FormataHora(event)" onpaste="return false;"/>
+								<input class="form-control3" type="text"  name="data_servico" id="data_servico" maxlength="10" onkeypress="this.value = FormataData(event)" onpaste="return false;" value="<?php echo "$data";?>" <?php if (strcmp($status, 'C') == 0) {echo "readonly='readonly'"; }?>/>
+                <input class="form-control3" type="text"  name="hora_servico" id="hora_servico" maxlength="5" onkeypress="this.value = FormataHora(event)" onpaste="return false;" value="<?php echo "$hora";?>" <?php if (strcmp($status, 'C') == 0) {echo "readonly='readonly'"; }?>/>
 							</div>
 						</div>
 
-						<div class="col-md-6">
-							<li class="text-info" style="list-style-type:none"> Tipo de Serviço: </li>
-								<div class="form-group"> <select class="form-control3" name="" id="">
-  <option value="">&nbsp;&nbspSelecione</option>
-  <option value="">1</option>
- 
-  </select>
-						</div>
-						</div>
+            <div class="col-md-6">
+              <li class="text-info" style="list-style-type:none"> Situação do Serviço: </li>
+                <div class="form-group"> 
+                  <select class="form-control3" name="status_servico" id="show" onchange="change(this)" <?php if (strcmp($status, 'C') == 0) {echo "disabled"; }?>>
+                  <option value="A" id="A" <?php if (strcmp($status, 'A') == 0) {echo "selected"; }?>>Em Andamento</option>
+                  <option value="C" id="C" <?php if (strcmp($status, 'C') == 0) {echo "selected"; }?>>Cancelado</option>
+                  <option value="F" id="F" <?php if (strcmp($status, 'F') == 0) {echo "selected"; }?>>Finalizado</option>
+                  </select>
+            </div>
+
+            
+              <li class="text-info" style="list-style-type:none"> Serviço Solicitado: </li>
+                <div class="form-group"> 
+                  <select class="form-control3" name="status_servico" id="show" onchange="change(this)" disabled>
+                  <option value="<?php echo "$servico";?>"><?php echo "$servico";?></option>
+
+                  </select>
+                </div>
+            </div>
+
+            
+
+
+  
+            </div>
+  
+            </div>
+
+
+            
+            <?php
+                if (strcmp($status, 'F')==0) 
+                {
+            echo "<div class='col-md-12'>
+            <li class='text-info' style='list-style-type:none'>Descrição do Serviço: </li>
+            <div class='form-group'>
+            <textarea name='text_area' class='form-control' id='text_area' cols='30' rows='5' placeholder='Descrição'> </textarea>
+              </div>
+            </div>";
+                }
+
+            ?>
+            
+            
+
+            
+
 
 
 
@@ -204,9 +254,10 @@
 						
 						<div class="col-md-12">
 							<div class="form-group">
-								<input value="Solicitar Serviço" class="btn btn-primary" type="submit">
-								<a href="menusolicitacao.html"><input value="Voltar para o menu" class="btn btn-primary" height="30"></a>
-								<p class="click">Clicando no botão, você estará confirmando a solicitação  de serviço.</a></p> 
+                <input type="submit" name="enviar" value="Alterar Dados do Serviço" class="btn btn-primary" >
+								<a href="menusolicitacao.php"><input value="Voltar para o menu" class="btn btn-primary" height="30"></a>
+                </form>
+								
 							</div>
 						</div>
 					</div>

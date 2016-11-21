@@ -1,3 +1,18 @@
+<?php
+include "Conexao_mysql.php";
+  include "Validador_de_Login.php";
+  $nome = $_SESSION['nome_user'];
+
+  $id_terceiro = $_GET['id_terceiro'];
+  $sql = mysql_query("SELECT * FROM usuario INNER JOIN servicos_fornecidos ON usuario.id_user=servicos_fornecidos.fk_id_user  INNER JOIN tipos_de_servico ON servicos_fornecidos.fk_id_ts=tipos_de_servico.id_ts WHERE id_user like '$id_terceiro'");
+ 
+  $row = mysql_num_rows($sql);
+         if ($row > 0) 
+        {
+ 
+
+
+?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -6,7 +21,7 @@
   <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Cearchi - Visualizar solicitação de serviços</title>
+  <title>Cearchi - Solicitar serviços</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
   <meta name="keywords" content="free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
@@ -76,7 +91,7 @@
               <div class="form-group">
               <ul>
 
-           <a  href="perfil.php"><img src="images/icon2.png" height="60" width="60"></a><font color= #EBEBEB>Você está conectado como:</font><a href="perfil.php"><i> <?php echo "$nome"; ?></i></a>
+           <a  href="perfil.php"><img src="images/icon2.png" height="60" width="60"></a><a href="perfil.php"><i> <?php echo "$nome"; ?></i></a>
           
  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
              <li>   
@@ -143,7 +158,7 @@
                        <span>&gt;</span>
                     </li>
                     <li class="women">
-                        <font color="white"> Visualizar solicitação de serviços </font>
+                        <font color="white"> Solicitação de serviço </font>
                     </li>
                 </ul>
                 <ul class="previous">
@@ -158,50 +173,71 @@
 		<div class="container">
 			<div class="row">
 				<div class="Register-form">
-					<x3>Visualizar serviços</x3>
-					</br></br>
+					<x3>Solicitação de serviço</x3>
+					<p>Você poderá solicitar um serviço que esteja procurando preenchendo os campos e procurando um prestador de serviço que satisfaça sua vontade!</p><br><br>
 
 				</div>
 				
-					 <form method="post" action="Confirmar_Cadastro.php">
+					 <?php echo"<form method='post' action='confirmar_solicitacao.php?id_terceiro=".$id_terceiro."'>" ?>
 
 					
 					<div class="row">
+
+
+
 						
 						<div class="col-md-6">
-						<li class="text-info" style="list-style-type:none">Prestador do Serviço: </li>
+						<li class="text-info" style="list-style-type:none">Contratante: </li>
 							<div class="form-group">
-								<input class="form-control" placeholder="Nome do Prestador" type="text" name="nome_user" id="nome_user">
+								<input class="form-control" placeholder="Nome do Contratante" type="text" name="nome_user" id="nome_user" value="<?php echo "$nome";?>" readonly="readonly">
 							</div>
 						</div>
-						
+
+            <?php 
+
+         
+        while ($array = mysql_fetch_array($sql)) 
+        {
+          $nome_terceiro = $array['nome_user'];
+
+            ?>
+						<div class="col-md-6">
+							<li class="text-info" style="list-style-type:none">Prestador de Serviço: </li>
+							<div class="form-group">
+								<input class="form-control" placeholder="Nome do prestador" type="text" name="terceiro_user" id="terceiro_user" value="<?php echo "$nome_terceiro";?>" readonly="readonly">
+							</div>
+						</div>
 						<div class="col-md-6">
 							<li class="text-info" style="list-style-type:none">Data e hora do serviço </li>
 							<div class="form-group">
 								<input class="form-control3" type="text"  name="data_servico" id="data_servico" maxlength="10" onkeypress="this.value = FormataData(event)" onpaste="return false;"/>
-                <input class="form-control3" type="text"  name="hora_servico" id="hora_servico" maxlength="5" onkeypress="this.value = FormataHora(event)" onpaste="return false;"/>
+								<input class="form-control3" type="text"  name="hora_servico" id="hora_servico" maxlength="5" onkeypress="this.value = FormataHora(event)" onpaste="return false;"/>
 							</div>
 						</div>
-            
-            <div class="col-md-12">
-            <li class="text-info" style="list-style-type:none">Descrição do Serviço: </li>
-              <div class="form-group">
-                <textarea name="" class="form-control" id="" cols="30" rows="5" placeholder="Descrição"></textarea>
-              </div>
-            </div>
 
-            <div class="col-md-6">
-              <li class="text-info" style="list-style-type:none"> Situação do Serviço: </li>
+						<div class="col-md-6">
+            <li class="text-info" style="list-style-type:none"> Tipo de Serviço: </li>
                 <div class="form-group"> 
-                  <select class="form-control3" name="status_servico" id="status_servico">
-                  <option value="">&nbsp;&nbspSelecione</option>
-                  <option value="">Em Andamento</option>
-                  <option value="">Cancelado</option>
-                  <option value="">Finalizado</option>
-                  </select>
-                </div>
-            </div>
+  <select class="form-control3" name="servico" id="servico">
+  <option value="">&nbsp;&nbspSelecione</option>
 
+
+
+      <?php 
+          $tipos = $array['servico_ts'];
+          echo "<option value='$tipos'>$tipos</option>";
+
+        }
+          
+
+      }
+
+      ?>
+							
+ 
+  </select>
+						</div>
+						</div>
 
 
 
@@ -209,9 +245,10 @@
 						
 						<div class="col-md-12">
 							<div class="form-group">
-
-								<a href="menusolicitacao.html"><input value="Voltar para o menu" class="btn btn-primary" height="30"></a>
-								
+								<input value="Solicitar Serviço" class="btn btn-primary" type="submit">
+								<a href="perfil.php"><input value="Voltar para o perfil" class="btn btn-primary" height="30"></a>
+                </form>
+								<p class="click">Clicando no botão, você estará confirmando a solicitação  de serviço.</a></p> 
 							</div>
 						</div>
 					</div>
