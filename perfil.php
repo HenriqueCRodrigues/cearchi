@@ -182,7 +182,7 @@
         {
           echo "$nome_destinatario";
           echo "</x4>&nbsp;";
-          echo "<a href=''><img src='images/addicon.png' height='25' width='25' /></a>";
+          echo "<a href='solicita_relacao.php?id_terceiro=".$id_terceiro."'><img src='images/addicon.png' height='25' width='25' /></a>";
         
         }
         else
@@ -200,6 +200,20 @@
           <ul class="nav navbar-nav">
             <li class="dropdown">
             <li class="active"><a href="#">Perfil</a></li>
+<?php
+
+  $sql11 = mysql_query("SELECT * FROM notificacao WHERE id_destinatario LIKE '$id_secao'") or die(mysql_error());
+  $row = mysql_num_rows($sql11);
+?>
+
+            <li><a href="notificacoes.php"><font color="white" size="4"><?php 
+                if(strcmp($row, 0) != 0)
+                {
+                  echo "($row)";
+                }?></font> Notificações de Amizadades</a></li> 
+                
+
+             
             <?php 
             if (isset($id_terceiro)) 
             {
