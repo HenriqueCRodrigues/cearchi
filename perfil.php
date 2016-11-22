@@ -219,13 +219,17 @@
 
   $sql11 = mysql_query("SELECT * FROM notificacao WHERE id_destinatario LIKE '$id_secao'") or die(mysql_error());
   $row = mysql_num_rows($sql11);
-?>
 
-            <li><a href="notificacoes.php"><font color="white" size="4"><?php 
+            if (!isset($id_terceiro)) 
+            {
+            echo '<li><a href="notificacoes.php"><font color="white" size="4">';
                 if(strcmp($row, 0) != 0)
                 {
                   echo "($row)";
-                }?></font> Notificações de Amizadades</a></li> 
+                }
+            
+            }?>
+            </font> Notificações de Amizadades</a></li> 
                 
 
              
