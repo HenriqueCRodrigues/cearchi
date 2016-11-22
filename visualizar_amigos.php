@@ -83,7 +83,7 @@ $id = $_SESSION['id_user'];
         <div class="form-group">
           <ul>
 
-            <a  href="perfil.php"><img src="images/icon2.png" height="60" width="60"></a><font color= #EBEBEB>Você está conectado como:</font><a href="perfil.php"><i> <?php echo "$nome"; ?></i></a>
+            <a  href="perfil.php"><img src="images/icon2.png" height="60" width="60"></a><font color= #EBEBEB></font><a href="perfil.php"><i><?php echo "$nome"; ?></i></a>
 
             &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
             <li>   
@@ -94,6 +94,9 @@ $id = $_SESSION['id_user'];
 
                    <td><input class="form-control2" name="nome_user" id="nome_user" placeholder="  Pesquisar..." type="text"></td>
                    <td><font color="white">       </font>      <input type='image' title='Buscar' src='images/lupa.png' width="40" height="40"></td>
+                 </tr>
+                 <tr>
+
                  </tr>
 
                </table>
@@ -120,11 +123,11 @@ $id = $_SESSION['id_user'];
           <ul>
             <li><a href="index.php">Inicio</a></li>
             <li><a href="menumensagens.php">Mensagens</a></li>
-            <li><a href="#">Serviços</a></li>
+            <li><a href="menusolicitacao.php">Serviços</a></li>
             <li><a href="contact.php">Contato</a></li>
             <li><a href="about.php">Sobre</a></li>
             <li><a href="logout.php">Deslogar</a></li>
-            <li class="cta"><a href="perfil.php">Acesse seu Perfil</a></li>
+            <li class="cta"><a href="perfil.php">Retorne ao Seu Perfil</a></li>
           </ul>
         </nav>
       </div>
@@ -142,13 +145,17 @@ $id = $_SESSION['id_user'];
            <li class="home">
              <a href="index.php" title="Retornar a Pagina Principal">Home</a>&nbsp;
              <span>&gt;</span>
-           </li>                
+           </li>       
+           <li class="home">
+             <a href="perfil.php" title="Retornar ao Seu Perfil">Perfil</a>&nbsp;
+             <span>&gt;</span>
+           </li>                 
            <li class="women">
             <font color="white">Amigos</font>
           </li>
         </ul>
         <ul class="previous">
-          <li><a href="consultar.php" title="Retornar para Consultar Usuarios ou Tipos de Serviço Novamente">Retornar</a></li>
+          <li><a href="perfil.php" title="Retornar para Consultar Usuarios ou Tipos de Serviço Novamente">Retornar</a></li>
         </ul>
         <div class="clearfix"></div>
       </div>

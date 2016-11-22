@@ -122,10 +122,9 @@
         <a href="index.php" ><img src="images/logopeq.png"></a>
         <nav role="navigation">
           <ul>
-            <li><a href="index.php">Inicio</a></li>
+             <li><a href="index.php">Inicio</a></li>
             <li><a href="menumensagens.php">Mensagens</a></li>
-            
-            <li><a href="about.php">Sobre</a></li>
+            <li><a href="menusolicitacao.php">Serviços</a></li>
             <li><a href="contact.php">Contato</a></li>
             <li><a href="about.php">Sobre</a></li>
             <li><a href="logout.php">Deslogar</a></li>
@@ -180,9 +179,21 @@
 
         if (isset($id_terceiro)) 
         {
+
+          $sqlA = mysql_query("SELECT * FROM relacoes WHERE (id_user1='$id_secao' AND id_user2='$id_terceiro') OR (id_user2='$id_secao' AND id_user1='$id_terceiro')");
+
+          $row = mysql_num_rows($sqlA);         
+
           echo "$nome_destinatario";
           echo "</x4>&nbsp;";
-          echo "<a href='solicita_relacao.php?id_terceiro=".$id_terceiro."'><img src='images/addicon.png' height='25' width='25' /></a>";
+          if ($row > 0) 
+          {
+            echo "<a href='desfazer_amigo.php?id_terceiro=".$id_terceiro."'><img src='images/removeicon.png' height='25' width='25' /></a>";   
+          }
+          else
+          {
+            echo "<a href='solicita_relacao.php?id_terceiro=".$id_terceiro."'><img src='images/addicon.png' height='25' width='25' /></a>";
+          }          
         
         }
         else
@@ -200,7 +211,11 @@
           <ul class="nav navbar-nav">
             <li class="dropdown">
             <li class="active"><a href="#">Perfil</a></li>
-<?php
+            <?php 
+            if (!isset($id_terceiro))
+            {
+            echo '<li><a href="visualizar_amigos.php">Amigos</a></li>';
+            }
 
   $sql11 = mysql_query("SELECT * FROM notificacao WHERE id_destinatario LIKE '$id_secao'") or die(mysql_error());
   $row = mysql_num_rows($sql11);

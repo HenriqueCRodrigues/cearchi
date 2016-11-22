@@ -5,6 +5,8 @@
   $nome = $_SESSION['nome_user'];
   $id_terceiro = $_GET['id_terceiro'];
   $servico = $_GET['servico_ts'];
+  $id_ss = $_GET['id_ss'];
+  
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -119,8 +121,7 @@
           <ul>
             <li><a href="index.php">Inicio</a></li>
             <li><a href="menumensagens.php">Mensagens</a></li>
-            
-            <li><a href="about.php">Sobre</a></li>
+            <li><a href="menusolicitacao.php">Serviços</a></li>
             <li><a href="contact.php">Contato</a></li>
             <li><a href="about.php">Sobre</a></li>
             <li><a href="logout.php">Deslogar</a></li>
@@ -143,11 +144,15 @@
           <div class="dreamcrub">
            <ul class="breadcrumbs">
                    <li class="home">
-                       <a href="index.html" title="Go to Home Page">Home</a>&nbsp;
+                       <a href="index.html" title="Retornar a Pagina Principal">Home</a>&nbsp;
                        <span>&gt;</span>
                     </li>
                     <li class="home">
-                       <a href="menusolicitação.html" title="Go to Home Page">Menu de solicitação de serviços</a>&nbsp;
+                       <a href="perfil.php" title="Retornar para o Seu Perfil">Pefil</a>&nbsp;
+                       <span>&gt;</span>
+                    </li>
+                    <li class="home">
+                       <a href="menusolicitacao.php" title="Retornar para o Seu Perfil">Menu de solicitação de serviços</a>&nbsp;
                        <span>&gt;</span>
                     </li>
                     <li class="women">
@@ -155,7 +160,7 @@
                     </li>
                 </ul>
                 <ul class="previous">
-                  <li><a href="index.html">Retornar</a></li>
+                  <li><a href="menusolicitacao.php" title="Retornar para o Seu Perfil">Retornar</a></li>
                 </ul>
                 <div class="clearfix"></div>
          </div>
@@ -171,16 +176,18 @@
 
 				</div>
 				  <?php
-					 echo "<form method='post' action='alterar_solicitacao.php?id_terceiro=".$id_terceiro."&servico_ts=".$servico."'>";
-					 echo "<div class='row'>";
-          
-            $sql = mysql_query("SELECT * FROM usuario INNER JOIN servicos_fornecidos ON usuario.id_user=servicos_fornecidos.fk_id_user  INNER JOIN tipos_de_servico ON servicos_fornecidos.fk_id_ts=tipos_de_servico.id_ts INNER JOIN solicitacao_de_servico ON usuario.id_user=solicitacao_de_servico.fk_id_user_prestador WHERE id_user = '$id_terceiro'");
+          $sql = mysql_query("SELECT * FROM usuario INNER JOIN servicos_fornecidos ON usuario.id_user=servicos_fornecidos.fk_id_user  INNER JOIN tipos_de_servico ON servicos_fornecidos.fk_id_ts=tipos_de_servico.id_ts INNER JOIN solicitacao_de_servico ON usuario.id_user=solicitacao_de_servico.fk_id_user_prestador WHERE id_user = '$id_terceiro' AND id_ss = '$id_ss'");
 
             $array = mysql_fetch_array($sql);
             $nome_terceiro = $array['nome_user'];
             $hora = $array['hora_ss'];
             $data = $array['data_ss'];
             $status = $array['status_ss'];
+            
+
+					 echo "<form method='post' action='alterar_solicitacao.php?id_terceiro=".$id_terceiro."&servico_ts=".$servico."&id_ss=".$id_ss."'>";
+					 echo "<div class='row'>";
+          
 
 
           ?>
@@ -203,17 +210,17 @@
             <div class="col-md-6">
               <li class="text-info" style="list-style-type:none"> Situação do Serviço: </li>
                 <div class="form-group"> 
-                  <select class="form-control3" name="status_servico" id="show" onchange="change(this)" <?php if (strcmp($status, 'C') == 0) {echo "disabled"; }?>>
-                  <option value="A" id="A" <?php if (strcmp($status, 'A') == 0) {echo "selected"; }?>>Em Andamento</option>
-                  <option value="C" id="C" <?php if (strcmp($status, 'C') == 0) {echo "selected"; }?>>Cancelado</option>
-                  <option value="F" id="F" <?php if (strcmp($status, 'F') == 0) {echo "selected"; }?>>Finalizado</option>
+                  <select class="form-control3" name="status_servico" id="status_servico" onchange="change(this)" <?php if (strcmp($status, 'C') == 0) {echo "disabled"; }?>>
+                  <option value="A" <?php if (strcmp($status, 'A') == 0) {echo "selected"; }?>>Em Andamento</option>
+                  <option value="C" <?php if (strcmp($status, 'C') == 0) {echo "selected"; }?>>Cancelado</option>
+                  <option value="F" <?php if (strcmp($status, 'F') == 0) {echo "selected"; }?>>Finalizado</option>
                   </select>
             </div>
 
             
               <li class="text-info" style="list-style-type:none"> Serviço Solicitado: </li>
                 <div class="form-group"> 
-                  <select class="form-control3" name="status_servico" id="show" onchange="change(this)" disabled>
+                  <select class="form-control3" name="tipos_de_servico" id="tipos_de_servico" onchange="change(this)" disabled>
                   <option value="<?php echo "$servico";?>"><?php echo "$servico";?></option>
 
                   </select>

@@ -163,7 +163,7 @@
           <ul>
             <li><a href="index.php">Inicio</a></li>
             <li><a href="menumensagens.php">Mensagens</a></li>
-            <li><a href="#">Serviços</a></li>
+            <li><a href="menusolicitacao.php">Serviços</a></li>
             <li><a href="contact.php">Contato</a></li>
             <li><a href="about.php">Sobre</a></li>
             <li><a href="logout.php">Deslogar</a></li>
