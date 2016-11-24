@@ -6,7 +6,11 @@
   $id_terceiro = $_GET['id_terceiro'];
   $servico = $_GET['servico_ts'];
   $id_ss = $_GET['id_ss'];
-  
+  $id = $_SESSION['id_user'];
+  $statusg = $_GET['statusg'];  
+
+
+ 
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -176,18 +180,52 @@
 
 				</div>
 				  <?php
-          $sql = mysql_query("SELECT * FROM usuario INNER JOIN servicos_fornecidos ON usuario.id_user=servicos_fornecidos.fk_id_user  INNER JOIN tipos_de_servico ON servicos_fornecidos.fk_id_ts=tipos_de_servico.id_ts INNER JOIN solicitacao_de_servico ON usuario.id_user=solicitacao_de_servico.fk_id_user_prestador WHERE id_user = '$id_terceiro' AND id_ss = '$id_ss'");
+         
+
+          if (strcmp($statusg, 'F') == 0) 
+          {
+            $sql = mysql_query("SELECT * FROM usuario INNER JOIN servicos_fornecidos ON usuario.id_user=servicos_fornecidos.fk_id_user  INNER JOIN tipos_de_servico ON servicos_fornecidos.fk_id_ts=tipos_de_servico.id_ts INNER JOIN solicitacao_de_servico ON usuario.id_user=solicitacao_de_servico.fk_id_user_prestador WHERE id_ss = '$id_ss'");
+
+            $array = mysql_fetch_array($sql);
+            $nome_terceiro = $array['nome_user'];
+            $hora = $array['hora_ss'];
+            $data = $array['data_ss'];
+            $id_avaliacao = $array['fk_id_avaliacao'];
+            $status = $array['status_ss'];
+            
+
+            $sql1 = mysql_query("SELECT * FROM avaliacoes WHERE id_avaliacao like '$id_avaliacao'");
+            $rz = mysql_num_rows($sql1);
+            echo "$id_avaliacao avalicao";
+           
+            $array1 = mysql_fetch_array($sql1);
+            
+            $estrelas = $array1['estrelas_avaliacao']; 
+            $descricao = $array1['descricao_avaliacao'];
+            echo "$estrelas estrelinhas";     
+            
+          }
+          
+          else
+          {
+            $sql = mysql_query("SELECT * FROM usuario INNER JOIN servicos_fornecidos ON usuario.id_user=servicos_fornecidos.fk_id_user  INNER JOIN tipos_de_servico ON servicos_fornecidos.fk_id_ts=tipos_de_servico.id_ts INNER JOIN solicitacao_de_servico ON usuario.id_user=solicitacao_de_servico.fk_id_user_prestador WHERE id_user = '$id_terceiro' AND id_ss = '$id_ss'");
 
             $array = mysql_fetch_array($sql);
             $nome_terceiro = $array['nome_user'];
             $hora = $array['hora_ss'];
             $data = $array['data_ss'];
             $status = $array['status_ss'];
+
+          }
+
+            
+              
             
 
-					 echo "<form method='post' action='alterar_solicitacao.php?id_terceiro=".$id_terceiro."&servico_ts=".$servico."&id_ss=".$id_ss."'>";
-					 echo "<div class='row'>";
-          
+					
+           
+          echo "<form method='post' action='alterar_solicitacao.php?id_terceiro=".$id_terceiro."&servico_ts=".$servico."&id_ss=".$id_ss."&statusg=".$statusg."'>";
+           echo "<div class='row'>";
 
 
           ?>
@@ -202,20 +240,45 @@
 						<div class="col-md-6">
 							<li class="text-info" style="list-style-type:none">Data<font color="white">.....................................</font>Hora do serviço </li>
 							<div class="form-group">
-								<input class="form-control3" type="text"  name="data_servico" id="data_servico" maxlength="10" onkeypress="this.value = FormataData(event)" onpaste="return false;" value="<?php echo "$data";?>" <?php if (strcmp($status, 'C') == 0) {echo "readonly='readonly'"; }?>/>
-                <input class="form-control3" type="text"  name="hora_servico" id="hora_servico" maxlength="5" onkeypress="this.value = FormataHora(event)" onpaste="return false;" value="<?php echo "$hora";?>" <?php if (strcmp($status, 'C') == 0) {echo "readonly='readonly'"; }?>/>
+								<input class="form-control3" type="text"  name="data_servico" id="data_servico" maxlength="10" onkeypress="this.value = FormataData(event)" onpaste="return false;" value="<?php echo "$data";?>" <?php if (strcmp($status, 'C') == 0 || strcmp($status, 'F') == 0) {echo "readonly='readonly'"; }?>/>
+                <input class="form-control3" type="text"  name="hora_servico" id="hora_servico" maxlength="5" onkeypress="this.value = FormataHora(event)" onpaste="return false;" value="<?php echo "$hora";?>" <?php if (strcmp($status, 'C') == 0 || strcmp($status, 'F') == 0) {echo "readonly='readonly'"; }?>/>
 							</div>
 						</div>
+            
+<script>
+  function genderSelectHandler(select)
+  {
+      if(select.value == 'F')
+      {
+        verifica.style.visibility='visible';
+
+      }
+      else if(select.value == 'C'){
+        verifica.style.visibility='hidden';
+        
+
+      }
+
+      else if(select.value == 'A'){
+        verifica.style.visibility='hidden';
+
+      }
+  }
+</script>
+            
+
 
             <div class="col-md-6">
               <li class="text-info" style="list-style-type:none"> Situação do Serviço: </li>
                 <div class="form-group"> 
-                  <select class="form-control3" name="status_servico" id="status_servico" onchange="change(this)" <?php if (strcmp($status, 'C') == 0) {echo "disabled"; }?>>
-                  <option value="A" <?php if (strcmp($status, 'A') == 0) {echo "selected"; }?>>Em Andamento</option>
-                  <option value="C" <?php if (strcmp($status, 'C') == 0) {echo "selected"; }?>>Cancelado</option>
-                  <option value="F" <?php if (strcmp($status, 'F') == 0) {echo "selected"; }?>>Finalizado</option>
+                  <select class="form-control3" name="status_servico" id="status_servico" onchange="genderSelectHandler(this)"
+                   <?php if (strcmp($status, 'C') == 0 || strcmp($status, 'F') == 0) {echo "disabled"; }?>>
+                   <option value="C" id="C"<?php if (strcmp($status, 'C') == 0) {echo "selected";  }?>>Cancelado</option>
+                  <option value="A" id="A"<?php if (strcmp($status, 'A') == 0) {echo "selected";   }?>>Em Andamento</option>                  
+                  <option value="F" id="F"<?php if (strcmp($status, 'F') == 0) {echo "selected";   }?>>Finalizado</option>
                   </select>
             </div>
+
 
             
               <li class="text-info" style="list-style-type:none"> Serviço Solicitado: </li>
@@ -224,6 +287,7 @@
                   <option value="<?php echo "$servico";?>"><?php echo "$servico";?></option>
 
                   </select>
+
                 </div>
             </div>
 
@@ -231,33 +295,221 @@
 
 
   
+
             </div>
   
             </div>
 
 
-            
-            <?php
-                if (strcmp($status, 'F')==0) 
-                {
-            echo "<div class='col-md-12'>
-            <li class='text-info' style='list-style-type:none'>Descrição do Serviço: </li>
-            <div class='form-group'>
-            <textarea name='text_area' class='form-control' id='text_area' cols='30' rows='5' placeholder='Descrição'> </textarea>
-              </div>
-            </div>";
-                }
-
-            ?>
-            
-            
-
-            
 
 
 
+<?php  
+echo "<div id='verifica'>";
+if (strcmp($status, 'A') == 0) 
+            {
+              echo "<script> verifica.style.visibility='hidden' </script>";
+            }
 
-						
+            if (strcmp($status, 'F') == 0) 
+            {
+              echo "<script> verifica.style.visibility='visible' </script>";
+            }
+
+            if (strcmp($status, 'C') == 0) 
+            {
+              echo "<script> verifica.style.visibility='hidden' </script>";
+            }
+?>
+<div class='col-md-12'>
+                      <li class='text-info' style='list-style-type:none'>Avalie o Serviço: </li>
+                      <div class='form-group'>
+                      <link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+                            <div class='estrelas'>
+
+                              <?php
+                                
+                                if (strcmp($status, 'F') != 0) 
+                                {
+                                  echo "
+                                      <input type='radio' id='cm_star-empty' name='fb' value='' checked/>
+
+                                      <label for='cm_star-1'>&nbsp;&nbsp;<i class='fa'></i></label>
+
+                                      <input type='radio' id='cm_star-1' name='fb' value='1'/>
+
+                                      <label for='cm_star-2'>&nbsp;&nbsp;<i class='fa'></i></label>
+                                      
+                                      <input type='radio' id='cm_star-2' name='fb' value='2'/>
+                                      
+                                      <label for='cm_star-3'>&nbsp;&nbsp;<i class='fa'></i></label>
+                                      
+                                      <input type='radio' id='cm_star-3' name='fb' value='3'/>
+                                      
+                                      <label for='cm_star-4'>&nbsp;&nbsp;<i class='fa'></i></label>
+                                      
+                                      <input type='radio' id='cm_star-4' name='fb' value='4'/>
+                                      
+                                      <label for='cm_star-5'>&nbsp;&nbsp;<i class='fa'></i></label>
+                                      
+                                      <input type='radio' id='cm_star-5' name='fb' value='5'/>";
+                                }
+
+                                else
+                                {
+                                  if (strcmp($estrelas, 1) == 0) 
+                                  {
+                                
+
+                                  echo "
+                                
+                                      <label for='cm_star-1'>&nbsp;&nbsp;<i class='fa'></i></label>
+
+                                      <input type='radio' id='cm_star-1' name='fb' value='1' checked/>
+
+                                      <label for='cm_star-2'>&nbsp;&nbsp;<i class='fa'></i></label>
+                                      
+                                      <input type='radio' id='cm_star-2' name='fb' value='2'/>
+                                      
+                                      <label for='cm_star-3'>&nbsp;&nbsp;<i class='fa'></i></label>
+                                      
+                                      <input type='radio' id='cm_star-3' name='fb' value='3'/>
+                                      
+                                      <label for='cm_star-4'>&nbsp;&nbsp;<i class='fa'></i></label>
+                                      
+                                      <input type='radio' id='cm_star-4' name='fb' value='4'/>
+                                      
+                                      <label for='cm_star-5'>&nbsp;&nbsp;<i class='fa'></i></label>
+                                      
+                                      <input type='radio' id='cm_star-5' name='fb' value='5'/>";
+                                  }
+
+                                  if (strcmp($estrelas, 2) == 0) 
+                                  {
+                                    echo "
+                                      
+                                      <label for='cm_star-1'>&nbsp;&nbsp;<i class='fa'></i></label>
+
+                                      <input type='radio' id='cm_star-1' name='fb' value='1']/>
+
+                                      <label for='cm_star-2'>&nbsp;&nbsp;<i class='fa'></i></label>
+                                      
+                                      <input type='radio' id='cm_star-2' name='fb' value='2' checked/>
+                                      
+                                      <label for='cm_star-3'>&nbsp;&nbsp;<i class='fa'></i></label>
+                                      
+                                      <input type='radio' id='cm_star-3' name='fb' value='3'/>
+                                      
+                                      <label for='cm_star-4'>&nbsp;&nbsp;<i class='fa'></i></label>
+                                      
+                                      <input type='radio' id='cm_star-4' name='fb' value='4'/>
+                                      
+                                      <label for='cm_star-5'>&nbsp;&nbsp;<i class='fa'></i></label>
+                                      
+                                      <input type='radio' id='cm_star-5' name='fb' value='5'/>";
+                                    
+
+                                  }
+
+                                  if (strcmp($estrelas, 3) == 0) 
+                                  {
+                                    echo "
+                                      
+                                      <label for='cm_star-1'>&nbsp;&nbsp;<i class='fa'></i></label>
+
+                                      <input type='radio' id='cm_star-1' name='fb' value='1' checked/>
+
+                                      <label for='cm_star-2'>&nbsp;&nbsp;<i class='fa'></i></label>
+                                      
+                                      <input type='radio' id='cm_star-2' name='fb' value='2'/>
+                                      
+                                      <label for='cm_star-3'>&nbsp;&nbsp;<i class='fa'></i></label>
+                                      
+                                      <input type='radio' id='cm_star-3' name='fb' value='3' checked/>
+                                      
+                                      <label for='cm_star-4'>&nbsp;&nbsp;<i class='fa'></i></label>
+                                      
+                                      <input type='radio' id='cm_star-4' name='fb' value='4'/>
+                                      
+                                      <label for='cm_star-5'>&nbsp;&nbsp;<i class='fa'></i></label>
+                                      
+                                      <input type='radio' id='cm_star-5' name='fb' value='5'/>";
+                                  }
+
+                                  if (strcmp($estrelas, 4) == 0) 
+                                  {
+                                    echo "
+                                      
+                                      <label for='cm_star-1'>&nbsp;&nbsp;<i class='fa'></i></label>
+
+                                      <input type='radio' id='cm_star-1' name='fb' value='1' checked/>
+
+                                      <label for='cm_star-2'>&nbsp;&nbsp;<i class='fa'></i></label>
+                                      
+                                      <input type='radio' id='cm_star-2' name='fb' value='2'/>
+                                      
+                                      <label for='cm_star-3'>&nbsp;&nbsp;<i class='fa'></i></label>
+                                      
+                                      <input type='radio' id='cm_star-3' name='fb' value='3'/>
+                                      
+                                      <label for='cm_star-4'>&nbsp;&nbsp;<i class='fa'></i></label>
+                                      
+                                      <input type='radio' id='cm_star-4' name='fb' value='4' checked/>
+                                      
+                                      <label for='cm_star-5'>&nbsp;&nbsp;<i class='fa'></i></label>
+                                      
+                                      <input type='radio' id='cm_star-5' name='fb' value='5'/>";
+                                  }
+
+                                  if (strcmp($estrelas, 5) == 0) 
+                                  {
+                                    echo "
+                                      
+                                      <label for='cm_star-1'>&nbsp;&nbsp;<i class='fa'></i></label>
+
+                                      <input type='radio' id='cm_star-1' name='fb' value='1'/>
+
+                                      <label for='cm_star-2'>&nbsp;&nbsp;<i class='fa'></i></label>
+                                      
+                                      <input type='radio' id='cm_star-2' name='fb' value='2'/>
+                                      
+                                      <label for='cm_star-3'>&nbsp;&nbsp;<i class='fa'></i></label>
+                                      
+                                      <input type='radio' id='cm_star-3' name='fb' value='3'/>
+                                      
+                                      <label for='cm_star-4'>&nbsp;&nbsp;<i class='fa'></i></label>
+                                      
+                                      <input type='radio' id='cm_star-4' name='fb' value='4'/>
+                                      
+                                      <label for='cm_star-5'>&nbsp;&nbsp;<i class='fa'></i></label>
+                                      
+                                      <input type='radio' id='cm_star-5' name='fb' value='5' checked/>";
+                                    
+                                  }
+ 
+                                      
+                                }
+
+
+
+                              ?>
+
+                              
+
+                            </div><br><br>
+
+                      <li class='text-info' style='list-style-type:none'>Descrição do Serviço:</li>
+                      <textarea name='text_area' class='form-control' id='text_area' cols='30' rows='5' placeholder='(Opcional)&#10;Diga como foi realizado o Serviço.&#10;Ex: Realizou uma otima pintura.'><?php if (strcmp($status, 'F') == 0) { echo "$descricao"; } ?></textarea>
+                        </div><br><br>
+                        </div>
+  
+</div>
+
+
+
+
+          
+	
 						
 						<div class="col-md-12">
 							<div class="form-group">
@@ -373,6 +625,22 @@
 
 
 </script>
+
+<style type="text/css">
+  .estrelas input[type=radio] {
+  display: none;
+}
+.estrelas label i.fa:before {
+  content:'\f005';
+  color: #FC0;
+}
+.estrelas input[type=radio]:checked ~ label i.fa:before {
+  color: #CCC;
+}
+
+
+</style>
+
 
 	</body>
 </html>

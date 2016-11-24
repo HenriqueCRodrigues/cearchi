@@ -227,9 +227,11 @@
                 {
                   echo "($row)";
                 }
+
+                echo "</font> Notificações de Amizades</a></li>";
             
             }?>
-            </font> Notificações de Amizadades</a></li> 
+             
                 
 
              
@@ -250,11 +252,19 @@
                   echo "<li><a href='cadastrar_solicitacao.php?id_terceiro=".@$id_terceiro."'>Solicitar Serviço</a></li>";
                   echo "<li><a href='menusolicitacao.php'>Serviços contratados</a></li>";
                 }
+                 if(strcmp($tipo_user, 'C') == 0)
+                {
+                  
+                  echo "<li><a href='menusolicitacao.php?id_s_somente=".$id_terceiro."'>Serviços contratados</a></li>";
+                }
+
+
+
                               
             }
             else
             {
-                echo "<li><a href='menusolicitacao.php'>Serviços contratados</a></li>";
+                echo "<li><a href='menusolicitacao.php?id_s_somente=".$id_terceiro."'>Serviços contratados</a></li>";
             }
             
 

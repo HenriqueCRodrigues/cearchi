@@ -1,9 +1,11 @@
-<?php
+  <?php
 include "Conexao_mysql.php";
 include "Validador_de_Login.php";
 $nome = $_SESSION['nome_user'];
 $id = $_SESSION['id_user'];
 $tipo = $_SESSION['tipo_usuario'];
+@$id_s_somente = $_GET['id_s_somente'];
+
 ?>
 
 <!DOCTYPE html>
@@ -190,6 +192,12 @@ $tipo = $_SESSION['tipo_usuario'];
 
    <?php
 
+  /* if (isset($id_s_somente)) 
+   {
+     $id_terceiro = $id_s_somente;
+     $id = $id_s_somente;
+   }*/
+
    if (strcmp($tipo, 'C') ==0) 
    {
 
@@ -197,10 +205,11 @@ $tipo = $_SESSION['tipo_usuario'];
     while ($linha1 = mysql_fetch_array($sql)) 
     { 
       $id_terceiro = $linha1['fk_id_user_prestador'];
-      $nome = $linha1['nome_user'];
+      
 
       $sql1 = mysql_query("SELECT * FROM usuario INNER JOIN servicos_fornecidos ON usuario.id_user=servicos_fornecidos.fk_id_user INNER JOIN tipos_de_servico ON servicos_fornecidos.fk_id_ts=tipos_de_servico.id_ts WHERE id_user='$id_terceiro' ");
       $linha2 = mysql_fetch_array($sql1);
+      $nome = $linha2['nome_user'];
       $servico = $linha2['servico_ts'];
       $status = $linha1['status_ss'];
       $id_ss = $linha1['id_ss'];
@@ -208,14 +217,17 @@ $tipo = $_SESSION['tipo_usuario'];
 
       if (strcmp($status, 'A')==0) 
       {
+        $statusg = $status;
         $status = 'Em Andamento';
       }
       if (strcmp($status, 'C')==0) 
       {
+        $statusg = $status;
         $status = 'Cancelado';
       }
       if (strcmp($status, 'F')==0) 
       {
+        $statusg = $status;
         $status = 'Finalizado';
       }
 //echo '<td><a href="mensagem?assunto='.$id_assunto.'"><font color="black" >Visualizar Mensagens</font></a></td>';
@@ -224,15 +236,15 @@ $tipo = $_SESSION['tipo_usuario'];
       echo '<th><font color="black" >'.$nome.'</font></th>';
       echo '<th><font color="black" > '.$status.'</font></th>';
       echo '<th><font color="black" >'.$servico.'</font></a></th>';
-      echo '<th><a href="Visualizar_solicitacao.php?id_terceiro='.$id_terceiro.'&servico_ts='.$servico.'&id_ss='.$id_ss.'"><font color="black" >Visualizar Solicitação</font></a></th>';
+      echo '<th><a href="Visualizar_solicitacao.php?id_terceiro='.$id_terceiro.'&servico_ts='.$servico.'&id_ss='.$id_ss.'&statusg='.$statusg.'"><font color="black" >Visualizar Solicitação</font></a></th>';
       echo "</tr>";
     }
 
 
 
   }
-
-  elseif (strcmp($tipo_usuario, 'P')==0) 
+  
+  if (strcmp($tipo, 'P') ==0) 
   {
 
     $sql = mysql_query("SELECT * FROM usuario INNER JOIN solicitacao_de_servico ON usuario.id_user=solicitacao_de_servico.fk_id_user_prestador INNER JOIN servicos_fornecidos ON usuario.id_user=servicos_fornecidos.fk_id_user INNER JOIN tipos_de_servico ON servicos_fornecidos.fk_id_ts=tipos_de_servico.id_ts WHERE id_user = '$id'");
@@ -263,7 +275,7 @@ $tipo = $_SESSION['tipo_usuario'];
       echo '<th><font color="black" >'.$nome.'</font></th>';
       echo '<th><font color="black" > '.$status.'</font></th>';
       echo '<th><font color="black" >'.$servico.'</font></a></th>';
-      echo '<th><a href="Visualizar_solicitacao.php?id_terceiro='.$id_terceiro.'&servico_ts='.$servico.'"><font color="black" >Visualizar Solicitação</font></a></th>';
+      echo '<th><a href="Visualizar_solicitacao.php?id_terceiro='.$id_terceiro.'&servico_ts='.$servico.'&id_ss='.$id_ss.'"><font color="black" >Visualizar Solicitação</font></a></th>';
       echo "</tr>";
     
     }
