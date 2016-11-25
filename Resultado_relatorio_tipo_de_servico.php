@@ -147,7 +147,7 @@ $id = $_SESSION['id_user'];
              <span>&gt;</span>
            </li>       
            <li class="home">
-             <a href="perfil.php" title="Retornar ao Seu Perfil">Relatório</a>&nbsp;
+             <a href="gerar_relatorio_tipo_de_servico.php" title="Retornar para a consulta">Relatório</a>&nbsp;
              <span>&gt;</span>
            </li>                 
            <li class="women">
@@ -155,7 +155,7 @@ $id = $_SESSION['id_user'];
           </li>
         </ul>
         <ul class="previous">
-          <li><a href="perfil.php" title="Retornar para Consultar Usuarios ou Tipos de Serviço Novamente">Retornar</a></li>
+          <li><a href="gerar_relatorio_tipo_de_servico.php" title="Retornar para Consultar Usuarios ou Tipos de Serviço Novamente">Retornar</a></li>
         </ul>
         <div class="clearfix"></div>
       </div>
@@ -195,6 +195,92 @@ $id = $_SESSION['id_user'];
    <tr>
     
 </tr>
+
+<?php
+
+  function formata_data($_data) {
+    // o array $partes é um dos parâmetros de preg_match(), e retorna os padrões encontrados na string.
+    if (preg_match("/^([0-9]{1,2})\/([0-9]{1,2})\/([0-9]{4})$/", $_data, $partes)) {
+  $data_formatada = $partes[3]."-".$partes[2]."-".$partes[1];
+  return $data_formatada;
+    } 
+}
+ 
+  @$data_inicial = $_POST['data_servico'];
+  @$data_final = $_POST['data_servico_final'];
+  @$servico = $_POST['servico'];
+  @$cont = 0;
+
+  if(strcmp($data_inicial,'')==0 || strcmp($data_final,'')==0){
+      echo "<script>alert('Todos os campos de data devem ser preenchidos.')</script>";
+    echo "<script> location.href='gerar_relatorio_tipo_de_servico.php'</script>";
+  }
+
+  if(strcmp($servico, '') != 0)
+  {
+    @$data_inicial = $_POST['data_servico'];
+    @$data_final = $_POST['data_servico_final'];
+    @$tipo_ss = $_POST['servico'];
+    $data_inicial_formatada = strtotime(formata_data($data_inicial));
+    $data_final_formatada = strtotime(formata_data($data_final));
+    
+    $sql = mysql_query("SELECT * FROM solicitacao_de_servico INNER JOIN tipos_de_servico ON solicitacao_de_servico.fk_id_ts = tipos_de_servico.id_ts WHERE servico_ts like '$servico'") or die(mysql_error());
+    while ($linha = mysql_fetch_array($sql)) {
+      $data_ss = $linha['data_ss'];
+      $data_ss_formatada = strtotime(formata_data($data_ss));
+      if($data_ss_formatada >= $data_inicial_formatada && $data_ss_formatada <= $data_final_formatada){
+        @$cont++;
+      }
+    } 
+  
+  echo "Tipos de serviço do periodo $data_inicial até $data_final ";
+    echo "<tr>";
+    echo "<td>$servico</td>";
+    echo "<td>$cont</td>";
+    echo "<td>$data_ss</td>";
+    echo "</tr>";
+  }
+
+
+  else
+  {
+
+  @$data_inicial = $_POST['data_servico'];
+  @$data_final = $_POST['data_servico_final'];
+
+  $data_inicial_formatada = strtotime(formata_data($data_inicial));
+  $data_final_formatada = strtotime(formata_data($data_final));
+
+  echo "Tipos de serviço do periodo $data_inicial até $data_final ";
+
+  $sql2 = mysql_query("SELECT * FROM tipos_de_servico") or die(mysql_error());
+
+  while($linha2 = mysql_fetch_array($sql2)){
+    @$cont1=0;
+    $id_ts = $linha2['id_ts'];
+    $nome_servico = $linha2['servico_ts'];
+    $sql3 = mysql_query("SELECT * FROM solicitacao_de_servico WHERE fk_id_ts LIKE '$id_ts'") or die(mysql_error());
+    while ($linha3 = mysql_fetch_array($sql3)) {
+    $data_ss = $linha3['data_ss'];
+    $data_ss_formatada = strtotime(formata_data($data_ss));
+      if($data_ss_formatada >= $data_inicial_formatada && $data_ss_formatada <= $data_final_formatada){
+         @$cont1++;
+    }
+    }
+    
+            if(strcmp($cont1, 0)!=0){
+                  echo "<tr>";
+                  echo "<td>$nome_servico</td>";
+                  echo "<td>$cont1</td>";
+                  echo "<td>$data_ss</td>";
+                  echo "</tr>";
+                          }
+    
+              
+                }
+} 
+  
+?>
 </table>
 
 </br>

@@ -1,3 +1,16 @@
+<?php
+
+include "Conexao_mysql.php";
+$sql = "SELECT * FROM estados ORDER BY sigla";
+$res = mysql_query($sql, $conexao);
+$num = mysql_num_rows($res);
+for ($i = 0; $i < $num; $i++) {
+  $dados = mysql_fetch_array($res);
+  $arrEstados[$dados['cod_estados']] = $dados['sigla'];
+}
+
+?>
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -76,7 +89,7 @@
               <div class="form-group">
               <ul>
 
-					 <a  href="perfil.html"><img src="images/icon2.png" height="60" width="60"></a><font color= #EBEBEB>Você está logado como </font><a href="#"><i>NOME</i></a>
+					 <a  href="perfil.php"><img src="images/icon2.png" height="60" width="60"></a><font color= #EBEBEB>Você está logado como </font><a href="perfil.php"><i>NOME</i></a>
 					
  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
                 <li><i><input class="form-control2" name="busca" id="busca" placeholder="  Pesquisar..." type="text"></i></li>
@@ -95,10 +108,10 @@
   <header id="fh5co-header" role="banner">
     <div class="container">
       <div class="header-inner">
-        <a href="index.html" ><img src="images/logopeq.png"></a>
+        <a href="index.php" ><img src="images/logopeq.png"></a>
         <nav role="navigation">
           <ul>
-            <li><a href="index.html">Inicio</a></li>
+            <li><a href="index.php">Inicio</a></li>
             <li><a href="work.html">Mensagens</a></li>
             
             <li><a href="about.html">Sobre</a></li>
@@ -120,7 +133,7 @@
           <div class="dreamcrub">
            <ul class="breadcrumbs">
                    <li class="home">
-                       <a href="index.html" title="Go to Home Page">Home</a>&nbsp;
+                       <a href="index.php" title="Go to Home Page">Home</a>&nbsp;
                        <span>&gt;</span>
                     </li>
                     <li class="women">
@@ -128,7 +141,7 @@
                     </li>
                 </ul>
                 <ul class="previous">
-                  <li><a href="index.html">Retornar</a></li>
+                  <li><a href="index.php">Retornar</a></li>
                 </ul>
                 <div class="clearfix"></div>
          </div>
@@ -144,7 +157,7 @@
 
 				</div>
 				
-					 <form method="post" action="#">
+					 <form method="post" action="Resultado_relatorio_tipo_de_servico.php">
 
 					
 					<div class="row">
@@ -159,7 +172,7 @@
 						<div class="col-md-6">
 						<li class="text-info" style="list-style-type:none">Data final: </li>
 							<div class="form-group">
-								<input class="form-control3" type="text"  name="data_servico" id="data_servico" maxlength="10" onkeypress="this.value = FormataData(event)" onpaste="return false;"/>
+								<input class="form-control3" type="text"  name="data_servico_final" id="data_servico" maxlength="10" onkeypress="this.value = FormataData(event)" onpaste="return false;"/>
 							</div>
 						</div>
 						
@@ -171,17 +184,23 @@
 
 
 
-      <?php 
-          $tipos = $array['servico_ts'];
-          echo "<option value='$tipos'>$tipos</option>";
+   <?php
+      $sql = mysql_query("SELECT * FROM tipos_de_servico ORDER BY servico_ts");
+
+      $row = mysql_num_rows($sql);
+
+      if ($row > 0) 
+      {
+        while ($linha = mysql_fetch_array($sql)) 
+        {
+          $tipos_de_servico = $linha['servico_ts'];
+          echo "<option value='$tipos_de_servico'>$tipos_de_servico</option>";
 
         }
           
 
       }
-
-      ?>
-							
+    ?>	
  
   </select>
 						</div>
