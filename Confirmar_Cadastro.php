@@ -2,6 +2,11 @@
 
 //Conexão com o banco de dados
 include "Conexao_mysql.php";
+/*Valor de retorno da função strcmp retorna:
+0 - se as duas seqüências são iguais
+<0 - se string1 for menor que string2
+> 0 - se string1 for maior que string2
+*/
 
 // RECEBENDO OS DADOS PREENCHIDOS DO FORMULÁRIO !, todos derivado do "name"
 $nome_user = $_POST ["nome_user"];	//atribuição do campo "nome_user" vindo do formulário para variavel	
@@ -23,10 +28,33 @@ $tipo_usuario = $_POST["opcao"]; //atribuição do campo "opcao" vindo do formul
 $servicos = $_POST['tipos_de_servico_id_ts'];
 $cidade = $_POST['cidade'];
 
+date_default_timezone_set('America/Sao_Paulo');
+$hoje = new DateTime('NOW');
+$data = explode("/","$nascimento_user");
+$d = $data[0];
+$m = $data[1];
+$a = $data[2];
+$nascimento = new DateTime();
+$nascimento->setDate($a,$m,$d); 
+//$nascimento > $hoje
+
+
+	
+        //  
+	
+
+           
+
+echo "Data valida\n";
+echo "$d $m $a";
+
+
+
+
 
 if (strcmp($tipo_usuario, 'P') == 0) 
 {
-	if (strcmp($nome_user, '') == 0 )
+	if (strcmp($nome_user, '') == 0)
 	{
 		// Script de Alerta
 		echo '<script>alert("Todos os campos tem que ser preenchidos.")</script>';	
@@ -36,6 +64,34 @@ if (strcmp($tipo_usuario, 'P') == 0)
 
 	else
 	{
+
+
+		if ($d > 31 || $d < 1 || $m > 12 || $m < 1 || $nascimento > $hoje) 
+		{
+			echo "Formato de Data invalido";
+			echo "<script>location.href='register.php'";
+		}
+
+		else
+
+		{
+							if ((($a % 4) == 0 && ($a % 100)!=0) || ($a % 400)==0 )  //verifica se o ano e bissexto
+					            {
+					               if (($m == 2 && $d > 29)) 
+					               {
+					                	echo "Dia invalido";
+					                	echo "<script>location.href='register.php'</script>";
+					               } 
+					            }
+					            /**/
+					            if( ($d > 28 && $m == 2) || 
+					            (($d > 30 )&&($m == 4 || $m == 6 || $m == 9 || $m == 11)) || 
+					            (($d > 31) && ($m == 1 || $m == 3 || $m == 5 || $m == 7 || $m ==8 || $m == 10 || $m == 12)) ) //verifica o mes de feveireiro
+					            {
+					                echo "Dia ou Mês invalido ";
+					                echo "<script>location.href='register.php'</script>";
+					            }
+		
 		//Deixando o usuario ativo, para poder desativar sem excluir
 
 		//Inserção no Banco de Dados mysql
@@ -59,6 +115,7 @@ if (strcmp($tipo_usuario, 'P') == 0)
 		 echo '<script>location.href="index.php"</script>';	
 		
 		
+		}
 
 	 	 
 	}
@@ -84,25 +141,58 @@ elseif (strcmp($tipo_usuario, 'C') == 0)
 
 	else
 	{
-		//Deixando o usuario ativo, para poder desativar sem excluir
 
-		//Inserção no Banco de Dados mysql
-		$sql = mysql_query("INSERT INTO usuario (nome_user, sexo_user, nascimento_user, cpf_user, rg_user, telefone_user, login_user, senha_user, emai_user, rua_user, numero_user, bairro_user, cidade_user, estado_user, cep_user, tipo_usuario, status_user) 
-		values ('$nome_user', '$sexo_user', '$nascimento_user', '$cpf_user', '$rg_user', '$telefone_user', '$login_user', '$senha_user', '$emai_user', '$rua_user', '$numero_user', '$bairro_user', '$cidade_user', '$estado_user', '$cep_user', '$tipo_usuario', 'A')") or die(mysql_error());
-		
-		$check_id = mysql_query("SELECT * FROM usuario") or die(mysql_error());
-		$row = mysql_num_rows($check_id);
-		$id_user = $row;
-		$id_ts = 1;
 
-		$sql_sf = mysql_query("INSERT INTO servicos_fornecidos (fk_id_user, fk_id_ts) values ('$id_user', '$id_ts')")or die(mysql_error());
 
-		// Script de Alerta
-		 echo '<script>alert("Seu cadastro foi realizado com sucesso!\nVocê será rediracionado para o Home, após pressionar OK.")</script>';
-		 echo '<script>location.href="index.php"</script>';
-		
-		
-		
+		if ($d > 31 || $d < 1 || $m > 12 || $m < 1 || $nascimento > $hoje) 
+		{
+			echo "Formato de Data invalido";
+			echo "<script>location.href='register.php'";
+		}
+
+		else
+
+		{
+							if ((($a % 4) == 0 && ($a % 100)!=0) || ($a % 400)==0 )  //verifica se o ano e bissexto
+					            {
+					               if (($m == 2 && $d > 29)) 
+					               {
+					                	echo "Dia invalido";
+					                	echo "<script>location.href='register.php'</script>";
+					               } 
+					            }
+					            /**/
+					            if( ($d > 28 && $m == 2) || 
+					            (($d > 30 )&&($m == 4 || $m == 6 || $m == 9 || $m == 11)) || 
+					            (($d > 31) && ($m == 1 || $m == 3 || $m == 5 || $m == 7 || $m ==8 || $m == 10 || $m == 12)) ) //verifica o mes de feveireiro
+					            {
+					                echo "Dia ou Mês invalido ";
+					                echo "<script>location.href='register.php'</script>";
+					            }
+					
+					
+			
+			
+			
+					//Deixando o usuario ativo, para poder desativar sem excluir
+			
+					//Inserção no Banco de Dados mysql
+					$sql = mysql_query("INSERT INTO usuario (nome_user, sexo_user, nascimento_user, cpf_user, rg_user, telefone_user, login_user, senha_user, emai_user, rua_user, numero_user, bairro_user, cidade_user, estado_user, cep_user, tipo_usuario, status_user) 
+					values ('$nome_user', '$sexo_user', '$nascimento_user', '$cpf_user', '$rg_user', '$telefone_user', '$login_user', '$senha_user', '$emai_user', '$rua_user', '$numero_user', '$bairro_user', '$cidade_user', '$estado_user', '$cep_user', '$tipo_usuario', 'A')") or die(mysql_error());
+					
+					$check_id = mysql_query("SELECT * FROM usuario") or die(mysql_error());
+					$row = mysql_num_rows($check_id);
+					$id_user = $row;
+					$id_ts = 1;
+			
+					$sql_sf = mysql_query("INSERT INTO servicos_fornecidos (fk_id_user, fk_id_ts) values ('$id_user', '$id_ts')")or die(mysql_error());
+			
+					// Script de Alerta
+					 echo '<script>alert("Seu cadastro foi realizado com sucesso!\nVocê será rediracionado para o Home, após pressionar OK.")</script>';
+					 echo '<script>location.href="index.php"</script>';
+					
+					
+		}	
 
 	 	 
 	}
