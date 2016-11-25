@@ -205,7 +205,12 @@ $id = $_SESSION['id_user'];
   return $data_formatada;
     } 
 }
-
+ @$data_inicial = $_POST['data_servico'];
+    @$data_final = $_POST['data_servico_final'];
+  if(strcmp($data_inicial,'')==0 || strcmp($data_final,'')==0){
+      echo "<script>alert('Todos os campos de data devem ser preenchidos.')</script>";
+    echo "<script> location.href='gerar_relatorio_tipo_de_servico.php'</script>";
+  }
 
   @$servico = $_POST['servico'];
   @$cont = 0;
