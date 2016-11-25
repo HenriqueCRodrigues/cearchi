@@ -36,28 +36,26 @@ $m = $data[1];
 $a = $data[2];
 $nascimento = new DateTime();
 $nascimento->setDate($a,$m,$d); 
-//$nascimento > $hoje
 
+if ()
+{
+	echo "invalido";
+}
 
-	
-        //  
-	
-
-           
-
-echo "Data valida\n";
-echo "$d $m $a";
-
-
+else
+{
+	echo "valido";
+}
+//(12)31059-5155
 
 
 
 if (strcmp($tipo_usuario, 'P') == 0) 
 {
-	if (strcmp($nome_user, '') == 0)
+	if (strcmp($nome_user, '') == 0 || strlen($telefone_user) < 13)
 	{
 		// Script de Alerta
-		echo '<script>alert("Todos os campos tem que ser preenchidos.")</script>';	
+		echo '<script>alert("Todos os campos tem que ser preenchidos corretamente.")</script>';	
 		echo '<script>location.href="register"</script>';
 
 	}
@@ -83,7 +81,7 @@ if (strcmp($tipo_usuario, 'P') == 0)
 					                	echo "<script>location.href='register.php'</script>";
 					               } 
 					            }
-					            /**/
+					            
 					            if( ($d > 28 && $m == 2) || 
 					            (($d > 30 )&&($m == 4 || $m == 6 || $m == 9 || $m == 11)) || 
 					            (($d > 31) && ($m == 1 || $m == 3 || $m == 5 || $m == 7 || $m ==8 || $m == 10 || $m == 12)) ) //verifica o mes de feveireiro
@@ -130,10 +128,10 @@ if (strcmp($tipo_usuario, 'P') == 0)
 elseif (strcmp($tipo_usuario, 'C') == 0) 
 {
 
-	if (strcmp($nome_user, '') == 0 )
+	if (strcmp($nome_user, '') == 0 || strlen($telefone_user) < 13)
 	{
 		// Script de Alerta
-		echo '<script>alert("Todos os campos tem que ser preenchidos.")</script>';	
+		echo '<script>alert("Todos os campos tem que ser preenchidos corretamente.")</script>';	
 		echo '<script>location.href="register"</script>';
 
 	}
@@ -161,7 +159,7 @@ elseif (strcmp($tipo_usuario, 'C') == 0)
 					                	echo "<script>location.href='register.php'</script>";
 					               } 
 					            }
-					            /**/
+					            
 					            if( ($d > 28 && $m == 2) || 
 					            (($d > 30 )&&($m == 4 || $m == 6 || $m == 9 || $m == 11)) || 
 					            (($d > 31) && ($m == 1 || $m == 3 || $m == 5 || $m == 7 || $m ==8 || $m == 10 || $m == 12)) ) //verifica o mes de feveireiro
