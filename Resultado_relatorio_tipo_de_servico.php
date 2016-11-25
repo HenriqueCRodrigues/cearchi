@@ -205,22 +205,15 @@ $id = $_SESSION['id_user'];
   return $data_formatada;
     } 
 }
- 
-  @$data_inicial = $_POST['data_servico'];
-  @$data_final = $_POST['data_servico_final'];
+
+
   @$servico = $_POST['servico'];
   @$cont = 0;
-
-  if(strcmp($data_inicial,'')==0 || strcmp($data_final,'')==0){
-      echo "<script>alert('Todos os campos de data devem ser preenchidos.')</script>";
-    echo "<script> location.href='gerar_relatorio_tipo_de_servico.php'</script>";
-  }
-
   if(strcmp($servico, '') != 0)
   {
     @$data_inicial = $_POST['data_servico'];
     @$data_final = $_POST['data_servico_final'];
-    @$tipo_ss = $_POST['servico'];
+
     $data_inicial_formatada = strtotime(formata_data($data_inicial));
     $data_final_formatada = strtotime(formata_data($data_final));
     
@@ -233,12 +226,10 @@ $id = $_SESSION['id_user'];
       }
     } 
   
-  echo "Tipos de serviço do periodo $data_inicial até $data_final ";
-    echo "<tr>";
-    echo "<td>$servico</td>";
-    echo "<td>$cont</td>";
-    echo "<td>$data_ss</td>";
-    echo "</tr>";
+ echo "<tr>";
+                  echo "<td>$servico</td>";
+                  echo "<td>$cont</td>";
+                  echo "<td>$data_ss</td>";
   }
 
 
@@ -247,14 +238,10 @@ $id = $_SESSION['id_user'];
 
   @$data_inicial = $_POST['data_servico'];
   @$data_final = $_POST['data_servico_final'];
-
   $data_inicial_formatada = strtotime(formata_data($data_inicial));
   $data_final_formatada = strtotime(formata_data($data_final));
-
   echo "Tipos de serviço do periodo $data_inicial até $data_final ";
-
   $sql2 = mysql_query("SELECT * FROM tipos_de_servico") or die(mysql_error());
-
   while($linha2 = mysql_fetch_array($sql2)){
     @$cont1=0;
     $id_ts = $linha2['id_ts'];
@@ -264,21 +251,25 @@ $id = $_SESSION['id_user'];
     $data_ss = $linha3['data_ss'];
     $data_ss_formatada = strtotime(formata_data($data_ss));
       if($data_ss_formatada >= $data_inicial_formatada && $data_ss_formatada <= $data_final_formatada){
-         @$cont1++;
+      @$cont1++;
     }
     }
     
             if(strcmp($cont1, 0)!=0){
+            
                   echo "<tr>";
                   echo "<td>$nome_servico</td>";
                   echo "<td>$cont1</td>";
                   echo "<td>$data_ss</td>";
-                  echo "</tr>";
-                          }
+            }
     
               
                 }
 } 
+  
+
+  
+
   
 ?>
 </table>
