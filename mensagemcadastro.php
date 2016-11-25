@@ -161,7 +161,11 @@
                     </li>
 
                     <li class="home">
-                       <a href="consultar.php" title="Retornar para Resultado da Consulta de Usuario ou Tipos de Serviço">Resultado da Consulta de Usuario ou Tipos de Serviço</a>&nbsp;
+                       <a href="Resultado.php" title="Retornar para Resultado da Consulta de Usuario ou Tipos de Serviço">Resultado da Consulta de Usuario ou Tipos de Serviço</a>&nbsp;
+                       <span>&gt;</span>
+                    </li>
+                    <li class="home">
+                    <?php echo "<a href='perfil.php?id_terceiro=".$id_terceiro."' title='Retornar para o Perfil de ".$nome_destinatario."'>Retornar Para o Perfil de ".$nome_destinatario."</a></li>" ?>&nbsp;
                        <span>&gt;</span>
                     </li>
                     <li class="women">
@@ -169,7 +173,7 @@
                     </li>
                 </ul>
                 <ul class="previous">
-                  <li><a href="consultar.php" title="Retornar para Consultar Usuarios ou Tipos de Serviço Novamente">Retornar</a></li>
+                  <?php echo "<li><a href='perfil.php?id_terceiro=".$id_terceiro."' title='Retornar para o Perfil de ".$nome_destinatario."'>Retornar</a></li>" ?>
                 </ul>
                 <div class="clearfix"></div>
          </div>
@@ -213,7 +217,7 @@
               <script type="text/javascript">
                 function Voltar()
                 {
-                  location.href="perfil.php";
+                  <?php echo "location.href='perfil.php?id_terceiro=".$id_terceiro."'"; ?>
                 }
               </script>
 

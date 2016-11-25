@@ -8,6 +8,6 @@ include "Validador_de_Login.php";
 
 	$sql = mysql_query("INSERT INTO notificacao (id_destinatario, id_remetente) values ('$id_terceiro','$id')" ) or die(mysql_error());
 	echo "<script> alert('Solicitação enviada com sucesso!')</script>";
-	echo "<script>location.href = 'perfil.php'</script>";
+	echo "<script>location.href = 'perfil.php?id_terceiro=".$id_terceiro."'</script>";
 
 ?>

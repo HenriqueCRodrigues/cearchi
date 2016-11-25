@@ -37,17 +37,6 @@ $a = $data[2];
 $nascimento = new DateTime();
 $nascimento->setDate($a,$m,$d); 
 
-if ()
-{
-	echo "invalido";
-}
-
-else
-{
-	echo "valido";
-}
-//(12)31059-5155
-
 
 
 if (strcmp($tipo_usuario, 'P') == 0) 

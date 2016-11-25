@@ -181,18 +181,31 @@
         {
 
           $sqlA = mysql_query("SELECT * FROM relacoes WHERE (id_user1='$id_secao' AND id_user2='$id_terceiro') OR (id_user2='$id_secao' AND id_user1='$id_terceiro')");
-
-          $row = mysql_num_rows($sqlA);         
+          $sqlN = mysql_query("SELECT * FROM notificacao WHERE (id_destinatario='$id_secao' AND id_remetente='$id_terceiro') OR (id_destinatario='$id_terceiro' AND id_remetente='$id_secao') ");
+          $row = mysql_num_rows($sqlA); 
+          $row1 = mysql_num_rows($sqlN);         
 
           echo "$nome_destinatario";
           echo "</x4>&nbsp;";
+          
+
           if ($row > 0) 
           {
             echo "<a href='desfazer_amigo.php?id_terceiro=".$id_terceiro."'><img src='images/removeicon.png' height='25' width='25' /></a>";   
           }
+
           else
           {
-            echo "<a href='solicita_relacao.php?id_terceiro=".$id_terceiro."'><img src='images/addicon.png' height='25' width='25' /></a>";
+            if ($row1 > 0) 
+            {
+              echo "<img title='Aguardando ".$nome_destinatario." aceitar o pedido de amizade' src='images/loader.gif' height='25' width='25' /></a>";
+            }
+
+            else
+            {
+               echo "<a href='solicita_relacao.php?id_terceiro=".$id_terceiro."'><img src='images/addicon.png' height='25' width='25' /></a>";
+            }
+
           }          
         
         }
@@ -249,7 +262,7 @@
             {
                 if(strcmp($tipo_user, 'P') == 0)
                 {
-                  echo "<li><a href='cadastrar_solicitacao.php?id_terceiro=".@$id_terceiro."'>Solicitar Serviço</a></li>";
+                  echo "<li><a href='cadastrar_solicitacao.php?id_terceiro=".$id_terceiro."&nome_destinatario=".$nome_destinatario."'>Solicitar Serviço</a></li>";
                   echo "<li><a href='menusolicitacao.php'>Serviços contratados</a></li>";
                 }
                  if(strcmp($tipo_user, 'C') == 0)

@@ -216,9 +216,9 @@ $id = $_SESSION['id_user'];
         $tipo_amigo = "Prestador de serviço";
       }
 
-    echo "<th>".$nome_amigo."</th>";
-    echo "<th>".$tipo_amigo."</th>";
-    echo "<th> <a href = 'perfil.php?id_terceiro=".$id_user2."'>Visualizar Perfil</a></th>";
+    echo "<td".$nome_amigo."</td>";
+    echo "<td>".$tipo_amigo."</td>";
+    echo "<td> <a href = 'perfil.php?id_terceiro=".$id_user2."'>Visualizar Perfil</a></td>";
     }else{
         $sql1 = mysql_query("SELECT * FROM usuario WHERE id_user = '$id_user1'") or die(mysql_error());
       $linha2 = mysql_fetch_array($sql1);
@@ -230,9 +230,9 @@ $id = $_SESSION['id_user'];
         $tipo_amigo = "Prestador de serviço";
       }
 
-    echo "<th>".$nome_amigo."</th>";
-    echo "<th>".$tipo_amigo."</th>";
-    echo "<th> <a href = 'perfil.php?id_terceiro=".$id_user1."'>Visualizar Perfil</a></th>";
+    echo "<td>".$nome_amigo."</td>";
+    echo "<td>".$tipo_amigo."</th>";
+    echo "<td> <a href = 'perfil.php?id_terceiro=".$id_user1."'>Visualizar Perfil</a></td>";
     }
 
 

@@ -4,13 +4,15 @@ include "Conexao_mysql.php";
   $nome = $_SESSION['nome_user'];
 
   $id_terceiro = $_GET['id_terceiro'];
+  $nome_destinatario = $_GET['nome_destinatario'];
+
   $sql = mysql_query("SELECT * FROM usuario INNER JOIN servicos_fornecidos ON usuario.id_user=servicos_fornecidos.fk_id_user  INNER JOIN tipos_de_servico ON servicos_fornecidos.fk_id_ts=tipos_de_servico.id_ts WHERE id_user like '$id_terceiro'");
+
  
   $row = mysql_num_rows($sql);
          if ($row > 0) 
         {
  
-
 
 ?>
 <!DOCTYPE html>
@@ -149,20 +151,24 @@ include "Conexao_mysql.php";
     <div class="login-page">
           <div class="dreamcrub">
            <ul class="breadcrumbs">
+
                    <li class="home">
                        <a href="index.html" title="Go to Home Page">Home</a>&nbsp;
                        <span>&gt;</span>
                     </li>
+
                     <li class="home">
-                       <a href="menusolicitação.html" title="Go to Home Page">Menu de solicitação de serviços</a>&nbsp;
+                    <?php echo "<a href='perfil.php?id_terceiro=".$id_terceiro."' title='Retornar para o Perfil de ".$nome_destinatario."'>Retornar Para o Perfil de ".$nome_destinatario."</a></li>" ?>&nbsp;
                        <span>&gt;</span>
+                    </li>&nbsp;
+
                     </li>
                     <li class="women">
                         <font color="white"> Solicitação de serviço </font>
                     </li>
                 </ul>
                 <ul class="previous">
-                  <li><a href="index.html">Retornar</a></li>
+                   <?php echo "<li><a href='perfil.php?id_terceiro=".$id_terceiro."' title='Retornar para o Perfil de ".$nome_destinatario."'>Retornar</a></li>" ?>
                 </ul>
                 <div class="clearfix"></div>
          </div>
@@ -230,7 +236,7 @@ include "Conexao_mysql.php";
         }
           
 
-      }
+     }
 
       ?>
 							
@@ -246,7 +252,7 @@ include "Conexao_mysql.php";
 						<div class="col-md-12">
 							<div class="form-group">
 								<input value="Solicitar Serviço" class="btn btn-primary" type="submit">
-								<a href="perfil.php"><input value="Voltar para o perfil" class="btn btn-primary" height="30"></a>
+								<?php echo "<a href='perfil.php?id_terceiro=".$id_terceiro."'><input value='Voltar para o perfil' class='btn btn-primary' height='30'></a>" ?>
                 </form>
 								<p class="click">Clicando no botão, você estará confirmando a solicitação  de serviço.</a></p> 
 							</div>

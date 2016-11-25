@@ -193,7 +193,7 @@
 				
 
 				
-				$busca = $_POST['nome_user'];
+				@$busca = $_POST['nome_user'];
 				$tipo = $_SESSION['tipo_usuario'];
 				$id = $_SESSION['id_user'];
 				$sql = mysql_query("SELECT * FROM usuario INNER JOIN servicos_fornecidos ON usuario.id_user=servicos_fornecidos.fk_id_user  INNER JOIN tipos_de_servico ON servicos_fornecidos.fk_id_ts=tipos_de_servico.id_ts WHERE nome_user like '%$busca%' OR servico_ts like '%$busca%' AND status_user='A' ORDER BY nome_user ");
