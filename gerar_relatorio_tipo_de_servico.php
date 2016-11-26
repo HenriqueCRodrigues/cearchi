@@ -1,14 +1,15 @@
-<?php
+<?php 
+  include "Conexao_mysql.php";
+  include "Validador_de_Login.php";
+  $nome = $_SESSION['nome_user'];
 
-include "Conexao_mysql.php";
-$sql = "SELECT * FROM estados ORDER BY sigla";
-$res = mysql_query($sql, $conexao);
-$num = mysql_num_rows($res);
-for ($i = 0; $i < $num; $i++) {
-  $dados = mysql_fetch_array($res);
-  $arrEstados[$dados['cod_estados']] = $dados['sigla'];
-}
 
+  @$id_terceiro = $_GET['id_terceiro'];
+  $id_secao = $_SESSION['id_user'];
+  $sql = mysql_query("SELECT * FROM usuario WHERE id_user like '$id_terceiro'");
+  $array = mysql_fetch_array($sql);
+  $nome_destinatario = $array['nome_user'];
+  $tipo_user = $array['tipo_usuario'];
 ?>
 
 <!DOCTYPE html>
@@ -86,13 +87,28 @@ for ($i = 0; $i < $num; $i++) {
                  <div class="logo">
              
             
-              <div class="form-group">
+                  <div class="form-group">
               <ul>
 
-					 <a  href="perfil.php"><img src="images/icon2.png" height="60" width="60"></a><font color= #EBEBEB>Você está logado como </font><a href="perfil.php"><i>NOME</i></a>
-					
+          <a  href="perfil.php"><img src="images/icon2.png" height="60" width="60"></a><font color= #EBEBEB></font><a href="perfil.php"><i><?php echo "$nome"; ?></i></a>
+          
  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
-                <li><i><input class="form-control2" name="busca" id="busca" placeholder="  Pesquisar..." type="text"></i></li>
+               <li><i>
+           <form method='post' action="Resultado.php">
+           <table width="300" align="center">
+           <tr>
+
+           <td><input class="form-control2" name="nome_user" id="nome_user" placeholder="  Pesquisar..." type="text"> </i></li></td>
+           <td><input type='image' title='Buscar' src='images/lupa.png' width="40" height="40"></td>
+            </tr>
+          
+
+           </table>
+           </form>
+              
+        
+            </ul>
+            </div>
               
         
           	</ul>
@@ -112,11 +128,11 @@ for ($i = 0; $i < $num; $i++) {
         <nav role="navigation">
           <ul>
             <li><a href="index.php">Inicio</a></li>
-            <li><a href="work.html">Mensagens</a></li>
+            <li><a href="menumensagens.php">Mensagens</a></li>
             
             <li><a href="about.html">Sobre</a></li>
             <li><a href="contact.html">Contato</a></li>
-            <li class="cta"><a href="register.html">Crie sua conta</a></li>
+            <li class="cta"><a href="perfil.php">Retornar para o perfil</a></li>
           </ul>
         </nav>
       </div>
