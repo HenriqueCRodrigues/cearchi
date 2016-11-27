@@ -2,6 +2,7 @@
   include "Conexao_mysql.php";
   include "Validador_de_Login.php";
   $nome = $_SESSION['nome_user'];
+  $tipo_usuario = $_SESSION['tipo_usuario'];
 
 
   @$id_terceiro = $_GET['id_terceiro'];
@@ -49,6 +50,7 @@
   <meta name="twitter:image" content="" />
   <meta name="twitter:url" content="" />
   <meta name="twitter:card" content="" />
+
 
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
   <link rel="shortcut icon" href="favicon.ico">
@@ -326,25 +328,125 @@
 </div>
       </nav>
 
-    <div class="container">
-      <div class="col-sm-4">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title">Muito Bom *****</h3>
-            </div>
-            <div class="panel-body">
-              Faz um ótimo serviço como pintor, nunca vi minhas paredes tão paradas!
-            </div>
-          </div>
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title">Péssimo *</h3>
-            </div>
-            <div class="panel-body">
-              Contratei para rebocar minha parede, e não sabia nem fazer a massa!
-            </div>
-          </div>
+    
+            <?php 
+             $sqlN = mysql_query("SELECT * FROM avaliacoes WHERE id_destinatario='$id_terceiro'");
+             $sqlNm = mysql_query("SELECT * FROM avaliacoes WHERE id_destinatario='$id_secao'");
 
+        
+
+
+
+            if (isset($id_terceiro) || strcmp($tipo_usuario, 'P') == 0)
+
+          {
+            echo "<div class='container'>
+                  <div class='col-sm-4'>";
+
+           if (!isset($id_terceiro)) 
+           {
+                $combo = $sqlNm;
+           }
+            
+            else
+            {
+               $combo = $sqlN;
+            }
+             while ($array =  mysql_fetch_array($combo))
+            {
+              $estrela = $array['estrelas_avaliacao'];
+              $descricao = $array['descricao_avaliacao'];
+
+
+              if (strcmp($descricao, '') == 0) 
+              {
+                  $descricao = 'O avaliador, optou por não fornecer a descrição.';
+              }
+
+              if (strcmp($estrela, 5) == 0) 
+              {
+                  $estrela_qualidade = 'Muito Bom';
+              }
+
+              if (strcmp($estrela, 4) == 0) 
+              {
+                  $estrela_qualidade = 'Bom';
+              }
+
+              if (strcmp($estrela, 3) == 0) 
+              {
+                  $estrela_qualidade = 'Regular';
+              }
+
+              if (strcmp($estrela, 2) == 0) 
+              {
+                  $estrela_qualidade = 'Ruim';
+              }
+
+              if (strcmp($estrela, 1) == 0) 
+              {
+                  $estrela_qualidade = 'Muito Ruim';
+              }
+
+              $e1 = 'disable';
+                    $e2 = 'disable';
+                    $e3 = 'disable';
+                    $e4 = 'disable';
+                    $e5 = 'disable';
+              if (strcmp($estrela, 1) == 0){$e1 = "checked";}
+              if (strcmp($estrela, 2) == 0){$e2 = "checked";}
+              if (strcmp($estrela, 3) == 0){$e3 = "checked";}
+              if (strcmp($estrela, 4) == 0){$e4 = "checked";}
+              if (strcmp($estrela, 5) == 0){$e5 = "checked";}
+
+
+              echo "<div class='panel panel-default'>
+                    <div class='panel-heading'>";
+                    
+              echo " <h3 class='panel-title'>".$estrela_qualidade."";
+              echo "<link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+              <div class='estrelas'>  
+                                      <label for='cm_star-1'>&nbsp;&nbsp;<i class='fa'></i></label>
+
+                                      <input type='radio' id='cm_star-1' name='fb1' value='1'disabled ".@$e1."/>
+
+                                      <label for='cm_star-2'>&nbsp;&nbsp;<i class='fa'></i></label>
+                                      
+                                      <input type='radio' id='cm_star-2' name='fb2' value='2' disabled ".@$e2."/>
+                                      
+                                      <label for='cm_star-3'>&nbsp;&nbsp;<i class='fa'></i></label>
+                                      
+                                      <input type='radio' id='cm_star-3' name='fb3' value='3' disabled ".@$e3."/>
+                                      
+                                      <label for='cm_star-4'>&nbsp;&nbsp;<i class='fa'></i></label>
+                                      
+                                      <input type='radio' id='cm_star-4' name='fb4' value='4' disabled ".@$e4."/>
+                                      
+                                      <label for='cm_star-5'>&nbsp;&nbsp;<i class='fa'></i></label>
+                                      
+                                      <input type='radio' id='cm_star-5' name='fb5' value='5' disabled ".@$e5."/></h3>
+                      </div>";
+
+
+
+              echo "<div class='panel-body'>".$descricao."
+                    </div></div>";
+                    
+
+            }
+
+            echo "</div>";
+
+          }
+        
+
+            ?>
+             
+            
+            
+          
+          
+          </div>
 
                 </div>
             </header>
@@ -422,6 +524,23 @@
 
 	<!-- MAIN JS -->
 	<script src="js/main.js"></script>
+
+<style type="text/css">
+  .estrelas input[type=radio] {
+  display: none;
+}
+.estrelas label i.fa:before {
+  content:'\f005';
+  color: #FC0;
+}
+.estrelas input[type=radio]:checked ~ label i.fa:before {
+  color: #CCC;
+}
+
+
+
+</style>
+
 
 	</body>
 </html>
