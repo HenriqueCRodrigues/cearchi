@@ -390,11 +390,7 @@
                   $estrela_qualidade = 'Muito Ruim';
               }
 
-              $e1 = 'disable';
-                    $e2 = 'disable';
-                    $e3 = 'disable';
-                    $e4 = 'disable';
-                    $e5 = 'disable';
+              
               if (strcmp($estrela, 1) == 0){$e1 = "checked";}
               if (strcmp($estrela, 2) == 0){$e2 = "checked";}
               if (strcmp($estrela, 3) == 0){$e3 = "checked";}
@@ -429,6 +425,11 @@
                                       <input type='radio' id='cm_star-5' name='fb5' value='5' disabled ".@$e5."/></h3>
                       </div>";
 
+                    $e1 = 'disable';
+                    $e2 = 'disable';
+                    $e3 = 'disable';
+                    $e4 = 'disable';
+                    $e5 = 'disable';
 
 
               echo "<div class='panel-body'>".$descricao."
@@ -522,6 +523,7 @@
 
   <!-- MAIN JS -->
   <script src="js/main.js"></script>
+
 
   </body>
 </html>
