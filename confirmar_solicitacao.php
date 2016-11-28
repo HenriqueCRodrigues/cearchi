@@ -18,7 +18,7 @@
 	{
 		$sql = mysql_query("INSERT INTO solicitacao_de_servico (data_ss, hora_ss, fk_id_ts, fk_id_user_contratante, fk_id_user_prestador, status_ss, fk_id_avaliacao) values ('$data', '$hora', '$id_ts', '$id', '$id_terceiro', 'A', 0)")or die(mysql_error());
 
-		echo "<script>alert('Solicitação Realizada com Sucesso.')</script>";
+		echo "<script>alert('Solicitação realizada com sucesso.')</script>";
 		echo "<script> location.href='menusolicitacao.php'</script>";
 	}
 

@@ -16,7 +16,7 @@
 	else
 	{
 		$sql = mysql_query("UPDATE tipos_de_servico SET servico_ts='$servico', descricao_ts='$descricao' WHERE id_ts='$id'");
-		echo "<script>alert('Alteração Realizada com Sucesso.')</script>";
+		echo "<script>alert('Alteração realizada com sucesso.')</script>";
 		echo "<script> location.href='index.html'</script>";
 	}
 

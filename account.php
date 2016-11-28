@@ -14,7 +14,7 @@ session_start();
   <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Cearchi - Index</title>
+  <title>Cearchi - Login/title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
   <meta name="keywords" content="free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
@@ -156,29 +156,27 @@ session_start();
   <footer id="fh5co-footer" role="contentinfo">
   
     <div class="container">
-      <div class="col-md-3 col-sm-12 col-sm-push-0 col-xs-12 col-xs-push-0">
+    <div class="row">
+      <div class="col-md-4">
         <h3>Sobre nós</h3>
-        <p>Já nos conhece? Deseja fazer parte da nossa equipe? Estamos te esperando! </p>
-        <p><a href="#" class="btn btn-primary btn-outline with-arrow btn-sm"> Entre em contato! <i class="icon-arrow-right"></i></a></p>
+        <font face="Raleway"><p  align="justify">O desenvolvimento do Cearchi Serviços foi realizado pela BUG MONKEYS SOFTWARES, criada por discentes da Universidade Federal de Itajubá. Já nos conhece? Deseja fazer parte da nossa equipe? Saiba mais! </p></font></br>
+        <p><a href="about.php" class="btn btn-primary btn-outline with-arrow btn-sm"> Informações! <i class="icon-arrow-right"></i></a></p>
       </div>
-      <div class="col-md-6 col-md-push-1 col-sm-12 col-sm-push-0 col-xs-12 col-xs-push-0">
+
+      <div class="col-md-5" align="center">
         <h3>Nossos serviços</h3>
-        <ul class="float">
-          <li><a href="#">Web Design</a></li>
-          <li><a href="#">Branding &amp; Identity</a></li>
-          <li><a href="#">Free HTML5</a></li>
-          <li><a href="#">HandCrafted Templates</a></li>
+        <ul class="float2">
+          <p align="center"><li><a href="index.php">Home Page</a></li>
+          <li><a href="#">Patrocinadores</a></li>
+          <li><a href="#">Parceiros</a></li>
+          <li><a href="contact.php">Contato</a></li>
         </ul>
-        <ul class="float">
-          <li><a href="#">Free Bootstrap Template</a></li>
-          <li><a href="#">Free HTML5 Template</a></li>
-          <li><a href="#">Free HTML5 &amp; CSS3 Template</a></li>
-          <li><a href="#">HandCrafted Templates</a></li>
-        </ul>
+        </div>
+        
 
-      </div>
+      
 
-      <div class="col-md-2 col-md-push-1 col-sm-12 col-sm-push-0 col-xs-12 col-xs-push-0">
+      <div class="col-md-3">
         <h3>Siga-nos</h3>
         <ul class="fh5co-social">
           <li><a href="#"><i class="icon-twitter"></i></a></li>
@@ -186,6 +184,7 @@ session_start();
           <li><a href="#"><i class="icon-google-plus"></i></a></li>
           <li><a href="#"><i class="icon-instagram"></i></a></li>
         </ul>
+      </div>
       </div>
       
       
@@ -213,6 +212,7 @@ session_start();
 
   <!-- MAIN JS -->
   <script src="js/main.js"></script>
+
 
   </body>
 </html>

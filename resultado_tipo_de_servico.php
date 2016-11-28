@@ -6,80 +6,124 @@
 
 
 <!DOCTYPE html>
-<html>
-<head>
-	<title>Cearchi | Consultar </title>
-	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="js/jquery.min.js"></script>
-	<!-- Custom Theme files -->
-	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-	<!-- Custom Theme files -->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="keywords" content="Eshop Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
-	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Cearchi -  Resultado de tipos de serviço</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
+    <meta name="keywords" content="free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
+    <meta name="author" content="FreeHTML5.co" />
 
-	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-	<!--webfont-->
-	<!-- for bootstrap working -->
-	<script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
-	<!-- //for bootstrap working -->
-	<!-- cart -->
-	<script src="js/simpleCart.min.js"> </script>
-	<!-- cart -->
-	<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
-</head>
+    <!-- 
+    //////////////////////////////////////////////////////
 
-<body>
-	<!-- header-section-starts -->
-	<div class="header">
-		<div class="header-top-strip">
-			<div class="container">
-				<div class="header-top-left">
-					<div class="logo">
-						<ul>
-							<li><a href="index.html"><img src="images/logopeq.png"</a></li>
+    FREE HTML5 TEMPLATE 
+    DESIGNED & DEVELOPED by FreeHTML5.co
+        
+    Website:    http://freehtml5.co/
+    Email:      info@freehtml5.co
+    Twitter:    http://twitter.com/fh5co
+    Facebook:     https://www.facebook.com/fh5co
 
-							<li><a href="account.html"> <img src="images/icon1.png">LOGIN</a></li>
-							<li><a href="register.html"><img src="images/pw.png">Crie uma conta</a></li>			
-						</ul>
-					</div>
-				</div> </div>
-			</div>
-		</div>
-	</div>
+    //////////////////////////////////////////////////////
+      -->
 
+        <!-- Facebook and Twitter integration -->
+    <meta property="og:title" content=""/>
+    <meta property="og:image" content=""/>
+    <meta property="og:url" content=""/>
+    <meta property="og:site_name" content=""/>
+    <meta property="og:description" content=""/>
+    <meta name="twitter:title" content="" />
+    <meta name="twitter:image" content="" />
+    <meta name="twitter:url" content="" />
+    <meta name="twitter:card" content="" />
 
-	<!-- header-section-ends -->
-	<div class="banner-top">
-		<div class="container">
-			<nav class="navbar navbar-default" role="navigation">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="shortcut icon" href="favicon.ico">
 
-				</div>
-				<!--/.navbar-header-->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:200,300,400,700" rel="stylesheet">
+    
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- Icomoon Icon Fonts-->
+    <link rel="stylesheet" href="css/icomoon.css">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <!-- Flexslider  -->
+    <link rel="stylesheet" href="css/flexslider.css">
+    <!-- Owl Carousel  -->
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <!-- Theme style  -->
+    <link rel="stylesheet" href="css/style.css">
 
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav">
-						<li><a href="index.html">Início</a></li>
-						<li><a href="#">Procurar Serviços</a></li>
-						<li><a href="#">anunciar</a></li>
-						<li><a href="accountconfig">configurações da conta</a></li>
-						<li><a href="contact.html">CONTATO</a></li>
-					</ul>
-				</div>
-				<!--/.navbar-collapse-->
-			</nav>
-			<!--/.navbar-->
-		</div>
-	</div>
+    <!-- Modernizr JS -->
+    <script src="js/modernizr-2.6.2.min.js"></script>
+    <!-- FOR IE9 below -->
+    <!--[if lt IE 9]>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+    </head>
+    <body>
+
+        <header id="fh5co-header" role="banner">
+  <div class="header">
+        <div class="header-top-strip">
+            <div class="container">
+                <div class="header-top-left">
+                    <div class="logo">
+                      <div class="form-group">
+                          <div class="row">
+                        
+                              <div class="col-md-11">
+
+                              <a  href="perfil.php"><img src="images/icon2.png" height="50" width="50"></a><font color= #EBEBEB>Você está conectado como:</font><a href="perfil.php"><i> <?php echo "$nome"; ?></i></a>
+                              </div> 
+                              <div class="col-md-1" align="right">  
+                                <form method='post' action="Resultado.php">
+                                <table>
+
+                                  </tr>
+                                  <td><input class="form-control2" name="nome_user" id="nome_user" placeholder="  Pesquisar..." type="text"></td>
+                                  <td><font color="white">        </font><input type='image' title='Buscar' src='images/lupa.png' width="40" height="40"></td>
+                                  </tr>
+                                </table>
+                                </form>
+                              </div>
+                        </div>
+                    </div>
+                </div> </div>
+            </div>
+        </div>
+      </header>
+
+    <div id="fh5co-page">
+    <header id="fh5co-header" role="banner">
+        <div class="container">
+            <div class="header-inner">
+                <a href="index.php" ><img src="images/logopeq.png"></a>
+                <nav role="navigation">
+                    <ul>
+                        <li><a href="index.php">Inicio</a></li>
+                        <li><a href="menumensagens.php">Mensagens</a></li>
+                        <li><a href="#">Serviços</a></li>
+                        <li><a href="contact.php">Contato</a></li>
+                        <li><a href="about.php">Sobre</a></li>
+                        <li><a href="logout.php">Deslogar</a></li>
+                        <li class="cta"><a href="perfil.php">Retorne ao seu Perfil</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+</div>
 
 	<div class="registration-form">
 		<div class="container">
@@ -157,52 +201,67 @@
 			</table>
 
 		</br>
-	</br>
+	</br></div></div>
 
-	<div class="cards text-up">	</div>
+	<footer id="fh5co-footer" role="contentinfo">
+  
+    <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h3>Sobre nós</h3>
+        <font face="Raleway"><p  align="justify">O desenvolvimento do Cearchi Serviços foi realizado pela BUG MONKEYS SOFTWARES, criada por discentes da Universidade Federal de Itajubá. Já nos conhece? Deseja fazer parte da nossa equipe? Saiba mais! </p></font></br>
+        <p><a href="about.php" class="btn btn-primary btn-outline with-arrow btn-sm"> Informações! <i class="icon-arrow-right"></i></a></p>
+      </div>
 
-	<div class="footer">
-		<div class="container">
-			<div class="footer_top">
-				<div class="span_of_4">
-					<div class="col-md-3 span1_of_4">
+      <div class="col-md-5" align="center">
+        <h3>Nossos serviços</h3>
+        <ul class="float2">
+          <p align="center"><li><a href="index.php">Home Page</a></li>
+          <li><a href="#">Patrocinadores</a></li>
+          <li><a href="#">Parceiros</a></li>
+          <li><a href="contact.php">Contato</a></li>
+        </ul>
+        </div>
+        
 
+      
 
-					</div>
-					<div class="col-md-3 span1_of_4">
-						<style="text-align:justify"><h4>CONTAS</h4>
-						<ul class="f_nav">
-							<li><a href="account.html">REALIZE O LOGIN </a></li>
-							<li><a href="register.html">CRIE UMA CONTA</a></li>
-							<li><a href="consultar.php">CONSULTAR USUÁRIOS</a></li>
-							<li><a href="#">CONFIGURAÇÕES DA CONTA</a></li></style>
+      <div class="col-md-3">
+        <h3>Siga-nos</h3>
+        <ul class="fh5co-social">
+          <li><a href="#"><i class="icon-twitter"></i></a></li>
+          <li><a href="#"><i class="icon-facebook"></i></a></li>
+          <li><a href="#"><i class="icon-google-plus"></i></a></li>
+          <li><a href="#"><i class="icon-instagram"></i></a></li>
+        </ul>
+      </div>
+      </div>
+      
+      
+      <div class="col-md-12 fh5co-copyright text-center">
+        <p>&copy; 2016 Cearchi Serviços. All Rights Reserved. <span>Developed by BUG MONKEYS SOFTWARES</a></span></p> 
+      </div>
+      
+    </div>
+  </footer>
+  </div>
+  
+  
+  <!-- jQuery -->
+  <script src="js/jquery.min.js"></script>
+  <!-- jQuery Easing -->
+  <script src="js/jquery.easing.1.3.js"></script>
+  <!-- Bootstrap -->
+  <script src="js/bootstrap.min.js"></script>
+  <!-- Waypoints -->
+  <script src="js/jquery.waypoints.min.js"></script>
+  <!-- Owl Carousel -->
+  <script src="js/owl.carousel.min.js"></script>
+  <!-- Flexslider -->
+  <script src="js/jquery.flexslider-min.js"></script>
 
-						</ul>				
-					</div>
-					<div class="col-md-3 span1_of_4">
-						<h4>DÚVIDAS</h4>
-						<ul class="f_nav">
-							<li><a href="#">O QUE É A CEARCHI SERVIÇOS</a></li>
-							<li><a href="#">O QUE É A BUG MONKEYS</a></li>
-							<li><a href="#">COMO FUNCIONA O SITE</a></li>
-							<li><a href="#">PARCEIROS</a></li>
-						</ul>	
-					</div>
+  <!-- MAIN JS -->
+  <script src="js/main.js"></script>
 
-					<div class="col-md-3 span1_of_4">
-
-					</div>
-					<div class="clearfix"></div>
-				</div>
-			</div>
-			<div class="cards text-center">
-				<img src="images/cards.jpg" alt="" />
-			</div>
-			<div class="copyright text-center">
-				<p>© 2016 CEARCHI Serviços. All Rights Reserved | Design by BUGMONKEYS SOFTWARE</p>
-			</div>
-		</div>
-	</div>
-</body>
-</html>
+  </body>
 </html>

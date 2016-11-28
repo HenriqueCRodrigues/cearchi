@@ -113,48 +113,85 @@
         </nav>
       </div>
     </div>
+
+
+  <div class="container">
+    
+  </div>
+  <aside id="fh5co-hero" class="js-fullheight">
+    <div class="flexslider js-fullheight">
+      <ul class="slides">
+        <li style="background-image: url(images/slide_1.jpg);">
+          <div class="overlay-gradient"></div>
+          <div class="container">
+            <div class="col-md-10 col-md-offset-1 text-center js-fullheight slider-text">
+              <div class="slider-text-inner">
+                <h2>Ainda não é cadastrado? Não perca tempo!</h2>
+                <p><a href="register.php" class="btn btn-primary btn-lg">Crie sua conta!</a></p>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li style="background-image: url(images/slide_2.jpg);">
+          <div class="container">
+            <div class="col-md-10 col-md-offset-1 text-center js-fullheight slider-text">
+              <div class="slider-text-inner">
+                <h2>Saiba mais sobre a ferramenta!</h2>
+                <p><a href="#" class="btn btn-primary btn-lg">Informações!</a></p>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li style="background-image: url(images/slide_3.jpg);">
+          <div class="container">
+            <div class="col-md-10 col-md-offset-1 text-center js-fullheight slider-text">
+              <div class="slider-text-inner">
+                <h2>Conheça nossa história!</h2>
+                <p><a href="#" class="btn btn-primary btn-lg">Clique aqui!</a></p>
+              </div>
+            </div>
+          </div>
+        </li>
+        </ul>
+      </div>
+  </aside>
     <?php }
 
     else
     {
-    	$nome = $_SESSION['nome_user'];
+      $nome = $_SESSION['nome_user'];
     ?>
 
     <header id="fh5co-header" role="banner">
- <div class="header">
-		<div class="header-top-strip">
-			<div class="container">
-				<div class="header-top-left">
-                 <div class="logo">
-             
-            
-              <div class="form-group">
-              <ul>
+  <div class="header">
+        <div class="header-top-strip">
+            <div class="container">
+                <div class="header-top-left">
+                    <div class="logo">
+                      <div class="form-group">
+                          <div class="row">
+                        
+                              <div class="col-md-11">
 
-					 <a  href="perfil.php"><img src="images/icon2.png" height="60" width="60"></a><font color= #EBEBEB></font><a href="perfil.php"><i><?php echo "$nome"; ?></i></a>
-					
- &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-                <li><i>
-           <form method='post' action="Resultado.php">
-           <table>
-           <tr>
+                              <a  href="perfil.php"><img src="images/icon2.png" height="50" width="50"></a><font color= #EBEBEB>Você está conectado como:</font><a href="perfil.php"><i> <?php echo "$nome"; ?></i></a>
+                              </div> 
+                              <div class="col-md-1" align="right">  
+                                <form method='post' action="Resultado.php">
+                                <table>
 
-           <td><input class="form-control2" name="nome_user" id="nome_user" placeholder="  Pesquisar..." type="text"> </i></li></td>
-           <td><font color="white">......</font>      <input type='image' title='Buscar' src='images/lupa.png' width="40" height="40"></td>
-            </tr>
-          
-
-           </table>
-           </form>
-        
-          	</ul>
-          	</div>
-        	
+                                  </tr>
+                                  <td><input class="form-control2" name="nome_user" id="nome_user" placeholder="  Pesquisar..." type="text"></td>
+                                  <td><font color="white">        </font><input type='image' title='Buscar' src='images/lupa.png' width="40" height="40"></td>
+                                  </tr>
+                                </table>
+                                </form>
+                              </div>
+                        </div>
                     </div>
-				</div> </div>
-			</div>
-		</div>
-	 </header>
+                </div> </div>
+            </div>
+        </div>
+      </header>
 
   <div id="fh5co-page">
   <header id="fh5co-header" role="banner">
@@ -165,7 +202,7 @@
           <ul>
             <li><a href="index.php">Inicio</a></li>
             <li><a href="menumensagens.php">Mensagens</a></li>
-            <li><a href="menusolicitacao.php">Serviços</a></li>
+            <li><a href="#">Serviços</a></li>
             <li><a href="contact.php">Contato</a></li>
             <li><a href="about.php">Sobre</a></li>
             <li><a href="logout.php">Deslogar</a></li>
@@ -174,121 +211,117 @@
         </nav>
       </div>
     </div>
+      </header>
+
+
+  <div class="container">
+    
+  </div>
+  <aside id="fh5co-hero" class="js-fullheight">
+    <div class="flexslider js-fullheight">
+      <ul class="slides">
+        <li style="background-image: url(images/slide_1.jpg);">
+          <div class="overlay-gradient"></div>
+          <div class="container">
+            <div class="col-md-10 col-md-offset-1 text-center js-fullheight slider-text">
+              <div class="slider-text-inner">
+                <h2>Seja bem vindo ao CEARCHI SERVIÇOS!</h2>
+                <p><a href="#" class="btn btn-primary btn-lg">Conheça a ferramenta!</a></p>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li style="background-image: url(images/slide_2.jpg);">
+          <div class="container">
+            <div class="col-md-10 col-md-offset-1 text-center js-fullheight slider-text">
+              <div class="slider-text-inner">
+                <h2>Conheça os serviços oferecidos!</h2>
+                <p><a href="consultar.php" class="btn btn-primary btn-lg">Consulte!</a></p>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li style="background-image: url(images/slide_3.jpg);">
+          <div class="container">
+            <div class="col-md-10 col-md-offset-1 text-center js-fullheight slider-text">
+              <div class="slider-text-inner">
+                <h2>Adicione seus amigos!</h2>
+                <p><a href="visualizar_amigos.php" class="btn btn-primary btn-lg">Clique aqui!</a></p>
+              </div>
+            </div>
+          </div>
+        </li>
+        </ul>
+      </div>
+  </aside>
  <?php }
  ?>
-  </header>
-  <!-- COLOCAR AQUI O  CONTEUDO DE CORPO-->
 
+  
+  
+  <!-- COLOCAR AQUI O  CONTEUDO DE CORPO--> 
+  <footer id="fh5co-footer" role="contentinfo">
+  
+    <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h3>Sobre nós</h3>
+        <font face="Raleway"><p  align="justify">O desenvolvimento do Cearchi Serviços foi realizado pela BUG MONKEYS SOFTWARES, criada por discentes da Universidade Federal de Itajubá. Já nos conhece? Deseja fazer parte da nossa equipe? Saiba mais! </p></font></br>
+        <p><a href="about.php" class="btn btn-primary btn-outline with-arrow btn-sm"> Informações! <i class="icon-arrow-right"></i></a></p>
+      </div>
 
-  <!-- COLOCAR AQUI O  CONTEUDO DE CORPO-->
+      <div class="col-md-5" align="center">
+        <h3>Nossos serviços</h3>
+        <ul class="float2">
+          <p align="center"><li><a href="index.php">Home Page</a></li>
+          <li><a href="#">Patrocinadores</a></li>
+          <li><a href="#">Parceiros</a></li>
+          <li><a href="contact.php">Contato</a></li>
+        </ul>
+        </div>
+        
 
-	
-	<div class="container">
-		
-	</div>
-	<aside id="fh5co-hero" class="js-fullheight">
-		<div class="flexslider js-fullheight">
-			<ul class="slides">
-		   	<li style="background-image: url(images/slide_1.jpg);">
-		   		<div class="overlay-gradient"></div>
-		   		<div class="container">
-		   			<div class="col-md-10 col-md-offset-1 text-center js-fullheight slider-text">
-		   				<div class="slider-text-inner">
-		   					<h2>Teste</h2>
-		   					<p><a href="#" class="btn btn-primary btn-lg">Crie sua conta!</a></p>
-		   				</div>
-		   			</div>
-		   		</div>
-		   	</li>
-		   	<li style="background-image: url(images/slide_2.jpg);">
-		   		<div class="container">
-		   			<div class="col-md-10 col-md-offset-1 text-center js-fullheight slider-text">
-		   				<div class="slider-text-inner">
-		   					<h2>Teste 1 !</h2>
-		   					<p><a href="#" class="btn btn-primary btn-lg">Crie sua conta!</a></p>
-		   				</div>
-		   			</div>
-		   		</div>
-		   	</li>
-		   	<li style="background-image: url(images/slide_3.jpg);">
-		   		<div class="container">
-		   			<div class="col-md-10 col-md-offset-1 text-center js-fullheight slider-text">
-		   				<div class="slider-text-inner">
-		   					<h2>Teste 2 !</h2>
-		   					<p><a href="#" class="btn btn-primary btn-lg">Crie sua conta!</a></p>
-		   				</div>
-		   			</div>
-		   		</div>
-		   	</li>
-		  	</ul>
-	  	</div>
-	</aside>
-	
+      
 
-	
-	
-	<!-- COLOCAR AQUI O  CONTEUDO DE CORPO-->	
-	<footer id="fh5co-footer" role="contentinfo">
-	
-		<div class="container">
-			<div class="col-md-3 col-sm-12 col-sm-push-0 col-xs-12 col-xs-push-0">
-				<h3>Sobre nós</h3>
-				<p>Já nos conhece? Deseja fazer parte da nossa equipe? Estamos te esperando! </p>
-				<p><a href="#" class="btn btn-primary btn-outline with-arrow btn-sm"> Entre em contato! <i class="icon-arrow-right"></i></a></p>
-			</div>
-			<div class="col-md-6 col-md-push-1 col-sm-12 col-sm-push-0 col-xs-12 col-xs-push-0">
-				<h3>Nossos serviços</h3>
-				<ul class="float">
-					<li><a href="#">Web Design</a></li>
-					<li><a href="#">Branding &amp; Identity</a></li>
-					<li><a href="#">Free HTML5</a></li>
-					<li><a href="#">HandCrafted Templates</a></li>
-				</ul>
-				<ul class="float">
-					<li><a href="#">Free Bootstrap Template</a></li>
-					<li><a href="#">Free HTML5 Template</a></li>
-					<li><a href="#">Free HTML5 &amp; CSS3 Template</a></li>
-					<li><a href="#">HandCrafted Templates</a></li>
-				</ul>
+      <div class="col-md-3">
+        <h3>Siga-nos</h3>
+        <ul class="fh5co-social">
+          <li><a href="#"><i class="icon-twitter"></i></a></li>
+          <li><a href="#"><i class="icon-facebook"></i></a></li>
+          <li><a href="#"><i class="icon-google-plus"></i></a></li>
+          <li><a href="#"><i class="icon-instagram"></i></a></li>
+        </ul>
+      </div>
+      </div>
+      
+      
+      <div class="col-md-12 fh5co-copyright text-center">
+        <p>&copy; 2016 Cearchi Serviços. All Rights Reserved. <span>Developed by BUG MONKEYS SOFTWARES</a></span></p> 
+      </div>
+      
+    </div>
+  </footer>
+  </div>
+  
+  
+  <!-- jQuery -->
+  <script src="js/jquery.min.js"></script>
+  <!-- jQuery Easing -->
+  <script src="js/jquery.easing.1.3.js"></script>
+  <!-- Bootstrap -->
+  <script src="js/bootstrap.min.js"></script>
+  <!-- Waypoints -->
+  <script src="js/jquery.waypoints.min.js"></script>
+  <!-- Owl Carousel -->
+  <script src="js/owl.carousel.min.js"></script>
+  <!-- Flexslider -->
+  <script src="js/jquery.flexslider-min.js"></script>
 
-			</div>
+  <!-- MAIN JS -->
+  <script src="js/main.js"></script>
 
-			<div class="col-md-2 col-md-push-1 col-sm-12 col-sm-push-0 col-xs-12 col-xs-push-0">
-				<h3>Siga-nos</h3>
-				<ul class="fh5co-social">
-					<li><a href="#"><i class="icon-twitter"></i></a></li>
-					<li><a href="#"><i class="icon-facebook"></i></a></li>
-					<li><a href="#"><i class="icon-google-plus"></i></a></li>
-					<li><a href="#"><i class="icon-instagram"></i></a></li>
-				</ul>
-			</div>
-			
-			
-			<div class="col-md-12 fh5co-copyright text-center">
-				<p>&copy; 2016 Cearchi Serviços. All Rights Reserved. <span>Developed by BUG MONKEYS SOFTWARES</a></span></p>	
-			</div>
-			
-		</div>
-	</footer>
-	</div>
-	
-	
-	<!-- jQuery -->
-	<script src="js/jquery.min.js"></script>
-	<!-- jQuery Easing -->
-	<script src="js/jquery.easing.1.3.js"></script>
-	<!-- Bootstrap -->
-	<script src="js/bootstrap.min.js"></script>
-	<!-- Waypoints -->
-	<script src="js/jquery.waypoints.min.js"></script>
-	<!-- Owl Carousel -->
-	<script src="js/owl.carousel.min.js"></script>
-	<!-- Flexslider -->
-	<script src="js/jquery.flexslider-min.js"></script>
-
-	<!-- MAIN JS -->
-	<script src="js/main.js"></script>
-
-	</body>
+  </body>
 </html>
+
+
 

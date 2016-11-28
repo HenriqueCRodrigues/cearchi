@@ -36,7 +36,7 @@ $sexo_user = $_POST['sexo_user'];
  	{
  	 	$sql_atualizar_usuario = mysql_query("UPDATE usuario SET nome_user = '$nome_user',  telefone_user = '$telefone_user', rua_user = '$rua_user', numero_user = '$numero_user', bairro_user = '$bairro_user', cidade_user = '$cidade_user', estado_user = '$estado_user', cep_user = '$cep_user', emai_user = '$email_user', rg_user = '$rg_user', sexo_user = '$sexo_user' WHERE id_user = '$id' ") or die(mysql_error());
  	 
- 	 	echo '<script>alert("Alterações realizada com sucesso\nVocê Será Redirecionado Para o seu perfil.")</script>';
+ 	 	echo '<script>alert("Alterações realizada com sucesso\nRedirecionando para seu perfil.")</script>';
  	 	echo '<script>location.href="perfil.php";</script>';
  	} 
 

@@ -7,8 +7,8 @@
 }
 /* =======================================================
 *
-* 	Template Style 
-*	Edit this section
+*   Template Style 
+* Edit this section
 *
 * ======================================================= */
 body {
@@ -4588,3 +4588,13 @@ margin-bottom: 30px;
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
+
+.slider-text-inner h2{
+  font-family: "Impact";
+  font-size: 500px;
+  border-color: black;
+  border-width: 50px;
+  text-shadow:#000 1px -1px 2px, #000 -1px 1px 2px, #000 1px 1px 2px, #000 -1px -1px 2px;
+  
+}
+

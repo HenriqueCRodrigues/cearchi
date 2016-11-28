@@ -43,21 +43,16 @@ if ($row > 0)
 	$_SESSION['tipo_usuario'] = $consulta['tipo_usuario'];
 
 	
-	echo 'Você foi autenticado com sucesso<br>Você Será Redirecionado Para a Pagina Home de Sua Conta.';
+	echo 'Você foi autenticado com sucesso<br>Redirecionando para a página principal.';
 	echo '<script>sucesso_login()</script>';
 
 }
 else
 {
 
-	echo '<center>Login ou Senha Invalidos.<br>Você Será Redirecionado Para a Pagina Principal Novamente.</center>';
+	echo '<center>Login ou senha invalidos.<br>Você será redirecionado para a página principal.</center>';
 	echo '<script>fracasso_login()</script>';
 }
-
-
-
-
-
 
 
 ?>
