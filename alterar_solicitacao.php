@@ -30,7 +30,7 @@
 				if (strcmp($hora, '') == 0 || strcmp($data, '')==0) 
 				{
 					echo "<script>alert('Todos os campos tem que ser preenchidos')</script>";
-					echo "<script>location.href='Visualizar_solicitacao.php?id_terceiro=".$id_terceiro."&servico_ts=".$servico."&statusg_servico=".$statusg."&id_ss=".$id_ss."'</script>";
+					echo "<script>location.href='Visualizar_solicitacao.php?id_terceiro=".$id_terceiro."&servico_ts=".$servico."&statusg_servico=".$status."&id_ss=".$id_ss."'</script>";
 				}
 
 				else
@@ -38,7 +38,7 @@
 					echo "entrei aqui";
 					$sql = mysql_query("UPDATE solicitacao_de_servico SET data_ss='$data', hora_ss='$hora', status_ss='$status' WHERE id_ss='$id_ss' ");
 					echo "<script>alert('Solicitação Alterada com Sucesso')</script>";
-					echo "<script>location.href='Visualizar_solicitacao.php?id_terceiro=".$id_terceiro."&servico_ts=".$servico."&statusg_servico=".$statusg."&id_ss=".$id_ss."'</script>";
+					echo "<script>location.href='Visualizar_solicitacao.php?id_terceiro=".$id_terceiro."&servico_ts=".$servico."&statusg_servico=".$status."&id_ss=".$id_ss."'</script>";
 				}
 
 	}
@@ -50,7 +50,7 @@
 				if (strcmp($hora, '') == 0 || strcmp($data, '') == 0 || strcmp($estrela, '') == 0) 
 				{	
 					echo "<script>alert('Todos os campos tem que ser preenchidos')</script>";
-					echo "<script> location.href='visualizar_solicitacao.php?id_terceiro=".$id_terceiro."&servico_ts=".$servico."&id_ss=".$id_ss."&statusg=".$statusg."'</script>";
+					echo "<script> location.href='visualizar_solicitacao.php?id_terceiro=".$id_terceiro."&servico_ts=".$servico."&id_ss=".$id_ss."&statusg=".$status."'</script>";
 				}
 
 				else
@@ -69,7 +69,7 @@
 							$sql = mysql_query("UPDATE solicitacao_de_servico SET data_ss='$data', hora_ss='$hora', status_ss='$status', fk_id_avaliacao='$avaliacao' WHERE id_ss='$id_ss' ");
 							$sql2 = mysql_query("INSERT INTO avaliacoes (descricao_avaliacao, estrelas_avaliacao, id_remetente, id_destinatario) values ('$descricao','$estrela','$id', '$id_terceiro')");
 							echo "<script>alert('Solicitação Alterada com Sucesso')</script>";
-							echo "<script> location.href='visualizar_solicitacao.php?id_terceiro=".$id_terceiro."&servico_ts=".$servico."&id_ss=".$id_ss."&statusg=".$statusg."'</script>";
+							echo "<script> location.href='visualizar_solicitacao.php?id_terceiro=".$id_terceiro."&servico_ts=".$servico."&id_ss=".$id_ss."&statusg=".$status."'</script>";
 							
 
 

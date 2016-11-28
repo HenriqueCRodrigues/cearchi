@@ -20,7 +20,7 @@ for ($i = 0; $i < $num; $i++) {
   <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Cearchi -  Adicionar tipos de serviço e/ou cidades de atuação</title>
+  <title>Cearchi -  Remover tipos de serviço e/ou cidades de atuação</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
   <meta name="keywords" content="free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
@@ -155,7 +155,7 @@ for ($i = 0; $i < $num; $i++) {
                        <span>&gt;</span>
                     </li>
                     <li class="women">
-                        <font color="white"> Adicionar tipos de serviço e/ou cidades de atuação </font>
+                        <font color="white"> Remover tipos de serviço e/ou cidades de atuação </font>
                     </li>
                 </ul>
                 <ul class="previous">
@@ -170,11 +170,11 @@ for ($i = 0; $i < $num; $i++) {
     <div class="container">
       <div class="row">
         <div class="Register-form">
-          <x3>Adicionar tipos de serviços e/ou cidades de atuação </x3>
-          <p>Aqui será possível adicionar novos tipos de serviços e/ou cidades de atuação.</p><br><br>
+          <x3>Remover tipos de serviços e/ou cidades de atuação </x3>
+          <p>Aqui será possível remover novos tipos de serviços e/ou cidades de atuação.</p><br><br>
 
         </div>
-          <form method='post' action="confirma_adiciona.php">
+          <form method='post' action="confirma_remove.php">
           <div class="row">
             
             <div class="col-md-6">
@@ -183,7 +183,8 @@ for ($i = 0; $i < $num; $i++) {
    <select class="form-control3" name="tipos_de_servico_id_ts">
     <option value="">&nbsp&nbspSelecione</option>
     <?php
-      $sql = mysql_query("SELECT * FROM tipos_de_servico ORDER BY servico_ts");
+      $id_user = $_SESSION['id_user'];
+      $sql = mysql_query("SELECT * FROM servicos_fornecidos INNER JOIN tipos_de_servico ON servicos_fornecidos.fk_id_ts = tipos_de_servico.id_ts WHERE fk_id_user LIKE '$id_user'");
 
       $row = mysql_num_rows($sql);
 
@@ -191,7 +192,7 @@ for ($i = 0; $i < $num; $i++) {
       {
         while ($linha = mysql_fetch_array($sql)) 
         {
-          $tipos_de_servico = $linha['id_ts'];
+          $tipos_de_servico = $linha['id_sf'];
           $nome_tipos_de_servico = $linha['servico_ts'];
           echo "<option value='$tipos_de_servico'>$nome_tipos_de_servico</option>";
 
@@ -204,41 +205,31 @@ for ($i = 0; $i < $num; $i++) {
             </div>
             </div>
              <div>
-      <label>Estado:</label>
-      <select class="form-control3" name="estado" id="estado" onchange="buscar_cidades()">
-        <option value="">&nbsp&nbspSelecione...</option>
-        <?php foreach ($arrEstados as $value => $name) {
-          echo "<option value='{$value}'>{$name}</option>";
-        }?>
-      </select>
       </div>
-       &nbsp; &nbsp; &nbsp;
       <div id="load_cidades">
         <label>Cidades:</label>
         <select class="form-control3" name="cidade" id="cidade">
-          <option value="">&nbsp&nbspSelecione a cidade</option>
+          <option value="" selected>&nbsp&nbspSelecione a cidade</option>
+             <?php
+                  $sql1 = mysql_query("SELECT * FROM locais_atuacao INNER JOIN cidades ON locais_atuacao.id_cidade = cidades.cod_cidades WHERE id_user LIKE '$id_user' ");
+
+                  while ($linha1 = mysql_fetch_array($sql1)) {
+                      $nome_cidade = $linha1['nome'];
+                      $id_local_atuacao = $linha1['id_local_atuacao'];
+                       echo "<option value='$id_local_atuacao'>$nome_cidade</option>";
+              }
+      ?>
+
         </select>
       </div>
             </div>
             </div>
 
-            <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-    <script>
-    function buscar_cidades(){
-      var estado = $('#estado').val();
-      if(estado){
-        var url = 'ajax_buscar_cidades1.php?estado='+estado;
-        $.get(url, function(dataReturn) {
-          $('#load_cidades').html(dataReturn);
-        });
-      }
-    }
-    </script>
 
             
             <div class="col-md-12">
               <div class="form-group">
-                <input value="Cadastrar Serviço" class="btn btn-primary" type="submit">
+                <input value="Remover Serviço" class="btn btn-primary" type="submit">
 
               </div>
             </div>

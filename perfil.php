@@ -300,6 +300,13 @@
                       <ul class="multi-column-dropdown">
                         <li><a href="consultar.php"> Realizar Consulta</a></li>
                         <li><a href="changeinf.php">Alterar Informações Pessoais</a></li>
+                        <?php
+                            if(strcmp($tipo_usuario, 'P')==0){
+                              echo "<li><a href='adicionar_servico_cidade.php'>Adicionar Locais de Atuação e serviços</a></li>";
+                               echo "<li><a href='remover_servico_cidade.php'>Remover Locais de Atuação e serviços</a></li>";
+                            }
+                        ?>
+                        
                         <li><a href="contact.html"> Reportar Erros</a></li>
                         <li><a href="deletarconta.php">Deletar Conta</a></li>
                         
